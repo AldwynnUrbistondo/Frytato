@@ -16,6 +16,7 @@ public class Interact : MonoBehaviour
 
         if (hasHit)
         {
+            Debug.Log("Hit " + hit.collider.name);
             var interactable = hit.collider.GetComponent<IInteractable>();
 
             // ENTER
