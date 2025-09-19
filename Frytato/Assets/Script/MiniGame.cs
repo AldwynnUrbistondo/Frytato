@@ -3,40 +3,33 @@ using UnityEngine;
 public class MiniGame : MonoBehaviour, IInteractable
 {
     public GameObject canvas;
+    public GameObject outlineObject;
 
-    public Material outlineMaterial;
-    [HideInInspector] public MeshRenderer meshRenderer;
-    [HideInInspector] public Material[] originalMaterials;  
-
-    public void Awake()
+    public virtual void Interact()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
-        originalMaterials = meshRenderer.materials; 
+        GameManager.Instance.gameState = GameState.MiniGame;
     }
 
-    public void Interact()
+    public void Start()
     {
-        // do your interaction here
+        outlineObject.SetActive(false);
+        canvas.SetActive(false);
     }
 
-    void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            Material[] newMaterials = new Material[originalMaterials.Length + 1];
-            originalMaterials.CopyTo(newMaterials, 0);
-            newMaterials[newMaterials.Length - 1] = outlineMaterial;
-            meshRenderer.materials = newMaterials;
-
+            outlineObject.SetActive(true);
             canvas.SetActive(true);
         }
     }
 
-    void OnTriggerExit(Collider other)
+    public void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            meshRenderer.materials = originalMaterials;
+            outlineObject.SetActive(false);
             canvas.SetActive(false);
         }
     }

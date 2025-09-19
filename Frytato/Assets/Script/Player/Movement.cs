@@ -14,6 +14,11 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.gameState != GameState.Roam)
+        {
+            rb.linearVelocity = Vector3.zero;
+            return;
+        }
         movementx = Input.GetAxis("Horizontal");
         movementz = Input.GetAxis("Vertical");
 

@@ -1,16 +1,11 @@
 using UnityEngine;
 
-public class WashMiniGame : MonoBehaviour
+public class WashMiniGame : MiniGame
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public override void Interact()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        base.Interact();
+        CameraManager.Instance.ChangeCamera(CameraType.WashCamera);
+        Debug.Log("Wash Mini Game Started");
     }
 }

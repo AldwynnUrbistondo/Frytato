@@ -15,19 +15,21 @@ public class CameraManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        Instance = this;
     }
 
     public void ChangeCamera(CameraType camera)
     {
         if (camera == CameraType.MainCamera)
         {
-            mainCamera.enabled = true;
-            washCamera.enabled = false;
+            mainCamera.gameObject.SetActive(true);
+            washCamera.gameObject.SetActive(false);
         }
         else if(camera == CameraType.WashCamera)
         {
-            mainCamera.enabled = false;
-            washCamera.enabled = true;
+            mainCamera.gameObject.SetActive(false);
+            washCamera.gameObject.SetActive(true);
         }
     }
 }
