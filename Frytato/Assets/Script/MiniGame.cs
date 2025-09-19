@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class MiniGame : MonoBehaviour, IInteractable
 {
-    [SerializeField] Material outlineMaterial;
-    private MeshRenderer meshRenderer;
+    public GameObject canvas;
 
-    private Material[] originalMaterials;  
+    public Material outlineMaterial;
+    [HideInInspector] public MeshRenderer meshRenderer;
+    [HideInInspector] public Material[] originalMaterials;  
 
-    void Awake()
+    public void Awake()
     {
         meshRenderer = GetComponent<MeshRenderer>();
         originalMaterials = meshRenderer.materials; 
@@ -18,5 +19,25 @@ public class MiniGame : MonoBehaviour, IInteractable
         // do your interaction here
     }
 
-   
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Material[] newMaterials = new Material[originalMaterials.Length + 1];
+            originalMaterials.CopyTo(newMaterials, 0);
+            newMaterials[newMaterials.Length - 1] = outlineMaterial;
+            meshRenderer.materials = newMaterials;
+
+            canvas.SetActive(true);
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            meshRenderer.materials = originalMaterials;
+            canvas.SetActive(false);
+        }
+    }
 }
