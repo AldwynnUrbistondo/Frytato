@@ -2,24 +2,49 @@ using UnityEngine;
 
 public class Interact : MonoBehaviour
 {
-    [SerializeField] float radius = 0.5f;   // Radius of the "circle"
-    [SerializeField] float distance = 3f;   // How far the sphere goes
-    [SerializeField] LayerMask interactableMask; // Optional: filter what to hit
+    [SerializeField] float radius = 0.5f;      // Radius of the sphere
+    [SerializeField] float distance = 3f;      // Max distance
+    [SerializeField] LayerMask interactableMask;
 
-    RaycastHit hit;
+    private RaycastHit hit;
+    private IInteractable currentTarget;       // the object we're currently aiming at
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        // --- Cast a "fat ray" ---
+        bool hasHit = Physics.SphereCast(transform.position, radius, transform.forward, out hit, distance, interactableMask);
+
+        if (hasHit)
         {
-            // Fire a "fat" ray (sphere)
-            if (Physics.SphereCast(transform.position, radius, transform.forward, out hit, distance, interactableMask))
+            var interactable = hit.collider.GetComponent<IInteractable>();
+
+            // ENTER
+            if (interactable != null && interactable != currentTarget)
             {
-                IInteractable interactable = hit.collider.GetComponent<IInteractable>();
-                if (interactable != null)
+                // We were pointing at something new
+                currentTarget?.OnRaycastExit();   // call exit on old
+                currentTarget = interactable;
+                currentTarget.OnRaycastEnter();
+            }
+
+            // STAY
+            if (interactable == currentTarget)
+            {
+                currentTarget.OnRaycastStay();
+
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-                    interactable.Interact();
+                    currentTarget.Interact();
                 }
+            }
+        }
+        else
+        {
+            // EXIT if we had something last frame but now nothing
+            if (currentTarget != null)
+            {
+                currentTarget.OnRaycastExit();
+                currentTarget = null;
             }
         }
     }
