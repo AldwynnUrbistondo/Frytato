@@ -10,7 +10,7 @@ public class Interact : MonoBehaviour
         {
             interactable.Interact();
         }
-    }
+    }   
 
     private void OnTriggerEnter(Collider other)
     {
