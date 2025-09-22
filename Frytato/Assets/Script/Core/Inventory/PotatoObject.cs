@@ -4,5 +4,6 @@ using UnityEngine;
 public class PotatoObject : ItemData
 {
     public GameObject dropableItem;
+    public float growDuration;  
 }
 

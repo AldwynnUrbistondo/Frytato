@@ -1544,7 +1544,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4b82f927047bf24586e8895112edf33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  potatoInventoryScroll: {fileID: 0}
+  spawnLocation: {fileID: 1405076530}
+  buttonPrefab: {fileID: 7685970132337946200, guid: 9f0b20ba7ef81874c9cccf693e5303b5, type: 3}
+  items: []
 --- !u!4 &1054369764
 Transform:
   m_ObjectHideFlags: 0
@@ -1557,56 +1559,9 @@ Transform:
   m_LocalPosition: {x: 1141.3381, y: 548.0321, z: 5.7511578}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1057529751}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1057529750
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1057529751}
-  - component: {fileID: 1057529752}
-  m_Layer: 0
-  m_Name: Potato Inventory Scroll
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1057529751
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1057529750}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1054369764}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1057529752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1057529750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82daa0d557218bd4fa56c97db4410394, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnLocation: {fileID: 1405076530}
-  buttonPrefab: {fileID: 7685970132337946200, guid: 9f0b20ba7ef81874c9cccf693e5303b5, type: 3}
 --- !u!1 &1071547533
 GameObject:
   m_ObjectHideFlags: 0
@@ -2460,11 +2415,11 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 392341603}
   - {fileID: 758383319}
   - {fileID: 1550942139}
   - {fileID: 1635358797}
   - {fileID: 1054369764}
+  - {fileID: 392341603}
   - {fileID: 301708840}
   - {fileID: 1071547537}
   - {fileID: 330585546}
