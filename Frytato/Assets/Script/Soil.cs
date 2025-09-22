@@ -2,6 +2,7 @@ using UnityEngine;
 public class Soil : MonoBehaviour, IInteractable
 {
     public Plant plant;
+    float timer = 0;
     [SerializeField] PlantState plantstate = PlantState.Empty;
 
 
@@ -41,13 +42,13 @@ public class Soil : MonoBehaviour, IInteractable
 
     void Plant()
     {
-        plant.potatoObj.growDuration += Time.deltaTime;
+        timer += Time.deltaTime;
         Debug.Log(plant.potatoObj.growDuration);
-        if (plant.potatoObj.growDuration >= 10)
+        if (timer >= plant.potatoObj.growDuration)
         {
             Debug.Log("Plant is done growing");
             plant.isGrowing = false;
-            plant.potatoObj.growDuration = 0;
+            timer = 0;
             plantstate = PlantState.Harvest;
         }
     }
