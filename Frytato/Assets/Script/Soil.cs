@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class Soil : MonoBehaviour, IInteractable
 {
     public Plant plant;
@@ -34,21 +33,25 @@ public class Soil : MonoBehaviour, IInteractable
 
     void Plant()
     {
-        plant.growDuration += Time.deltaTime;
-        Debug.Log(plant.growDuration);
+        plant.potatoObj.growDuration += Time.deltaTime;
+        Debug.Log(plant.potatoObj.growDuration);
         plantstate = PlantState.Growing;
-        if (plant.growDuration >= 10)
+        if (plant.potatoObj.growDuration >= 10)
         {
             Debug.Log("Plant is done growing");
             plant.isGrowing = false;
-            plant.growDuration = 0;
+            plant.potatoObj.growDuration = 0;
             plantstate = PlantState.Harvest;
         }
     }
 
     void Harvest()
     {
-        plant.harvestAmount = Random.Range(1, 3);
+        plant.harvestAmount = Random.Range(2, 4);
+        for (int baseHarventAmount = 0;  baseHarventAmount < plant.harvestAmount; baseHarventAmount++)
+        {
+            Instantiate(plant.potatoObj.dropableItem, plant.harvestSpawnPoint.position, Quaternion.identity);
+        }
         Debug.Log($"You have harvested {plant.harvestAmount} of potatoes.");
         plantstate = PlantState.Empty;
     }
@@ -66,10 +69,11 @@ public enum PlantState
 [System.Serializable]
 public class Plant
 {
-    public float growDuration;
     public bool isGrowing = false;
+    public Transform harvestSpawnPoint;
     public int harvestAmount;
-    public int potatoRarity;
+    public PotatoObject potatoObj;
+
 }
 
 
