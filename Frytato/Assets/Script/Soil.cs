@@ -62,6 +62,7 @@ public enum PlantState
     Growing,
     Harvest
 }
+
 [System.Serializable]
 public class Plant
 {
@@ -70,3 +71,5 @@ public class Plant
     public int harvestAmount;
     public int potatoRarity;
 }
+
+
