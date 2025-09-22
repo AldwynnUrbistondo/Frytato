@@ -11,6 +11,7 @@ public class Soil : MonoBehaviour, IInteractable
         if (plantstate == PlantState.Empty)
         {
             Debug.Log("Planted Soil");
+            plant.isGrowing = true;
             Plant();
         }
         else if (plantstate == PlantState.Growing)
@@ -34,7 +35,6 @@ public class Soil : MonoBehaviour, IInteractable
     void Plant()
     {
         plant.growDuration += Time.deltaTime;
-        plant.isGrowing = true;
         Debug.Log(plant.growDuration);
         plantstate = PlantState.Growing;
         if (plant.growDuration >= 10)
