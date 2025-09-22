@@ -17,4 +17,4 @@ MonoBehaviour:
   itemObject: {fileID: 0}
   itemRarity: 1
   dropableItem: {fileID: 5352380179877512838, guid: 9a9fae3ce5cf0e54297aef13c103b472, type: 3}
-  growDuration: 15
+  growthTime: 15
