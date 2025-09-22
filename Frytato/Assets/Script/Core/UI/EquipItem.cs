@@ -24,4 +24,10 @@ public class EquipItem : MonoBehaviour
         equippedItem = itemToEquip;
         equipButton.image.sprite = itemToEquip.itemIcon;
     }
+
+    public void Unequip()
+    {
+        equippedItem = null;
+        equipButton.image.sprite = null; // or set to a "blank" sprite
+    }
 }
