@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,7 +29,13 @@ public class UIManager : MonoBehaviour
             Destroy(child.gameObject);
         }
         items = InventoryManager.Instance.items;
-        
+        foreach (var item in items)
+        {
+            Button newButton = Instantiate(buttonPrefab, spawnLocation);
+            newButton.image.sprite = item.itemData.itemIcon;
+            TextMeshProUGUI text = newButton.GetComponentInChildren<TextMeshProUGUI>();
+            text.text = $"{item.quantity}x";
+        }
     }
 
 }

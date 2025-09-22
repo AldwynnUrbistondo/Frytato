@@ -28,12 +28,15 @@ public class InventoryManager : MonoBehaviour
             if (item.itemData == itemData)
             {
                 item.quantity += quantity;
+                UIManager.Instance.UpdateUI();
                 return;
             }
         }
 
         // Otherwise add new item
         items.Add(new InventoryItem(itemData, quantity));
+        UIManager.Instance.UpdateUI();
+
     }
 
     public void RemoveItem(ItemData itemData, int quantity = 1)
