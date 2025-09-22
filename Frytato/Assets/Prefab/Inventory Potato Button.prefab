@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5584617584114315753}
   - component: {fileID: 5261400307598079275}
   - component: {fileID: 7685970132337946200}
+  - component: {fileID: 8473840341476419089}
   m_Layer: 5
   m_Name: Inventory Potato Button
   m_TagString: Untagged
@@ -121,6 +122,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8473840341476419089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2359612562015650313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8c29b2e8bd122429630d6450702f55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData: {fileID: 0}
 --- !u!1 &8780439395174105151
 GameObject:
   m_ObjectHideFlags: 0
