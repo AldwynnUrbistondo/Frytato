@@ -49,6 +49,7 @@ public class InventoryManager : MonoBehaviour
                 if (items[i].quantity <= 0)
                 {
                     items.RemoveAt(i);
+                    UIManager.Instance.UpdateUI();
                 }  
                 return;
             }
