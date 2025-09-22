@@ -46,11 +46,23 @@ public class InventoryManager : MonoBehaviour
             if (items[i].itemData == itemData)
             {
                 items[i].quantity -= quantity;
+
                 if (items[i].quantity <= 0)
                 {
+                    // If equipped item is gone, unequip it
+                    if (EquipItem.Instance.equippedItem == itemData)
+                    {
+                        EquipItem.Instance.Unequip();
+                    }
+
                     items.RemoveAt(i);
                     UIManager.Instance.UpdateUI();
-                }  
+                }
+                else
+                {
+                    UIManager.Instance.UpdateUI();
+                }
+
                 return;
             }
         }
