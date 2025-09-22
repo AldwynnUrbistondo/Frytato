@@ -7,10 +7,18 @@ public class Soil : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if (plantstate == PlantState.Empty)
+        if (plantstate == PlantState.Empty && EquipItem.Instance.equippedItem is PotatoObject && EquipItem.Instance.equippedItem != null)
         {
             Debug.Log("Planted Soil");
             plant.isGrowing = true;
+            plantstate = PlantState.Growing;
+
+            // Set the plant's potatoObj to the equipped item
+            plant.potatoObj = (PotatoObject)EquipItem.Instance.equippedItem;
+
+            // Remove one potato seed from inventory
+            InventoryManager.Instance.RemoveItem(EquipItem.Instance.equippedItem, 1);
+
             Plant();
         }
         else if (plantstate == PlantState.Growing)
@@ -35,7 +43,6 @@ public class Soil : MonoBehaviour, IInteractable
     {
         plant.potatoObj.growDuration += Time.deltaTime;
         Debug.Log(plant.potatoObj.growDuration);
-        plantstate = PlantState.Growing;
         if (plant.potatoObj.growDuration >= 10)
         {
             Debug.Log("Plant is done growing");
