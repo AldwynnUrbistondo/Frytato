@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4472508762290144571}
   - component: {fileID: 8313200815530894516}
   m_Layer: 0
-  m_Name: Potato Drop
+  m_Name: Potato Common
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,9 +124,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityScale: 1
+  raycastDistance: 0.5
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
+  potatoObject: {fileID: 11400000, guid: 0f719ea6301d6684e80e752e45f92419, type: 2}
 --- !u!54 &8313200815530894516
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -9,6 +9,8 @@ public class PotatoDrop : MonoBehaviour, ICollectible
     Rigidbody rb;
     bool isCollecting;
 
+    [SerializeField] PotatoObject potatoObject;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -60,6 +62,15 @@ public class PotatoDrop : MonoBehaviour, ICollectible
 
     public void Collect()
     {
-        // pick-up logic
+        InventoryManager.Instance.AddItem(potatoObject, 1);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Collect();
+            Destroy(gameObject);
+        }
     }
 }

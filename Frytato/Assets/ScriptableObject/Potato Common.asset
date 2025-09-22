@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb1065510076ada4b8bf9d554949e640, type: 3}
+  m_Name: Potato Common
+  m_EditorClassIdentifier: 
+  itemName: Common Potato
+  itemIcon: {fileID: -169195444, guid: 8afeda2221e2d374086b55c56f398076, type: 3}
+  itemObject: {fileID: 0}
+  itemRarity: 0
+  dropableItem: {fileID: 5352380179877512838, guid: fdf5ab7f778eb1044a6d1dc351f1cf87, type: 3}
