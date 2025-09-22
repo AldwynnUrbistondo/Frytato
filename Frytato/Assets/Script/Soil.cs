@@ -1,70 +1,77 @@
 using UnityEngine;
+
 public class Soil : MonoBehaviour, IInteractable
 {
     public Plant plant;
-    float timer = 0;
-    [SerializeField] PlantState plantstate = PlantState.Empty;
-
+    [SerializeField] private PlantState plantState = PlantState.Empty;
 
     public void Interact()
     {
-        if (plantstate == PlantState.Empty && EquipItem.Instance.equippedItem is PotatoObject && EquipItem.Instance.equippedItem != null)
+        // Planting
+        if (plantState == PlantState.Empty && EquipItem.Instance.equippedItem != null && EquipItem.Instance.equippedItem is PotatoObject potatoObj)
         {
             Debug.Log("Planted Soil");
-            plant.isGrowing = true;
-            plantstate = PlantState.Growing;
 
-            // Set the plant's potatoObj to the equipped item
-            plant.potatoObj = (PotatoObject)EquipItem.Instance.equippedItem;
+            plant.isGrowing = true;
+            plantState = PlantState.Growing;
+
+            // Assign the potato object reference
+            plant.potatoObj = potatoObj;
+            plant.currentGrowth = 0f;
 
             // Remove one potato seed from inventory
-            InventoryManager.Instance.RemoveItem(EquipItem.Instance.equippedItem, 1);
-
-            Plant();
+            InventoryManager.Instance.RemoveItem(potatoObj, 1);
         }
-        else if (plantstate == PlantState.Growing)
+        // Already growing
+        else if (plantState == PlantState.Growing)
         {
             Debug.Log("There is a plant growing");
         }
-        else if (plantstate == PlantState.Harvest)
+        // Ready to harvest
+        else if (plantState == PlantState.Harvest)
         {
             Harvest();
         }
     }
 
-    void Update()
+    private void Update()
     {
-        if (plant.isGrowing)
+        if (plant.isGrowing && plant.potatoObj != null)
         {
-            Plant();
+            Grow();
         }
     }
 
-    void Plant()
+    private void Grow()
     {
-        timer += Time.deltaTime;
-        Debug.Log(plant.potatoObj.growDuration);
-        if (timer >= plant.potatoObj.growDuration)
+        plant.currentGrowth += Time.deltaTime;
+
+        Debug.Log($"Plant growth: {plant.currentGrowth:0.0}/{plant.potatoObj.growthTime}");
+
+        if (plant.currentGrowth >= plant.potatoObj.growthTime)
         {
-            Debug.Log("Plant is done growing");
+            Debug.Log("Plant is done growing!");
             plant.isGrowing = false;
-            timer = 0;
-            plantstate = PlantState.Harvest;
+            plantState = PlantState.Harvest;
         }
     }
 
-    void Harvest()
+    private void Harvest()
     {
         plant.harvestAmount = Random.Range(2, 4);
-        for (int baseHarventAmount = 0;  baseHarventAmount < plant.harvestAmount; baseHarventAmount++)
+
+        for (int i = 0; i < plant.harvestAmount; i++)
         {
             Instantiate(plant.potatoObj.dropableItem, plant.harvestSpawnPoint.position, Quaternion.identity);
         }
-        Debug.Log($"You have harvested {plant.harvestAmount} of potatoes.");
-        plantstate = PlantState.Empty;
+
+        Debug.Log($"You harvested {plant.harvestAmount} potatoes.");
+
+        // Reset soil
+        plantState = PlantState.Empty;
+        plant.potatoObj = null;
+        plant.currentGrowth = 0f;
     }
-
-
 }
 
 public enum PlantState
@@ -78,10 +85,8 @@ public enum PlantState
 public class Plant
 {
     public bool isGrowing = false;
+    public float currentGrowth = 0f;
     public Transform harvestSpawnPoint;
     public int harvestAmount;
     public PotatoObject potatoObj;
-
 }
-
-
