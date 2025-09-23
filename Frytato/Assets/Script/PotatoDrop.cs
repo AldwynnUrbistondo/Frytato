@@ -35,6 +35,7 @@ public class PotatoDrop : MonoBehaviour, ICollectible
             if (IsGrounded())
             {
                 rb.linearVelocity = Vector3.zero;
+                readyToCollect = true;
                 isCollecting = true;
             }
             else
@@ -57,7 +58,7 @@ public class PotatoDrop : MonoBehaviour, ICollectible
 
     void GoToTargetPos()
     {
-        readyToCollect = true;
+
         Vector3 targetPos = GameObject.FindWithTag("Player").transform.position;
         rb.linearVelocity = (targetPos - transform.position).normalized * 10f;
     }
