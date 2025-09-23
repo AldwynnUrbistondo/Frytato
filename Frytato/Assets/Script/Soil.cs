@@ -8,7 +8,7 @@ public class Soil : MonoBehaviour, IInteractable
     public void Interact()
     {
         // Planting
-        if (plantState == PlantState.Empty && EquipItem.Instance.equippedItem != null && EquipItem.Instance.equippedItem is PotatoObject potatoObj)
+        if (plantState == PlantState.Empty && RoamUI.Instance.equippedItem != null && RoamUI.Instance.equippedItem is PotatoObject potatoObj)
         {
             Debug.Log("Planted Soil");
 
