@@ -243,7 +243,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &71588325
 RectTransform:
   m_ObjectHideFlags: 0
@@ -821,7 +821,7 @@ GameObject:
   - component: {fileID: 330585547}
   - component: {fileID: 330585548}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Roam Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1290,7 +1290,7 @@ GameObject:
   m_Component:
   - component: {fileID: 663424488}
   m_Layer: 0
-  m_Name: Wash
+  m_Name: Slice Mini Game
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1737,7 +1737,7 @@ GameObject:
   - component: {fileID: 1071547534}
   - component: {fileID: 1071547538}
   m_Layer: 6
-  m_Name: Wash Station
+  m_Name: Slice Station
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1843,11 +1843,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1071547533}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b48b1cdbefbc13499075cd3b26cf5c8, type: 3}
+  m_Script: {fileID: 11500000, guid: 00deaed9fb1c2b9469dbd9f19f164c7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 861965407}
   outlineObject: {fileID: 226114995}
+  miniGameType: 1
+  miniGameCamera: 1
 --- !u!1001 &1075939740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2129,7 +2131,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.05000305, y: -1.2700043, z: 1.0200043}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 663424488}
@@ -2361,7 +2363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 330585545}
-  washCamera: {fileID: 2027528108}
+  sliceCamera: {fileID: 2027528108}
 --- !u!4 &1550942139
 Transform:
   m_ObjectHideFlags: 0
@@ -2576,12 +2578,12 @@ GameObject:
   - component: {fileID: 2027528107}
   - component: {fileID: 2027528106}
   m_Layer: 0
-  m_Name: Wash Camera
+  m_Name: Slice Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2027528106
 MonoBehaviour:
   m_ObjectHideFlags: 0

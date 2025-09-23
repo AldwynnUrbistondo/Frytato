@@ -1,4 +1,4 @@
-using NUnit.Framework.Interfaces;
+
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -50,9 +50,9 @@ public class InventoryManager : MonoBehaviour
                 if (items[i].quantity <= 0)
                 {
                     // If equipped item is gone, unequip it
-                    if (EquipItem.Instance.equippedItem == itemData)
+                    if (RoamUI.Instance.equippedItem == itemData)
                     {
-                        EquipItem.Instance.Unequip();
+                        RoamUI.Instance.Unequip();
                     }
 
                     items.RemoveAt(i);

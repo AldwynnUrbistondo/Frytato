@@ -5,9 +5,13 @@ public class MiniGame : MonoBehaviour, IInteractable
     public GameObject canvas;
     public GameObject outlineObject;
 
+    public GameState miniGameType;
+    public CameraType miniGameCamera;
+
     public virtual void Interact()
     {
-        GameManager.Instance.gameState = GameState.MiniGame;
+        GameManager.Instance.gameState = miniGameType;
+        CameraManager.Instance.ChangeCamera(miniGameCamera);
     }
 
     public void Start()

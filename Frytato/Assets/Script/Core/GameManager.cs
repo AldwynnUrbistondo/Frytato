@@ -29,5 +29,7 @@ public class GameManager : MonoBehaviour
 public enum GameState
 {
     Roam,
-    MiniGame
+    Slice,
+    Fry,
+    Shake
 }

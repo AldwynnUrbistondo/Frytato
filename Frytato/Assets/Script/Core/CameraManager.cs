@@ -6,7 +6,7 @@ public class CameraManager : MonoBehaviour
     public static CameraManager Instance { get; private set; }
 
     [SerializeField] Camera mainCamera;
-    [SerializeField] Camera washCamera;
+    [SerializeField] Camera sliceCamera;
 
     void Awake()
     {
@@ -24,12 +24,20 @@ public class CameraManager : MonoBehaviour
         if (camera == CameraType.MainCamera)
         {
             mainCamera.gameObject.SetActive(true);
-            washCamera.gameObject.SetActive(false);
+            sliceCamera.gameObject.SetActive(false);
         }
-        else if(camera == CameraType.WashCamera)
+        else if (camera == CameraType.SliceCamera)
         {
             mainCamera.gameObject.SetActive(false);
-            washCamera.gameObject.SetActive(true);
+            sliceCamera.gameObject.SetActive(true);
+        }
+        else if (camera == CameraType.FryCamera)
+        {
+
+        }
+        else if (camera == CameraType.ShakeCamera)
+        {
+            
         }
     }
 }
@@ -37,7 +45,6 @@ public class CameraManager : MonoBehaviour
 public enum CameraType
 {
     MainCamera,
-    WashCamera,
     SliceCamera,
     FryCamera,
     ShakeCamera

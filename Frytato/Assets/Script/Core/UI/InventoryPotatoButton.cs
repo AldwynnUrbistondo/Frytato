@@ -17,7 +17,7 @@ public class InventoryPotatoButton : MonoBehaviour
     {
         if (GameManager.Instance.gameState == GameState.Roam)
         {
-            EquipItem.Instance.EquipSelect(itemData);
+            RoamUI.Instance.EquipSelect(itemData);
         }
     }
 
