@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PotatoDrop : MonoBehaviour, ICollectible
@@ -8,6 +9,7 @@ public class PotatoDrop : MonoBehaviour, ICollectible
 
     Rigidbody rb;
     bool isCollecting;
+    bool isReadyToCollect = false;
 
     [SerializeField] PotatoObject potatoObject;
 
@@ -25,6 +27,7 @@ public class PotatoDrop : MonoBehaviour, ICollectible
 
         // instant jump impulse
         rb.AddForce(new Vector3(xForce, 5f, zForce), ForceMode.Impulse);
+        StartCoroutine(CollectReady(20f));
     }
 
     void FixedUpdate()
@@ -34,7 +37,7 @@ public class PotatoDrop : MonoBehaviour, ICollectible
             if (IsGrounded())
             {
                 rb.linearVelocity = Vector3.zero;
-
+                isCollecting = true;
             }
             else
             {
@@ -42,7 +45,7 @@ public class PotatoDrop : MonoBehaviour, ICollectible
             }
 
         }
-        else
+        else if (isReadyToCollect)
         {
             GoToTargetPos();
         }
@@ -56,7 +59,7 @@ public class PotatoDrop : MonoBehaviour, ICollectible
 
     void GoToTargetPos()
     {
-        isCollecting = true;
+
         Vector3 targetPos = GameObject.FindWithTag("Player").transform.position;
         rb.linearVelocity = (targetPos - transform.position).normalized * 10f;
     }
@@ -68,10 +71,16 @@ public class PotatoDrop : MonoBehaviour, ICollectible
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && isCollecting)
+        if (other.CompareTag("Player") && isReadyToCollect)
         {
             Collect();
             Destroy(gameObject);
         }
+    }
+
+    IEnumerator CollectReady(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        isReadyToCollect = true;
     }
 }
