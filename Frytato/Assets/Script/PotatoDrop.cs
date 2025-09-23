@@ -27,7 +27,7 @@ public class PotatoDrop : MonoBehaviour, ICollectible
 
         // instant jump impulse
         rb.AddForce(new Vector3(xForce, 5f, zForce), ForceMode.Impulse);
-        StartCoroutine(CollectReady(20f));
+        StartCoroutine(CollectReady(1f));
     }
 
     void FixedUpdate()
