@@ -1,9 +1,10 @@
+using Unity.VisualScripting;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Soil : MonoBehaviour, IInteractable
 {
     public Plant plant;
-    [SerializeField] private PlantState plantState = PlantState.Empty;
+    [SerializeField] public PlantState plantState = PlantState.Empty;
 
     public void Interact()
     {
@@ -32,8 +33,8 @@ public class Soil : MonoBehaviour, IInteractable
         {
             Harvest();
         }
-    }
 
+    }
     private void Update()
     {
         if (plant.isGrowing && plant.potatoObj != null)
@@ -90,5 +91,6 @@ public class Plant
     public int harvestAmount;
     public PotatoObject potatoObj;
 }
+
 
 
