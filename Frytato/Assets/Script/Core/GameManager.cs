@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
         {
             gameState = GameState.Roam;
             CameraManager.Instance.ChangeCamera(CameraType.MainCamera);
+            UIManager.Instance.UpdateUI();
         }
     }
 }

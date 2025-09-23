@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
-    public RoamUI roamUI;
 
     private void Awake()
     {
@@ -21,7 +20,29 @@ public class UIManager : MonoBehaviour
 
     public void UpdateUI()
     {
-        roamUI.UpdateInventoryUI();
+        RoamUI.Instance.UpdateInventoryUI();
+        switch(GameManager.Instance.gameState)
+        {
+            case GameState.Roam:
+                RoamUI.Instance.roamUICanvas.SetActive(true);
+                break;
+
+            case GameState.Slice:
+                RoamUI.Instance.roamUICanvas.SetActive(false);
+                break;
+
+            case GameState.Fry:
+                // Future implementation
+                break;
+
+            case GameState.Shake:
+                // Future implementation
+                break;
+
+            default:
+                break;
+        }
+
     }
 
 }

@@ -7,6 +7,8 @@ public class RoamUI : MonoBehaviour
 {
     public static RoamUI Instance;
 
+    public GameObject roamUICanvas;
+
     [Header("Equip Button")]
     public Button equipButton;
     public ItemData equippedItem;

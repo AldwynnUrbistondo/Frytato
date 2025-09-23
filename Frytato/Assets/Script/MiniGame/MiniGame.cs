@@ -12,6 +12,7 @@ public class MiniGame : MonoBehaviour, IInteractable
     {
         GameManager.Instance.gameState = miniGameType;
         CameraManager.Instance.ChangeCamera(miniGameCamera);
+        UIManager.Instance.UpdateUI();
     }
 
     public void Start()
