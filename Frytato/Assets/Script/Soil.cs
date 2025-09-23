@@ -47,7 +47,7 @@ public class Soil : MonoBehaviour, IInteractable
     {
         plant.currentGrowth += Time.deltaTime;
 
-        Debug.Log($"Plant growth: {plant.currentGrowth:0.0}/{plant.potatoObj.growthTime}");
+        //Debug.Log($"Plant growth: {plant.currentGrowth:0.0}/{plant.potatoObj.growthTime}");
 
         if (plant.currentGrowth >= plant.potatoObj.growthTime)
         {

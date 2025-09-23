@@ -9,6 +9,7 @@ public class Interact : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && interactable != null)
         {
             interactable.Interact();
+            Debug.Log("Interacted with " + interactable.ToString());
         }
     }   
 
