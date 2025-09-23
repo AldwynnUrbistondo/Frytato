@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RoamUI : MonoBehaviour
+public class RoamUI : InventoryUI
 {
     public static RoamUI Instance;
 
@@ -12,13 +12,6 @@ public class RoamUI : MonoBehaviour
     [Header("Equip Button")]
     public Button equipButton;
     public ItemData equippedItem;
-
-    [Header("Inventory Panel")]
-    public GameObject scrollViewInventoryPanel;
-    public Transform spawnLocation;
-    public Button buttonPrefab;
-
-    private List<InventoryItem> items = new List<InventoryItem>();
 
     private void Awake()
     {
@@ -53,26 +46,5 @@ public class RoamUI : MonoBehaviour
 
     }
 
-    public void UpdateInventoryUI()
-    {
-        foreach (Transform child in spawnLocation)
-        {
-            Destroy(child.gameObject);
-        }
-
-
-        items = InventoryManager.Instance.items;
-
-        foreach (var item in items)
-        {
-            Button newButton = Instantiate(buttonPrefab, spawnLocation);
-            newButton.image.sprite = item.itemData.itemIcon;
-
-            InventoryPotatoButton buttonScript = newButton.GetComponent<InventoryPotatoButton>();
-            buttonScript.itemData = item.itemData;
-
-            TextMeshProUGUI text = newButton.GetComponentInChildren<TextMeshProUGUI>();
-            text.text = $"{item.quantity}x";
-        }
-    }
+    
 }

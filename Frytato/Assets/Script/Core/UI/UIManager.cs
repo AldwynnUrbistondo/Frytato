@@ -1,7 +1,6 @@
-using System.Collections.Generic;
-using TMPro;
+
 using UnityEngine;
-using UnityEngine.UI;
+
 
 public class UIManager : MonoBehaviour
 {
@@ -21,14 +20,19 @@ public class UIManager : MonoBehaviour
     public void UpdateUI()
     {
         RoamUI.Instance.UpdateInventoryUI();
-        switch(GameManager.Instance.gameState)
+        SliceUI.Instance.UpdateInventoryUI();
+
+        switch (GameManager.Instance.gameState)
         {
+
             case GameState.Roam:
                 RoamUI.Instance.roamUICanvas.SetActive(true);
+                SliceUI.Instance.sliceUICanvas.SetActive(false);
                 break;
 
             case GameState.Slice:
                 RoamUI.Instance.roamUICanvas.SetActive(false);
+                SliceUI.Instance.sliceUICanvas.SetActive(true);
                 break;
 
             case GameState.Fry:

@@ -67,7 +67,7 @@ public class PotatoDrop : MonoBehaviour, ICollectible
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && IsGrounded())
         {
             Collect();
             Destroy(gameObject);
