@@ -8,5 +8,6 @@ public class SliceInventoryButton : InventoryButton
     {
         spawnPoint = GameObject.FindWithTag("Slice Spawnpoint").transform;
         Instantiate(itemData.itemObject, spawnPoint.position, Quaternion.identity);
+        InventoryManager.Instance.RemoveItem(itemData, 1);
     }
 }

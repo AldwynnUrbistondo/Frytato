@@ -8,6 +8,7 @@ public class PotatoDrop : MonoBehaviour, ICollectible
 
     Rigidbody rb;
     bool isCollecting;
+    bool readyToCollect = false;
 
     [SerializeField] PotatoObject potatoObject;
 
@@ -56,6 +57,7 @@ public class PotatoDrop : MonoBehaviour, ICollectible
 
     void GoToTargetPos()
     {
+        readyToCollect = true;
         Vector3 targetPos = GameObject.FindWithTag("Player").transform.position;
         rb.linearVelocity = (targetPos - transform.position).normalized * 10f;
     }
@@ -67,7 +69,7 @@ public class PotatoDrop : MonoBehaviour, ICollectible
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && IsGrounded())
+        if (other.CompareTag("Player") && readyToCollect)
         {
             Collect();
             Destroy(gameObject);
