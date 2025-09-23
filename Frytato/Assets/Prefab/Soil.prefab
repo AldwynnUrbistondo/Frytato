@@ -619,10 +619,10 @@ GameObject:
   - component: {fileID: 8306675337757764960}
   - component: {fileID: 7067767304373653481}
   - component: {fileID: 7362226232767457224}
-  - component: {fileID: 5545116103947488071}
   - component: {fileID: 2813162778616642410}
   - component: {fileID: 2269639431538969874}
-  m_Layer: 0
+  - component: {fileID: -1182958049490837980}
+  m_Layer: 7
   m_Name: Soil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -700,27 +700,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5545116103947488071
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6834201433507243990}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1.658263, z: 1}
-  m_Center: {x: 0, y: 0.32913083, z: 0}
 --- !u!114 &2813162778616642410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -756,6 +735,27 @@ MonoBehaviour:
   outlineObject: {fileID: 4612539692288375784}
   finishedPotatoIcon: {fileID: 2397865110848530847}
   slider: {fileID: 8838080008859055726}
+--- !u!65 &-1182958049490837980
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6834201433507243990}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 0.31115383, z: 1}
+  m_Center: {x: 0, y: -0.3444235, z: 0}
 --- !u!1 &7542315244583054895
 GameObject:
   m_ObjectHideFlags: 0
