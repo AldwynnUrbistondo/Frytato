@@ -7,7 +7,9 @@ public class SliceInventoryButton : InventoryButton
     public override void OnClick()
     {
         spawnPoint = GameObject.FindWithTag("Slice Spawnpoint").transform;
-        Instantiate(itemData.itemObject, spawnPoint.position, Quaternion.identity);
+        GameObject potato = Instantiate(itemData.itemObject, spawnPoint.position, Quaternion.identity);
+        SliceablePotato sliceable = potato.GetComponent<SliceablePotato>();
+        sliceable.potatoObject = (PotatoObject)itemData;
         InventoryManager.Instance.RemoveItem(itemData, 1);
     }
 }

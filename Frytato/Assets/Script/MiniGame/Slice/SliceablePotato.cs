@@ -1,9 +1,11 @@
 using UnityEngine;
 
-public class PotatoBehaviour : MonoBehaviour
+public class SliceablePotato : MonoBehaviour
 {
-    [SerializeField] GameObject[] variants; // Assign in Inspector: Whole -> Half -> Quarter -> etc.
+    [SerializeField] GameObject[] variants; 
+    [SerializeField] Transform[] spawnpoints;
     int currentIndex = 0;
+    public PotatoObject potatoObject;
 
     void Start()
     {
@@ -44,7 +46,7 @@ public class PotatoBehaviour : MonoBehaviour
         }
         else
         {
-            Debug.Log("Potato is fully sliced!");
+            Destroy(gameObject);
         }
     }
 }

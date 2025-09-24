@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 61cab243d4796eb40a7dd5bf24f9ca6f
+guid: 26ac103515e60d64aa936f2890b8bca5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WashPopUp_0
+      name: UI Placeholder (2)_0
       rect:
         serializedVersion: 2
-        x: 61
+        x: 59
         y: 13
-        width: 78
-        height: 174
+        width: 82
+        height: 176
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,8 +138,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8dcc2ecb92d59d42a92e3c6b14df27b
-      internalID: 14528787
+      spriteID: e218d6ef353c9f84cb2868aa6a7d4c9f
+      internalID: -231643521
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: aa982c77eae664046b6760db525a08c9
+    spriteID: 1b95b902298769f449ff0fce3dcf13aa
     internalID: 0
     vertices: []
     indices: 
@@ -158,7 +158,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      WashPopUp_0: 14528787
+      UI Placeholder (2)_0: -231643521
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
