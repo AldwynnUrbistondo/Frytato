@@ -18,14 +18,12 @@ public class DragAndDrop : MonoBehaviour
     private float zLock;
 
     private RigidbodyConstraints originalConstraints;
-    private Coroutine dragCoroutine;
+    private Coroutine dragFlagCoroutine;
 
     private void Start()
     {
         if (rb == null)
-        {
             rb = GetComponent<Rigidbody>();
-        }
 
         originalConstraints = rb.constraints;
     }
@@ -40,16 +38,34 @@ public class DragAndDrop : MonoBehaviour
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, draggableMask) && hit.rigidbody == rb)
             {
-                // start delayed dragging
-                if (dragCoroutine != null) StopCoroutine(dragCoroutine);
-                dragCoroutine = StartCoroutine(StartDraggingAfterDelay(0.2f));
+                // setup immediately
+                rb.useGravity = false;
+
+                if (setDraggingRotation)
+                {
+                    rb.transform.eulerAngles = defaultRotation;
+                    transform.position = new Vector3(transform.position.x, transform.position.y, 100.63f);
+                }
+
+                rb.constraints = RigidbodyConstraints.FreezePositionZ |
+                                 RigidbodyConstraints.FreezeRotationX |
+                                 RigidbodyConstraints.FreezeRotationY |
+                                 RigidbodyConstraints.FreezeRotationZ;
+
+                zCoord = mainCamera.WorldToScreenPoint(rb.position).z;
+                zLock = rb.position.z;
+                offset = rb.position - GetMouseWorldPos();
+
+                // delay only the bool
+                if (dragFlagCoroutine != null) StopCoroutine(dragFlagCoroutine);
+                dragFlagCoroutine = StartCoroutine(SetDraggingFlagAfterDelay(0.2f));
             }
         }
 
         // Release
         if (Input.GetMouseButtonUp(0))
         {
-            if (dragCoroutine != null) StopCoroutine(dragCoroutine); // cancel if not yet started
+            if (dragFlagCoroutine != null) StopCoroutine(dragFlagCoroutine);
             if (isDragging) Release();
         }
     }
@@ -66,31 +82,11 @@ public class DragAndDrop : MonoBehaviour
         }
     }
 
-    IEnumerator StartDraggingAfterDelay(float delay)
+    IEnumerator SetDraggingFlagAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-
-        // Only start dragging if mouse is still held down
-        if (Input.GetMouseButton(0))
-        {
+        if (Input.GetMouseButton(0)) // still holding
             isDragging = true;
-            rb.useGravity = false;
-
-            if (setDraggingRotation)
-            {
-                rb.transform.eulerAngles = defaultRotation;
-                transform.position = new Vector3(transform.position.x, transform.position.y, 100.63f);
-            }
-
-            rb.constraints = RigidbodyConstraints.FreezePositionZ |
-                             RigidbodyConstraints.FreezeRotationX |
-                             RigidbodyConstraints.FreezeRotationY |
-                             RigidbodyConstraints.FreezeRotationZ;
-
-            zCoord = mainCamera.WorldToScreenPoint(rb.position).z;
-            zLock = rb.position.z;
-            offset = rb.position - GetMouseWorldPos();
-        }
     }
 
     public void Release()
