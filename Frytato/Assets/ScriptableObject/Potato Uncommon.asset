@@ -17,4 +17,6 @@ MonoBehaviour:
   itemObject: {fileID: 5043299582935652280, guid: 8d75840fe830e864299a40acfe0f6b81, type: 3}
   itemRarity: 1
   dropableItem: {fileID: 8613438918723855404, guid: d08edad84dd9dfd41a069ad2f567fb70, type: 3}
+  fryObject: {fileID: 698492921535666737, guid: 68059a4cb01623e49a1e8724bcbdc807, type: 3}
+  fryAmount: 2
   growthTime: 15

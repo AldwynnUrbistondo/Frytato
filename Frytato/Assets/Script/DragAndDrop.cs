@@ -4,12 +4,19 @@ public class DragAndDrop : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb; // assign manually in inspector
     [SerializeField] private float followSpeed = 10f; // how fast it follows the mouse
+    [SerializeField] private LayerMask draggableMask; // assign draggable layer(s) in inspector
+
+    [Header("Default Rotation")]
+    [SerializeField] bool setDraggingRotation = false;
+    [SerializeField] Vector3 defaultRotation = Vector3.zero;
+
     private Camera mainCamera;
-    private bool isDragging = false;
+    public bool isDragging = false;
     private Vector3 offset;
     private float zCoord;
     private float zLock;
 
+    private RigidbodyConstraints originalConstraints; // store constraints before dragging
 
     private void Start()
     {
@@ -17,6 +24,9 @@ public class DragAndDrop : MonoBehaviour
         {
             rb = GetComponent<Rigidbody>();
         }
+
+        // Save original constraints so we can restore them later
+        originalConstraints = rb.constraints;
     }
 
     void Update()
@@ -29,10 +39,18 @@ public class DragAndDrop : MonoBehaviour
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit) && hit.rigidbody == rb)
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, draggableMask) && hit.rigidbody == rb)
             {
+                if (setDraggingRotation)
+                {
+                    rb.transform.eulerAngles = defaultRotation;
+                }
+
                 isDragging = true;
-                rb.useGravity = false; // keep collisions but disable gravity while dragging
+                rb.useGravity = false;
+
+                // Freeze rotation
+                rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 
                 zCoord = mainCamera.WorldToScreenPoint(rb.position).z;
                 zLock = rb.position.z;
@@ -44,8 +62,10 @@ public class DragAndDrop : MonoBehaviour
         if (Input.GetMouseButtonUp(0) && isDragging)
         {
             isDragging = false;
-            rb.useGravity = true; // restore gravity
-            rb.linearVelocity = Vector3.zero; // stop leftover momentum
+            rb.useGravity = true;
+            rb.linearVelocity = Vector3.zero;
+
+            rb.constraints = originalConstraints;
         }
     }
 
@@ -56,10 +76,8 @@ public class DragAndDrop : MonoBehaviour
             Vector3 targetPos = GetMouseWorldPos() + offset;
             targetPos.z = zLock; // lock Z
 
-            // Calculate movement direction
             Vector3 moveDir = (targetPos - rb.position);
 
-            // Apply velocity towards target
             rb.linearVelocity = moveDir * followSpeed;
         }
     }

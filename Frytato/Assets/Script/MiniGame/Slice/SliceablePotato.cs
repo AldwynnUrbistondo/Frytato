@@ -26,7 +26,7 @@ public class SliceablePotato : MonoBehaviour
         }
     }
 
-    void SlicePotato()
+    public void SlicePotato()
     {
         if (currentIndex < variants.Length - 1)
         {
@@ -37,6 +37,8 @@ public class SliceablePotato : MonoBehaviour
             // Deactivate current
             variants[currentIndex].SetActive(false);
 
+            SpawnFries();
+
             // Activate next
             currentIndex++;
             variants[currentIndex].SetActive(true);
@@ -46,7 +48,17 @@ public class SliceablePotato : MonoBehaviour
         }
         else
         {
+            SpawnFries();
             Destroy(gameObject);
+        }
+    }
+
+    void SpawnFries()
+    {
+        for(int i = 0; i < potatoObject.fryAmount; i++)
+        {
+            int spawnIndex = Random.Range(0, spawnpoints.Length);
+            Instantiate(potatoObject.fryObject, spawnpoints[currentIndex].position, Quaternion.identity);
         }
     }
 }

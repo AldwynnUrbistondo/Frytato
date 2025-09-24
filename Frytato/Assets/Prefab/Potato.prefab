@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2704729118131249067}
   - component: {fileID: 2133858304777616456}
   - component: {fileID: 9055236799445635837}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: POTATO2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,6 +124,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 7371377451841825261}
   followSpeed: 10
+  draggableMask:
+    serializedVersion: 2
+    m_Bits: 256
+  setDraggingRotation: 0
+  defaultRotation: {x: 0, y: 0, z: 0}
+  isDragging: 0
 --- !u!1 &845788973211844335
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,7 +174,7 @@ GameObject:
   - component: {fileID: 5025685449829612865}
   - component: {fileID: 2963420353065528054}
   - component: {fileID: 845976523930922089}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: POTATO3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,6 +285,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 7371377451841825261}
   followSpeed: 10
+  draggableMask:
+    serializedVersion: 2
+    m_Bits: 256
+  setDraggingRotation: 0
+  defaultRotation: {x: 0, y: 0, z: 0}
+  isDragging: 0
 --- !u!1 &1968322549726256504
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,13 +366,13 @@ GameObject:
   - component: {fileID: 4560576437688793618}
   - component: {fileID: 8877280396035592478}
   - component: {fileID: 7888933901930056769}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: POTATO5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5563098728949228315
 Transform:
   m_ObjectHideFlags: 0
@@ -465,6 +477,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 7371377451841825261}
   followSpeed: 10
+  draggableMask:
+    serializedVersion: 2
+    m_Bits: 256
+  setDraggingRotation: 0
+  defaultRotation: {x: 0, y: 0, z: 0}
+  isDragging: 0
 --- !u!1 &4415895010404471256
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,7 +496,7 @@ GameObject:
   - component: {fileID: 2572773031773930663}
   - component: {fileID: 2985085896761282061}
   - component: {fileID: 3878413061571111936}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: POTATO4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -589,6 +607,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 7371377451841825261}
   followSpeed: 10
+  draggableMask:
+    serializedVersion: 2
+    m_Bits: 256
+  setDraggingRotation: 0
+  defaultRotation: {x: 0, y: 0, z: 0}
+  isDragging: 0
 --- !u!1 &4929323892617518720
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,13 +657,13 @@ GameObject:
   - component: {fileID: 1485340660283411450}
   - component: {fileID: 3246221981374120900}
   - component: {fileID: 3340169399926823093}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: POTATO1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5390722769417203001
 Transform:
   m_ObjectHideFlags: 0
@@ -744,6 +768,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 7371377451841825261}
   followSpeed: 10
+  draggableMask:
+    serializedVersion: 2
+    m_Bits: 256
+  setDraggingRotation: 0
+  defaultRotation: {x: 0, y: 0, z: 0}
+  isDragging: 0
 --- !u!1 &5043299582935652280
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,6 +835,12 @@ MonoBehaviour:
   - {fileID: 1008958890218429559}
   - {fileID: 4415895010404471256}
   - {fileID: 4268682355715410672}
+  spawnpoints:
+  - {fileID: 2662201668238854342}
+  - {fileID: 3281862906831226035}
+  - {fileID: 3300094099264816384}
+  - {fileID: 2469735080741923925}
+  - {fileID: 7972909177922820192}
   potatoObject: {fileID: 0}
 --- !u!54 &7371377451841825261
 Rigidbody:
@@ -831,7 +867,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 8
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!1 &6881069483571871557
 GameObject:
