@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Common Potato
   itemIcon: {fileID: -169195444, guid: 8afeda2221e2d374086b55c56f398076, type: 3}
-  itemObject: {fileID: 5352380179877512838, guid: 9ce9e707ca68fe24d903bca814f24502, type: 3}
+  itemObject: {fileID: 5043299582935652280, guid: 8d75840fe830e864299a40acfe0f6b81, type: 3}
   itemRarity: 0
-  dropableItem: {fileID: 5352380179877512838, guid: fdf5ab7f778eb1044a6d1dc351f1cf87, type: 3}
+  dropableItem: {fileID: 6239999306370984374, guid: f68c5cdd995cfea48a358c3dd09bd85e, type: 3}
   growthTime: 10

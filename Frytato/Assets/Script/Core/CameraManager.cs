@@ -5,8 +5,10 @@ public class CameraManager : MonoBehaviour
 {
     public static CameraManager Instance { get; private set; }
 
+    public Camera activeCamera;
     [SerializeField] Camera mainCamera;
     [SerializeField] Camera sliceCamera;
+    
 
     void Awake()
     {
@@ -17,17 +19,21 @@ public class CameraManager : MonoBehaviour
         }
 
         Instance = this;
+
+        activeCamera = mainCamera;
     }
 
     public void ChangeCamera(CameraType camera)
     {
         if (camera == CameraType.MainCamera)
         {
+            activeCamera = mainCamera;
             mainCamera.gameObject.SetActive(true);
             sliceCamera.gameObject.SetActive(false);
         }
         else if (camera == CameraType.SliceCamera)
         {
+            activeCamera = sliceCamera;
             mainCamera.gameObject.SetActive(false);
             sliceCamera.gameObject.SetActive(true);
         }
