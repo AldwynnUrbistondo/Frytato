@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 3582707708352442823}
   - component: {fileID: 2431734513636774307}
   - component: {fileID: 1843448907369592783}
-  m_Layer: 0
+  - component: {fileID: 6557522154561280109}
+  m_Layer: 8
   m_Name: Fries
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,11 +150,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2db899eb2d8dcbe409d9a32cce178cac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
+  rb: {fileID: 2431734513636774307}
   followSpeed: 10
   draggableMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   setDraggingRotation: 0
   defaultRotation: {x: 0, y: 0, z: 0}
   isDragging: 0
+--- !u!114 &6557522154561280109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698492921535666737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e0bc5ec27c248e41b799ebd28adc6f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  friesObject: {fileID: 11400000, guid: 2bbf211e346f7c743825de6dfc05dc33, type: 2}

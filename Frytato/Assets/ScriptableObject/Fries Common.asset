@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc72ed01312330d42a0b10685074e92b, type: 3}
+  m_Name: Fries Common
+  m_EditorClassIdentifier: 
+  itemName: Fries Common
+  itemIcon: {fileID: 1615391262, guid: f9814a394d252b34bb17dbded2b03a98, type: 3}
+  itemObject: {fileID: 698492921535666737, guid: 68059a4cb01623e49a1e8724bcbdc807, type: 3}
+  itemRarity: 0

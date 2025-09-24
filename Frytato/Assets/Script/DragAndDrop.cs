@@ -1,10 +1,11 @@
 using UnityEngine;
+using System.Collections;
 
 public class DragAndDrop : MonoBehaviour
 {
-    [SerializeField] private Rigidbody rb; // assign manually in inspector
-    [SerializeField] private float followSpeed = 10f; // how fast it follows the mouse
-    //[SerializeField] private LayerMask draggableMask; // assign draggable layer(s) in inspector
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] private float followSpeed = 10f;
+    [SerializeField] private LayerMask draggableMask;
 
     [Header("Default Rotation")]
     [SerializeField] bool setDraggingRotation = false;
@@ -16,7 +17,8 @@ public class DragAndDrop : MonoBehaviour
     private float zCoord;
     private float zLock;
 
-    private RigidbodyConstraints originalConstraints; // store constraints before dragging
+    private RigidbodyConstraints originalConstraints;
+    private Coroutine dragCoroutine;
 
     private void Start()
     {
@@ -25,7 +27,6 @@ public class DragAndDrop : MonoBehaviour
             rb = GetComponent<Rigidbody>();
         }
 
-        // Save original constraints so we can restore them later
         originalConstraints = rb.constraints;
     }
 
@@ -37,35 +38,19 @@ public class DragAndDrop : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity/*, draggableMask*/) && hit.rigidbody == rb)
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, draggableMask) && hit.rigidbody == rb)
             {
-                if (setDraggingRotation)
-                {
-                    rb.transform.eulerAngles = defaultRotation;
-                }
-
-                isDragging = true;
-                rb.useGravity = false;
-
-                // Freeze rotation
-                rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
-
-                zCoord = mainCamera.WorldToScreenPoint(rb.position).z;
-                zLock = rb.position.z;
-                offset = rb.position - GetMouseWorldPos();
+                // start delayed dragging
+                if (dragCoroutine != null) StopCoroutine(dragCoroutine);
+                dragCoroutine = StartCoroutine(StartDraggingAfterDelay(0.2f));
             }
         }
 
         // Release
-        if (Input.GetMouseButtonUp(0) && isDragging)
+        if (Input.GetMouseButtonUp(0))
         {
-            isDragging = false;
-            rb.useGravity = true;
-            rb.linearVelocity = Vector3.zero;
-
-            rb.constraints = originalConstraints;
+            if (dragCoroutine != null) StopCoroutine(dragCoroutine); // cancel if not yet started
+            if (isDragging) Release();
         }
     }
 
@@ -74,12 +59,46 @@ public class DragAndDrop : MonoBehaviour
         if (isDragging)
         {
             Vector3 targetPos = GetMouseWorldPos() + offset;
-            targetPos.z = zLock; // lock Z
+            targetPos.z = zLock;
 
             Vector3 moveDir = (targetPos - rb.position);
-
             rb.linearVelocity = moveDir * followSpeed;
         }
+    }
+
+    IEnumerator StartDraggingAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        // Only start dragging if mouse is still held down
+        if (Input.GetMouseButton(0))
+        {
+            isDragging = true;
+            rb.useGravity = false;
+
+            if (setDraggingRotation)
+            {
+                rb.transform.eulerAngles = defaultRotation;
+                transform.position = new Vector3(transform.position.x, transform.position.y, 100.63f);
+            }
+
+            rb.constraints = RigidbodyConstraints.FreezePositionZ |
+                             RigidbodyConstraints.FreezeRotationX |
+                             RigidbodyConstraints.FreezeRotationY |
+                             RigidbodyConstraints.FreezeRotationZ;
+
+            zCoord = mainCamera.WorldToScreenPoint(rb.position).z;
+            zLock = rb.position.z;
+            offset = rb.position - GetMouseWorldPos();
+        }
+    }
+
+    public void Release()
+    {
+        isDragging = false;
+        rb.useGravity = true;
+        rb.linearVelocity = Vector3.zero;
+        rb.constraints = originalConstraints;
     }
 
     Vector3 GetMouseWorldPos()
