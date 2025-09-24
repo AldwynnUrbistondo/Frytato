@@ -4,7 +4,7 @@ public class DragAndDrop : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb; // assign manually in inspector
     [SerializeField] private float followSpeed = 10f; // how fast it follows the mouse
-    [SerializeField] private LayerMask draggableMask; // assign draggable layer(s) in inspector
+    //[SerializeField] private LayerMask draggableMask; // assign draggable layer(s) in inspector
 
     [Header("Default Rotation")]
     [SerializeField] bool setDraggingRotation = false;
@@ -39,7 +39,7 @@ public class DragAndDrop : MonoBehaviour
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, draggableMask) && hit.rigidbody == rb)
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity/*, draggableMask*/) && hit.rigidbody == rb)
             {
                 if (setDraggingRotation)
                 {
@@ -50,7 +50,7 @@ public class DragAndDrop : MonoBehaviour
                 rb.useGravity = false;
 
                 // Freeze rotation
-                rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+                rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 
                 zCoord = mainCamera.WorldToScreenPoint(rb.position).z;
                 zLock = rb.position.z;

@@ -14,7 +14,7 @@ public class Knife : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         SliceablePotato sliceable = collision.gameObject.GetComponent<SliceablePotato>();
-        if (sliceable != null && dragAndDrop.isDragging && rb.linearVelocity.magnitude > 1)
+        if (sliceable != null && dragAndDrop.isDragging && rb.linearVelocity.magnitude > 1f)
         {
             sliceable.SlicePotato();
         }

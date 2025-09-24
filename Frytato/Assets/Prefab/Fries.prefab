@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8126880339501748222}
   - component: {fileID: 3582707708352442823}
   - component: {fileID: 2431734513636774307}
-  - component: {fileID: -3527904813966198210}
+  - component: {fileID: 1843448907369592783}
   m_Layer: 0
   m_Name: Fries
   m_TagString: Untagged
@@ -137,7 +137,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 24
   m_CollisionDetection: 0
---- !u!114 &-3527904813966198210
+--- !u!114 &1843448907369592783
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,7 +146,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 698492921535666737}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b5754051601d8945a5987f14bd74de3, type: 3}
+  m_Script: {fileID: 11500000, guid: 2db899eb2d8dcbe409d9a32cce178cac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pullForce: 15
+  rb: {fileID: 0}
+  followSpeed: 10
+  draggableMask:
+    serializedVersion: 2
+    m_Bits: 0
+  setDraggingRotation: 0
+  defaultRotation: {x: 0, y: 0, z: 0}
+  isDragging: 0
