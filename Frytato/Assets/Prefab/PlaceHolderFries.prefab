@@ -170,4 +170,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e0bc5ec27c248e41b799ebd28adc6f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  friesObject: {fileID: 11400000, guid: 2bbf211e346f7c743825de6dfc05dc33, type: 2}
+  rawFriesObject: {fileID: 11400000, guid: 2bbf211e346f7c743825de6dfc05dc33, type: 2}
