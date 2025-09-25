@@ -45,7 +45,7 @@ public class DragAndDrop : MonoBehaviour
                 if (setDraggingRotation)
                 {
                     rb.transform.eulerAngles = defaultRotation;
-                    transform.position = new Vector3(transform.position.x, transform.position.y, 100.63f);
+                    transform.position = new Vector3(transform.position.x, transform.position.y, 100f);
                 }
 
                 rb.constraints = RigidbodyConstraints.FreezePositionZ |

@@ -20,7 +20,7 @@ public class Knife : MonoBehaviour
         if (sliceable != null)
         {
             
-            if (dragAndDrop.isDragging && rb.linearVelocity.y > -0.2f)
+            if (dragAndDrop.isDragging && rb.linearVelocity.y < -1f)
             {
                 sliceable.SlicePotato();
                 dragAndDrop.Release();
