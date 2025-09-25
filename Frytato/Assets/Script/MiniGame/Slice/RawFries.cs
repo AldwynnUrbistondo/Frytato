@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class RawFries : MonoBehaviour
 {
-    public FriesObject friesObject;
+    public RawFriesObject rawFriesObject;
 
     Collider col;
     Rigidbody rb;
@@ -26,7 +26,7 @@ public class RawFries : MonoBehaviour
         yield return new WaitForSeconds(delay);
         col.enabled = false;
         rb.useGravity = false;
-        InventoryManager.Instance.AddItem(friesObject, 1);
+        InventoryManager.Instance.AddItem(rawFriesObject, 1);
         Destroy(gameObject);
     }
 }

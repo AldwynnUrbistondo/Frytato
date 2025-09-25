@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Raw Fries Common
   itemIcon: {fileID: 1615391262, guid: f9814a394d252b34bb17dbded2b03a98, type: 3}
-  itemObject: {fileID: 698492921535666737, guid: 68059a4cb01623e49a1e8724bcbdc807, type: 3}
+  itemObject: {fileID: 7598000922720956711, guid: 1a9d430e751d5c74aa749f0e8725aec4, type: 3}
   itemRarity: 0
   itemType: 1

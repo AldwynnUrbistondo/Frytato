@@ -65,7 +65,7 @@ public class SliceablePotato : MonoBehaviour
         {
             int spawnIndex = Random.Range(0, spawnpoints.Length);
             GameObject fry = Instantiate(
-                potatoObject.fryObject,
+                potatoObject.rawFriesObject.itemObject,
                 spawnpoints[spawnIndex].position,
                 Quaternion.identity
             );

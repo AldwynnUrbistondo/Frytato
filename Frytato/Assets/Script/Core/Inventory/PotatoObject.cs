@@ -4,7 +4,7 @@ using UnityEngine;
 public class PotatoObject : ItemData
 {
     public GameObject dropableItem;
-    public GameObject fryObject;
+    public RawFriesObject rawFriesObject;
     public int fryAmount;
     public float growthTime;  
 }
