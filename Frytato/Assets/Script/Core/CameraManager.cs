@@ -8,7 +8,8 @@ public class CameraManager : MonoBehaviour
     public Camera activeCamera;
     [SerializeField] Camera mainCamera;
     [SerializeField] Camera sliceCamera;
-    
+    [SerializeField] Camera fryCamera;
+
 
     void Awake()
     {
@@ -30,6 +31,7 @@ public class CameraManager : MonoBehaviour
             activeCamera = mainCamera;
             mainCamera.gameObject.SetActive(true);
             sliceCamera.gameObject.SetActive(false);
+            fryCamera.gameObject.SetActive(false);
         }
         else if (camera == CameraType.SliceCamera)
         {
@@ -39,7 +41,9 @@ public class CameraManager : MonoBehaviour
         }
         else if (camera == CameraType.FryCamera)
         {
-
+            activeCamera = fryCamera;
+            mainCamera.gameObject.SetActive(false);
+            fryCamera.gameObject.SetActive(true);
         }
         else if (camera == CameraType.ShakeCamera)
         {

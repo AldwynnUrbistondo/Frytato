@@ -36,7 +36,8 @@ public class UIManager : MonoBehaviour
                 break;
 
             case GameState.Fry:
-                // Future implementation
+                RoamUI.Instance.roamUICanvas.SetActive(false);
+
                 break;
 
             case GameState.Shake:

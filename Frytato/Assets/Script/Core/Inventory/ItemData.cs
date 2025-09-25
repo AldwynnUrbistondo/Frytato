@@ -6,6 +6,7 @@ public abstract class ItemData : ScriptableObject
     public Sprite itemIcon;
     public GameObject itemObject;
     public Rarity itemRarity;
+    public ItemType itemType;
 }
 
 public enum Rarity
@@ -15,5 +16,13 @@ public enum Rarity
     Rare,
     Epic,
     Legendary
+}
+public enum ItemType
+{
+    Potato,
+    RawFries,
+    CookedFries,
+    FlavoredFries,
+    PackagedFries
 }
 
