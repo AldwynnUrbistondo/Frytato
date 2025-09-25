@@ -31,15 +31,9 @@ public class SlicedFriesManager : MonoBehaviour
             {
                 if (fry != null)
                 {
-                    Collider col = fry.GetComponent<Collider>();
-                    col.enabled = false;
-
-                    Rigidbody rb = fry.GetComponent<Rigidbody>();
-                    rb.useGravity = false;
-                    rb.linearVelocity = Vector3.right * 5;
-
+                    
                     RawFries friesComponent = fry.GetComponent<RawFries>();
-                    InventoryManager.Instance.AddItem(friesComponent.friesObject, 1);
+                    friesComponent.AddToInventory();
 
                     Destroy(fry, 2f);
                 }

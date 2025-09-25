@@ -39,6 +39,7 @@ public class DragAndDrop : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, draggableMask) && hit.rigidbody == rb)
             {
                 // setup immediately
+                isDragging = true;
                 rb.useGravity = false;
 
                 if (setDraggingRotation)
@@ -58,14 +59,13 @@ public class DragAndDrop : MonoBehaviour
 
                 // delay only the bool
                 if (dragFlagCoroutine != null) StopCoroutine(dragFlagCoroutine);
-                dragFlagCoroutine = StartCoroutine(SetDraggingFlagAfterDelay(0.2f));
+                
             }
         }
 
         // Release
         if (Input.GetMouseButtonUp(0))
         {
-            if (dragFlagCoroutine != null) StopCoroutine(dragFlagCoroutine);
             if (isDragging) Release();
         }
     }
@@ -82,12 +82,6 @@ public class DragAndDrop : MonoBehaviour
         }
     }
 
-    IEnumerator SetDraggingFlagAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        if (Input.GetMouseButton(0)) // still holding
-            isDragging = true;
-    }
 
     public void Release()
     {

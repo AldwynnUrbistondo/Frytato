@@ -11,13 +11,16 @@ public class Knife : MonoBehaviour
         dragAndDrop = GetComponent<DragAndDrop>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        SliceablePotato sliceable = collision.gameObject.GetComponent<SliceablePotato>();
+        SliceablePotato sliceable = other.GetComponentInParent<SliceablePotato>();
+
+        Debug.Log(rb.linearVelocity.y);
+
         if (sliceable != null)
         {
-            Debug.Log(rb.linearVelocity.y);
-            if (dragAndDrop.isDragging && rb.linearVelocity.y < 0.2f)
+            
+            if (dragAndDrop.isDragging && rb.linearVelocity.y > -0.2f)
             {
                 sliceable.SlicePotato();
                 dragAndDrop.Release();
@@ -25,5 +28,6 @@ public class Knife : MonoBehaviour
 
         }
         
+
     }
 }
