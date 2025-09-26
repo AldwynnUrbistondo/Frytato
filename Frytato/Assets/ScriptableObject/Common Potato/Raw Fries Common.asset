@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc72ed01312330d42a0b10685074e92b, type: 3}
-  m_Name: Fries Common
+  m_Name: Raw Fries Common
   m_EditorClassIdentifier: 
   itemName: Raw Fries Common
   itemIcon: {fileID: 1615391262, guid: f9814a394d252b34bb17dbded2b03a98, type: 3}

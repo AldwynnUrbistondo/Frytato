@@ -11,16 +11,25 @@ public class Interact : MonoBehaviour
             interactable.Interact();
             Debug.Log("Interacted with " + interactable.ToString());
         }
-    }   
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        interactable = other.GetComponent<IInteractable>();
+        var found = other.GetComponent<IInteractable>();
+        if (found != null)
+        {
+            interactable = found;
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        interactable = null;
+        // Only clear if the object exiting is the one we were interacting with
+        var found = other.GetComponent<IInteractable>();
+        if (found != null && found == interactable)
+        {
+            interactable = null;
+        }
     }
 
 

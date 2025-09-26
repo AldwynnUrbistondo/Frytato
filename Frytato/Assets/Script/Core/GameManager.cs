@@ -4,6 +4,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     public GameState gameState;
+    public Platform platform;
 
     private void Awake()
     {
@@ -33,4 +34,10 @@ public enum GameState
     Slice,
     Fry,
     Shake
+}
+
+public enum Platform
+{
+    PC,
+    Mobile
 }

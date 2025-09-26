@@ -5,6 +5,7 @@ public class PotatoObject : ItemData
 {
     public GameObject dropableItem;
     public RawFriesObject rawFriesObject;
+    public GameObject rawFriesDraggableObject;
     public int fryAmount;
     public float growthTime;  
 }
