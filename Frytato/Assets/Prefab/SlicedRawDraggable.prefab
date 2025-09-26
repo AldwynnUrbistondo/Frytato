@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 1670262666392645163}
   - component: {fileID: 5392580541254618458}
   - component: {fileID: 1749503299398566318}
-  - component: {fileID: 4536038772537681186}
   - component: {fileID: 3439307465286692930}
   - component: {fileID: 8822206588619429052}
   - component: {fileID: 70177299306918044}
+  - component: {fileID: 5738578286306253883}
   m_Layer: 8
   m_Name: SlicedRawDraggable
   m_TagString: Untagged
@@ -90,28 +90,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4536038772537681186
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7598000922720956711}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2432090755550338912, guid: c4667f2528584fb4399529670fbbf225, type: 3}
 --- !u!54 &3439307465286692930
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -172,3 +150,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rawFriesObject: {fileID: 11400000, guid: 2bbf211e346f7c743825de6dfc05dc33, type: 2}
+--- !u!65 &5738578286306253883
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7598000922720956711}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.8193329, y: 10.049705, z: 0.8193339}
+  m_Center: {x: -0.00000049173826, y: -0.3311145, z: 0}

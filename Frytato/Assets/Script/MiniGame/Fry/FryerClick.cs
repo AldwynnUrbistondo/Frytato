@@ -3,7 +3,12 @@ using UnityEngine;
 public class FryerClick : MonoBehaviour
 {
     Animator anim;
-    bool isCooking = false;
+    public bool isCooking = false;
+    public int capacity = 10;
+    public int currentFries = 0;
+    public bool canAddFries = true;
+
+    [SerializeField] GameObject particle;
 
     private void Awake()
     {
@@ -26,10 +31,18 @@ public class FryerClick : MonoBehaviour
         if (!isCooking)
         {
             anim.Play("Cook");
+
+            if(currentFries != 0)
+            {
+                particle.SetActive(true);
+                canAddFries = false;
+            }
+            
         }
         else
         {
             anim.Play("Uncook");
+            particle.SetActive(false);
         }
 
         isCooking = !isCooking;
