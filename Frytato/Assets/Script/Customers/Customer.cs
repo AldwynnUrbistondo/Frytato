@@ -4,7 +4,7 @@ using UnityEngine.AI;
 public class Customer : MonoBehaviour
 {
     NavMeshAgent customer;
-
+    public int queueIndex;
 
     private void Awake()
     {
@@ -24,5 +24,10 @@ public class Customer : MonoBehaviour
     public void MoveTo(Vector3 target)
     {
         customer.SetDestination(target);
+    }
+
+    public void FinishedOrdering()
+    {
+        SpawnManager.Instance.SendCustomerToDoneSpot(this);
     }
 }
