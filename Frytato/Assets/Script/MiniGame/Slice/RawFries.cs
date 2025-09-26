@@ -16,17 +16,16 @@ public class RawFries : MonoBehaviour
 
     public void AddToInventory()
     {
-
-        StartCoroutine(StartToAddInInvetory());
+        InventoryManager.Instance.AddItem(rawFriesObject, 1);
+        StartCoroutine(ClearOnScene());
     }
 
-    IEnumerator StartToAddInInvetory()
+    IEnumerator ClearOnScene()
     {
         float delay = Random.Range(1f, 3f);
         yield return new WaitForSeconds(delay);
         col.enabled = false;
         rb.useGravity = false;
-        InventoryManager.Instance.AddItem(rawFriesObject, 1);
         Destroy(gameObject);
     }
 }

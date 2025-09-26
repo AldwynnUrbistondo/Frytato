@@ -8,6 +8,7 @@ public class SliceUI : InventoryUI
     public static SliceUI Instance;
 
     public GameObject sliceUICanvas;
+    public Transform spawnPoint;
 
     private void Awake()
     {

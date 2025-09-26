@@ -55,6 +55,11 @@ public class InventoryManager : MonoBehaviour
                         RoamUI.Instance.Unequip();
                     }
 
+                    if (FryUI.Instance.selectedRawFries == itemData)
+                    {
+                        FryUI.Instance.UnSelect();
+                    }
+
                     items.RemoveAt(i);
                     UIManager.Instance.UpdateUI();
                 }
