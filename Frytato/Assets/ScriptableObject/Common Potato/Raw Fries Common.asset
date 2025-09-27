@@ -17,4 +17,9 @@ MonoBehaviour:
   itemObject: {fileID: 7598000922720956711, guid: 16c73f76b37a66744901f9f9a17fa008, type: 3}
   itemRarity: 0
   itemType: 1
-  rawFriesDraggable: {fileID: 7598000922720956711, guid: 1a9d430e751d5c74aa749f0e8725aec4, type: 3}
+  cookingMaterial: {fileID: 11400000, guid: 21512d64313822944b6f17d7a946f751, type: 2}
+  Raw: {fileID: 0}
+  Undercook: {fileID: 0}
+  Cook: {fileID: 0}
+  Overcook: {fileID: 0}
+  Burnt: {fileID: 0}

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c8c8363c2265e4ba7e804aa81ee9c7, type: 3}
+  m_Name: Fries Text Data Common
+  m_EditorClassIdentifier: 
+  rawTex: {fileID: 2800000, guid: fa6178829b72f2f4b8e6889ea80d24af, type: 3}
+  undercookTex: {fileID: 2800000, guid: f35fc8d730f618c478919f9b2465563f, type: 3}
+  cookTex: {fileID: 2800000, guid: 44be402a38076504ba0f2bb744e09fd5, type: 3}
+  overcookTex: {fileID: 2800000, guid: b7deebd3b5d03944695ec5cc77a8c832, type: 3}
+  burntTex: {fileID: 2800000, guid: 4a1cd4e0a382f1349b968cf833c86aa7, type: 3}

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RawFriesObject : ItemData
 {
+    public FriesTexData cookingMaterial;
+
     public CookFriesObject Raw;
     public CookFriesObject Undercook;
     public CookFriesObject Cook;
