@@ -18,8 +18,8 @@ MonoBehaviour:
   itemRarity: 0
   itemType: 1
   cookingMaterial: {fileID: 11400000, guid: 21512d64313822944b6f17d7a946f751, type: 2}
-  Raw: {fileID: 0}
-  Undercook: {fileID: 0}
-  Cook: {fileID: 0}
-  Overcook: {fileID: 0}
-  Burnt: {fileID: 0}
+  Raw: {fileID: 11400000, guid: 0b796420452747149b86b9c2f7fd884a, type: 2}
+  Undercook: {fileID: 11400000, guid: 9907763ea68375947a71b805a7f9bfba, type: 2}
+  Cook: {fileID: 11400000, guid: e329ba161c2a0a94691130c1f6938f44, type: 2}
+  Overcook: {fileID: 11400000, guid: 8e5aa571f76eba84ab3311f70ce06458, type: 2}
+  Burnt: {fileID: 11400000, guid: b8f2066af9026004da5266cd4db8685b, type: 2}

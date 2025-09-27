@@ -17,4 +17,4 @@ MonoBehaviour:
   itemObject: {fileID: 0}
   itemRarity: 0
   itemType: 0
-  cookState: 0
+  cookState: 3
