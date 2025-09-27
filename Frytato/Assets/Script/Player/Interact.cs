@@ -1,8 +1,16 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Interact : MonoBehaviour
 {
     IInteractable interactable;
+    [SerializeField] Button interactButton;
+
+    private void Awake()
+    {
+        interactButton.onClick.AddListener(InteractButton);
+        interactButton.interactable = false;
+    }
 
     private void Update()
     {
@@ -19,6 +27,7 @@ public class Interact : MonoBehaviour
         if (found != null)
         {
             interactable = found;
+            interactButton.interactable = true;
         }
     }
 
@@ -29,8 +38,16 @@ public class Interact : MonoBehaviour
         if (found != null && found == interactable)
         {
             interactable = null;
+            interactButton.interactable = false;
         }
     }
 
+    void InteractButton()
+    {
+        if (interactable != null)
+        {
+            interactable.Interact();
+        }
+    }
 
 }

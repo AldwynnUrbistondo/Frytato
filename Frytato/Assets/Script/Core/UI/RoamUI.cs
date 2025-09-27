@@ -12,6 +12,7 @@ public class RoamUI : InventoryUI
     [Header("Equip Button")]
     public Button equipButton;
     public ItemData equippedItem;
+    public Sprite defaultIcon;
 
     private void Awake()
     {
@@ -36,7 +37,7 @@ public class RoamUI : InventoryUI
     public void Unequip()
     {
         equippedItem = null;
-        equipButton.image.sprite = null; // or fallback sprite
+        equipButton.image.sprite = defaultIcon;
     }
 
     // --- Inventory UI ---
