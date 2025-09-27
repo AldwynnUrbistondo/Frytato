@@ -28,6 +28,7 @@ public class Interact : MonoBehaviour
         {
             interactable = found;
             interactButton.interactable = true;
+
         }
     }
 

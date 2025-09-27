@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "New Cook Fries Object", menuName = "Items/Cook Fries Object")]
 public class CookFriesObject : ItemData
 {
     public CookState cookState;

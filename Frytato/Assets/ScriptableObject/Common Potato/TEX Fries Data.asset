@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65c8c8363c2265e4ba7e804aa81ee9c7, type: 3}
-  m_Name: Fries Text Data Common
+  m_Name: TEX Fries Data
   m_EditorClassIdentifier: 
   rawTex: {fileID: 2800000, guid: fa6178829b72f2f4b8e6889ea80d24af, type: 3}
   undercookTex: {fileID: 2800000, guid: f35fc8d730f618c478919f9b2465563f, type: 3}
