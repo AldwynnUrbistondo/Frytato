@@ -71,12 +71,8 @@ public class FryerClick : MonoBehaviour
         {
             return;
         }
-
-       
-
     }
 
-   
 
     void ChangeFriesTexture(int cookValue)
     {
