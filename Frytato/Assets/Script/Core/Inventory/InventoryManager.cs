@@ -50,14 +50,14 @@ public class InventoryManager : MonoBehaviour
                 if (items[i].quantity <= 0)
                 {
                     // If equipped item is gone, unequip it
-                    if (RoamUI.Instance.equippedItem == itemData)
+                    if (UIManager.Instance.roamUI.equippedItem == itemData)
                     {
-                        RoamUI.Instance.Unequip();
+                        UIManager.Instance.roamUI.Unequip();
                     }
 
-                    if (FryUI.Instance.selectedRawFries == itemData)
+                    if (UIManager.Instance.fryUI.selectedRawFries == itemData)
                     {
-                        FryUI.Instance.UnSelect();
+                        UIManager.Instance.fryUI.UnSelect();
                     }
 
                     items.RemoveAt(i);

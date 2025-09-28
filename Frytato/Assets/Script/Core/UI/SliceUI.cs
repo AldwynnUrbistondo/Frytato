@@ -5,20 +5,7 @@ using UnityEngine.UI;
 public class SliceUI : InventoryUI
 {
 
-    public static SliceUI Instance;
-
     public GameObject sliceUICanvas;
     public Transform spawnPoint;
-
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
-    }
 
 }

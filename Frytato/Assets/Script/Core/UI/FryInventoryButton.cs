@@ -6,7 +6,7 @@ public class FryInventoryButton : InventoryButton
     {
         if (itemData is RawFriesObject)
         {
-            FryUI.Instance.EquipSelect(itemData as RawFriesObject);
+            UIManager.Instance.fryUI.EquipSelect(itemData as RawFriesObject);
         }
     }
 }

@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class RoamUI : InventoryUI
 {
-    public static RoamUI Instance;
-
     public GameObject roamUICanvas;
 
     [Header("Equip Button")]
@@ -16,14 +14,6 @@ public class RoamUI : InventoryUI
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
-
         equipButton.onClick.AddListener(ToggleInventory);
     }
 

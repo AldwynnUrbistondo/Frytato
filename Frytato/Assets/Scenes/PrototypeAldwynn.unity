@@ -13960,6 +13960,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4b82f927047bf24586e8895112edf33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roamUI: {fileID: 1054369765}
+  sliceUI: {fileID: 1164527332}
+  fryUI: {fileID: 948743681}
 --- !u!4 &1280216957
 Transform:
   m_ObjectHideFlags: 0

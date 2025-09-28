@@ -1,10 +1,13 @@
-
 using UnityEngine;
-
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
+
+    [Header("UI Screens")]
+    public RoamUI roamUI;
+    public SliceUI sliceUI;
+    public FryUI fryUI;
 
     private void Awake()
     {
@@ -13,37 +16,36 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
         Instance = this;
     }
 
     public void UpdateUI()
     {
-        RoamUI.Instance.UpdateInventoryUI();
-        SliceUI.Instance.UpdateInventoryUI();
-        FryUI.Instance.UpdateInventoryUI();
+        // Update all UIs
+        roamUI.UpdateInventoryUI();
+        sliceUI.UpdateInventoryUI();
+        fryUI.UpdateInventoryUI();
 
+        // Switch by game state
         switch (GameManager.Instance.gameState)
         {
-
             case GameState.Roam:
-                RoamUI.Instance.roamUICanvas.SetActive(true);
+                roamUI.roamUICanvas.SetActive(true);
 
-                SliceUI.Instance.sliceUICanvas.SetActive(false);
+                sliceUI.sliceUICanvas.SetActive(false);
 
-                FryUI.Instance.fryUICanvas.SetActive(false);
-                FryUI.Instance.UnSelect();
-
+                fryUI.fryUICanvas.SetActive(false);
+                fryUI.UnSelect();
                 break;
 
             case GameState.Slice:
-                RoamUI.Instance.roamUICanvas.SetActive(false);
-                SliceUI.Instance.sliceUICanvas.SetActive(true);
+                roamUI.roamUICanvas.SetActive(false);
+                sliceUI.sliceUICanvas.SetActive(true);
                 break;
 
             case GameState.Fry:
-                RoamUI.Instance.roamUICanvas.SetActive(false);
-                FryUI.Instance.fryUICanvas.SetActive(true);
+                roamUI.roamUICanvas.SetActive(false);
+                fryUI.fryUICanvas.SetActive(true);
                 break;
 
             case GameState.Shake:
@@ -53,7 +55,5 @@ public class UIManager : MonoBehaviour
             default:
                 break;
         }
-
     }
-
 }

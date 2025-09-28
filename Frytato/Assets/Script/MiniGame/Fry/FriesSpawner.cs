@@ -7,12 +7,12 @@ public class FriesSpawner : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (FryUI.Instance.selectedRawFries != null && !fryer.isCooking && fryer.currentFries < fryer.capacity && fryer.canAddFries)
+        if (UIManager.Instance.fryUI.selectedRawFries != null && !fryer.isCooking && fryer.currentFries < fryer.capacity && fryer.canAddFries)
         {
-            GameObject rawFries = FryUI.Instance.selectedRawFries.itemObject;
+            GameObject rawFries = UIManager.Instance.fryUI.selectedRawFries.itemObject;
             GameObject friesObject = Instantiate(rawFries, transform.position, Quaternion.identity);
-            fryer.AddFriesToBasket(FryUI.Instance.selectedRawFries, friesObject);
-            InventoryManager.Instance.RemoveItem(FryUI.Instance.selectedRawFries);
+            fryer.AddFriesToBasket(UIManager.Instance.fryUI.selectedRawFries, friesObject);
+            InventoryManager.Instance.RemoveItem(UIManager.Instance.fryUI.selectedRawFries);
             fryer.currentFries++;
         }
         

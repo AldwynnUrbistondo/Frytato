@@ -8,7 +8,7 @@ public class RoamInventoryButton: InventoryButton
     public override void OnClick()
     {
 
-        RoamUI.Instance.EquipSelect(itemData);
+        UIManager.Instance.roamUI.EquipSelect(itemData);
 
     }
 }
