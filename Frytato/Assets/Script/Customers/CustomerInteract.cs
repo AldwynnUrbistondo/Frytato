@@ -3,6 +3,7 @@ using UnityEngine;
 public class CustomerInteract : MonoBehaviour
 {
     private Customer currentCustomer;
+    private float timerInteract;
     void Start()
     {
 
@@ -11,9 +12,15 @@ public class CustomerInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timerInteract += Time.deltaTime;   
         if (currentCustomer != null && Input.GetKeyDown(KeyCode.Space))
         {
-            currentCustomer.FinishedOrdering();
+            if (timerInteract > 2)
+            {
+                Debug.Log("Customer has ordered");
+                currentCustomer.FinishedOrdering();
+                timerInteract = 0;
+            }
         }
     }
 
