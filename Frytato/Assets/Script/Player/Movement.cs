@@ -25,6 +25,7 @@ public class Movement : MonoBehaviour
             return;
         }
 
+        Vector3 movement = Vector3.zero;
 
         switch (GameManager.Instance.platform)
         {
@@ -32,16 +33,21 @@ public class Movement : MonoBehaviour
                 movementx = Input.GetAxis("Horizontal");
                 movementz = Input.GetAxis("Vertical");
 
-                Vector3 movement = new Vector3(movementx * speed, 0.0f, movementz * speed);
+                movement = new Vector3(movementx, 0.0f, movementz) * speed;
                 rb.linearVelocity = movement;
                 break;
 
             case Platform.Mobile:
-                Vector3 movementMobile = new Vector3(joystick.Horizontal * speed, 0.0f, joystick.Vertical * speed);
-                rb.linearVelocity = movementMobile;
+                movement = new Vector3(joystick.Horizontal, 0.0f, joystick.Vertical) * speed;
+                rb.linearVelocity = movement;
                 break;
-
         }
-        
+
+        // Rotate toward movement direction if moving
+        if (movement.sqrMagnitude > 0.01f)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(new Vector3(movement.x, 0, movement.z));
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+        }
     }
 }
