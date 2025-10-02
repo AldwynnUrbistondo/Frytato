@@ -37,6 +37,8 @@ public class UIManager : MonoBehaviour
 
                 fryUI.fryUICanvas.SetActive(false);
                 fryUI.UnSelect();
+
+                orderUI.orderUICanvas.SetActive(false);
                 break;
 
             case GameState.Slice:
