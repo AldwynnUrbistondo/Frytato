@@ -12,15 +12,16 @@ public class CustomerInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timerInteract += Time.deltaTime;   
-        if (currentCustomer != null && Input.GetKeyDown(KeyCode.Space))
+        timerInteract += Time.deltaTime;
+    }
+
+    public void TryFinishOrder()
+    {
+        if (currentCustomer != null && timerInteract > 5f)
         {
-            if (timerInteract > 2)
-            {
-                Debug.Log("Customer has ordered");
-                currentCustomer.FinishedOrdering();
-                timerInteract = 0;
-            }
+            Debug.Log("Customer has ordered");
+            currentCustomer.FinishedOrdering();
+            timerInteract = 0;
         }
     }
 
