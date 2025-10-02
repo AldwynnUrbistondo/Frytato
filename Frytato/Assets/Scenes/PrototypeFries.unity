@@ -14764,6 +14764,7 @@ MonoBehaviour:
   roamUI: {fileID: 1054369765}
   sliceUI: {fileID: 1164527332}
   fryUI: {fileID: 948743681}
+  orderUI: {fileID: 1669219484}
 --- !u!4 &1280216957
 Transform:
   m_ObjectHideFlags: 0
@@ -17133,8 +17134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6071ad5613631974a9369ba707ef8bef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orderUICanvas: {fileID: 1253997450}
   customerInteract: {fileID: 1709920607}
+  orderUICanvas: {fileID: 1253997450}
 --- !u!1 &1673062560
 GameObject:
   m_ObjectHideFlags: 0
