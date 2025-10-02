@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 40.4, y: 1, z: 0}
-  m_LocalScale: {x: 1.6576, y: 1.6576, z: 1.6576}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96cdb08a12e73a04f8f4b5a11e729a4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  queueIndex: 0
 --- !u!195 &-1553661600097073517
 NavMeshAgent:
   m_ObjectHideFlags: 0
