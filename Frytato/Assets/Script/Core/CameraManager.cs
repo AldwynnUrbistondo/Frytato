@@ -33,6 +33,7 @@ public class CameraManager : MonoBehaviour
             mainCamera.gameObject.SetActive(true);
             sliceCamera.gameObject.SetActive(false);
             fryCamera.gameObject.SetActive(false);
+            orderCamera.gameObject.SetActive(false);
         }
         else if (camera == CameraType.SliceCamera)
         {
@@ -54,7 +55,7 @@ public class CameraManager : MonoBehaviour
         {
             activeCamera = orderCamera;
             mainCamera.gameObject.SetActive(false);
-            fryCamera.gameObject.SetActive(true);
+            orderCamera.gameObject.SetActive(true);
         }
     }
 }
