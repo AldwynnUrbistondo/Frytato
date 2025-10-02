@@ -21,10 +21,15 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && gameState != GameState.Roam)
         {
-            gameState = GameState.Roam;
-            CameraManager.Instance.ChangeCamera(CameraType.MainCamera);
-            UIManager.Instance.UpdateUI();
+            BackToRoamButton();
         }
+    }
+
+    public void BackToRoamButton()
+    {
+        gameState = GameState.Roam;
+        CameraManager.Instance.ChangeCamera(CameraType.MainCamera);
+        UIManager.Instance.UpdateUI();
     }
 }
 
