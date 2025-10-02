@@ -9,6 +9,7 @@ public class CameraManager : MonoBehaviour
     [SerializeField] Camera mainCamera;
     [SerializeField] Camera sliceCamera;
     [SerializeField] Camera fryCamera;
+    [SerializeField] Camera orderCamera;
 
 
     void Awake()
@@ -49,6 +50,12 @@ public class CameraManager : MonoBehaviour
         {
             
         }
+        else if (camera == CameraType.OrderCamera)
+        {
+            activeCamera = orderCamera;
+            mainCamera.gameObject.SetActive(false);
+            fryCamera.gameObject.SetActive(true);
+        }
     }
 }
 
@@ -57,7 +64,8 @@ public enum CameraType
     MainCamera,
     SliceCamera,
     FryCamera,
-    ShakeCamera
+    ShakeCamera,
+    OrderCamera
 }
 
 

@@ -33,7 +33,8 @@ public enum GameState
     Roam,
     Slice,
     Fry,
-    Shake
+    Shake,
+    Order
 }
 
 public enum Platform
