@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     public RoamUI roamUI;
     public SliceUI sliceUI;
     public FryUI fryUI;
+    public OrderUI orderUI;
 
     private void Awake()
     {
@@ -50,6 +51,11 @@ public class UIManager : MonoBehaviour
 
             case GameState.Shake:
                 // Future implementation
+                break;
+
+            case GameState.Order:
+                roamUI.roamUICanvas.SetActive(false);
+                orderUI.orderUICanvas.SetActive(true);
                 break;
 
             default:
