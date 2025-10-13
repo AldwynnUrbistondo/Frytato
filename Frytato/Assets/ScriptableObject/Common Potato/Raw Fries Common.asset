@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc72ed01312330d42a0b10685074e92b, type: 3}
   m_Name: RAW Fries Common
   m_EditorClassIdentifier: 
-  itemName: Raw Fries Common
+  itemID: R_NormalPotato_Common
   itemIcon: {fileID: 21300000, guid: c92e1aa7aa717d34bb0cfd5981f48441, type: 3}
   itemObject: {fileID: 7598000922720956711, guid: 16c73f76b37a66744901f9f9a17fa008, type: 3}
   itemRarity: 0

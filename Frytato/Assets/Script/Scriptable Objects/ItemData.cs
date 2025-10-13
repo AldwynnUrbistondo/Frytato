@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class ItemData : ScriptableObject
 {
-    public string itemName;
+    public string itemID;
     public Sprite itemIcon;
     public GameObject itemObject;
     public Rarity itemRarity;

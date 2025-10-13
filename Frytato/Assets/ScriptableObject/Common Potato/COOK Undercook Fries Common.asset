@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d605d47f6a2ec074bbc51eaef7e9788f, type: 3}
   m_Name: COOK Undercook Fries Common
   m_EditorClassIdentifier: 
-  itemName: COOK Undercook Fries Common
+  itemID: C_U_NormalFries_Common
   itemIcon: {fileID: 21300000, guid: 6bb0a2fc8ed27764c9fcb7fe4c5d48af, type: 3}
   itemObject: {fileID: 0}
   itemRarity: 0

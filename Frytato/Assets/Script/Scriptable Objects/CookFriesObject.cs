@@ -4,6 +4,7 @@ using UnityEngine;
 public class CookFriesObject : ItemData
 {
     public CookState cookState;
+    public Texture2D cookTexture;
 }
 
 public enum CookState

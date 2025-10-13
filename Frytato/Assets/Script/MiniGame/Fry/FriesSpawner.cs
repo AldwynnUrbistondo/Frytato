@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FriesSpawner : MonoBehaviour
 {
-    public FryerClick fryer;
+    public FryerManager fryer;
 
     private void OnMouseDown()
     {

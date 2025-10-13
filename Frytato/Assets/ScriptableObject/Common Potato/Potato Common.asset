@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb1065510076ada4b8bf9d554949e640, type: 3}
   m_Name: POTATO Common
   m_EditorClassIdentifier: 
-  itemName: Potato Common
+  itemID: P_NormalPotato_Common
   itemIcon: {fileID: -169195444, guid: 8afeda2221e2d374086b55c56f398076, type: 3}
   itemObject: {fileID: 5043299582935652280, guid: 8d75840fe830e864299a40acfe0f6b81, type: 3}
   itemRarity: 0

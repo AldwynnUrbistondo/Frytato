@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.UI;
 
-public class FryerClick : MonoBehaviour
+public class FryerManager : MonoBehaviour
 {
     Animator anim;
     [Header("Fryer Variables")]

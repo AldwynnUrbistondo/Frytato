@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     public RoamUI roamUI;
     public SliceUI sliceUI;
     public FryUI fryUI;
+    public ShakeUI shakeUI;
     public OrderUI orderUI;
 
     private void Awake()
@@ -26,6 +27,7 @@ public class UIManager : MonoBehaviour
         roamUI.UpdateInventoryUI();
         sliceUI.UpdateInventoryUI();
         fryUI.UpdateInventoryUI();
+        shakeUI.UpdateInventoryUI();
 
         // Switch by game state
         switch (GameManager.Instance.gameState)
@@ -37,6 +39,8 @@ public class UIManager : MonoBehaviour
 
                 fryUI.fryUICanvas.SetActive(false);
                 fryUI.UnSelect();
+
+                shakeUI.shakeUICanvas.SetActive(false);
 
                 orderUI.orderUICanvas.SetActive(false);
                 break;
@@ -52,7 +56,8 @@ public class UIManager : MonoBehaviour
                 break;
 
             case GameState.Shake:
-                // Future implementation
+                roamUI.roamUICanvas.SetActive(false);
+                shakeUI.shakeUICanvas.SetActive(true);
                 break;
 
             case GameState.Order:
