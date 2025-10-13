@@ -11,6 +11,8 @@ public class SliceablePotato : MonoBehaviour
 
     void Start()
     {
+        SaveManager.Instance.itemsExisitingInScene.Add(potatoObject);
+
         // Register this potato with the manager
         myFriesRecord = new SlicedFries
         {
@@ -53,6 +55,7 @@ public class SliceablePotato : MonoBehaviour
             SpawnFries();
             // When destroyed, tell manager to clear fries
             SlicedFriesManager.Instance.ClearFries(this);
+            SaveManager.Instance.itemsExisitingInScene.Remove(potatoObject);
             Destroy(gameObject);
         }
     }

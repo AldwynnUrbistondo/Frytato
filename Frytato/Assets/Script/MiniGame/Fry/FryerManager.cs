@@ -112,6 +112,8 @@ public class FryerManager : MonoBehaviour
     {
         FriesInBasket fries = new FriesInBasket(friesData, friesObject);
         friesInBasket.Add(fries);
+
+        SaveManager.Instance.itemsExisitingInScene.Add(friesData);
     }
 
     public void AddCookFriesToInventory(CookFriesObject friesData)
@@ -230,6 +232,7 @@ public class FryerManager : MonoBehaviour
                     break;
             }
 
+            SaveManager.Instance.itemsExisitingInScene.Remove(item.friesData);
             Destroy(item.friesObject);
         }
         friesInBasket.Clear();
