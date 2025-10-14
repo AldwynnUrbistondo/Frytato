@@ -36,6 +36,7 @@ public class SaveManager : MonoBehaviour
     {
         saveData.savedInventory.Clear(); // Clear previous data
 
+        // Items in Inventory
         foreach (var item in InventoryManager.Instance.items)
         {
             ItemID newSavedItem = new ItemID(item.itemData.itemID);
@@ -43,11 +44,19 @@ public class SaveManager : MonoBehaviour
             saveData.savedInventory.Add(newSavedItem);
         }
 
+        // Items in Scene
         foreach(var item in itemsExisitingInScene)
         {
             ItemID newSavedItem = new ItemID(item.itemID);
             newSavedItem.quantity = 1;
             saveData.savedInventory.Add(newSavedItem);
+        }
+
+        // Soil
+        Soil[] allSoils = FindObjectsByType<Soil>(FindObjectsSortMode.None);
+        foreach (var soil in allSoils)
+        {
+            saveData.savedSoils.Add(soil.GetSoilData());
         }
 
         string jsonData = JsonUtility.ToJson(saveData);
@@ -69,6 +78,21 @@ public class SaveManager : MonoBehaviour
 
                 LoadInventory();
 
+                // Load soils
+                Soil[] allSoils = FindObjectsByType<Soil>(FindObjectsSortMode.None);
+                foreach (var soilData in saveData.savedSoils)
+                {
+                    foreach (var soil in allSoils)
+                    {
+                        if (soil.soilID == soilData.soilID)
+                        {
+                            soil.LoadSoilData(soilData);
+                            break;
+                        }
+                    }
+                }
+
+
                 Debug.Log("Game Loaded Successfully!");
             }
             catch
@@ -85,7 +109,8 @@ public class SaveManager : MonoBehaviour
     void LoadInventory()
     {
         InventoryManager.Instance.items.Clear();
-        foreach(var saveData in saveData.savedInventory)
+        UIManager.Instance.UpdateUI(); // UI dont update when inventory is empty so add this to prevent it
+        foreach (var saveData in saveData.savedInventory)
         {
             foreach(var dbItem in ItemDatabase.Instance.itemData)
             {
@@ -102,6 +127,7 @@ public class SaveManager : MonoBehaviour
 public class SaveData
 {
     public List<ItemID> savedInventory = new List<ItemID>();
+    public List<SoilData> savedSoils = new List<SoilData>();
 }
 
 [System.Serializable]
@@ -114,4 +140,14 @@ public class ItemID
     {
         this.itemID = itemID;
     }
+}
+
+[System.Serializable]
+public class SoilData
+{
+    public int soilID;
+    public bool isGrowing;
+    public float currentGrowth;
+    public string plantID;
+    public PlantState plantState;
 }

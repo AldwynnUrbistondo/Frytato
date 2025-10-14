@@ -5,6 +5,7 @@ public class Soil : MonoBehaviour, IInteractable
 {
     public Plant plant;
     [SerializeField] public PlantState plantState = PlantState.Empty;
+    public int soilID;
 
     public void Interact()
     {
@@ -73,6 +74,38 @@ public class Soil : MonoBehaviour, IInteractable
         plant.potatoObj = null;
         plant.currentGrowth = 0f;
     }
+
+    public SoilData GetSoilData()
+    {
+        SoilData data = new SoilData();
+        data.soilID = soilID;
+        data.isGrowing = plant.isGrowing;
+        data.currentGrowth = plant.currentGrowth;
+        data.plantState = plantState;
+        data.plantID = plant.potatoObj != null ? plant.potatoObj.itemID : null;
+        return data;
+    }
+
+    public void LoadSoilData(SoilData data)
+    {
+        plant.isGrowing = data.isGrowing;
+        plant.currentGrowth = data.currentGrowth;
+        plantState = data.plantState;
+
+        if (!string.IsNullOrEmpty(data.plantID))
+        {
+            // Find the matching potato object from your item database
+            foreach (var item in ItemDatabase.Instance.itemData)
+            {
+                if (item.itemID == data.plantID && item is PotatoObject potatoObj)
+                {
+                    plant.potatoObj = potatoObj;
+                    break;
+                }
+            }
+        }
+    }
+
 }
 
 public enum PlantState
