@@ -2,9 +2,14 @@ using UnityEngine;
 
 public class ShakeInventoryButton : InventoryButton
 {
-    public Transform friesSpawn;
+
     public override void OnClick()
     {
-        Instantiate(itemData.itemObject, friesSpawn.position, transform.rotation);
+        if (ShakeManager.Instance.CanAddFries())
+        {
+            Instantiate(itemData.itemObject, UIManager.Instance.shakeUI.spawnPoint.position, Quaternion.identity);
+            InventoryManager.Instance.RemoveItem(itemData, 1);
+            ShakeManager.Instance.AddFries();
+        }
     }
 }
