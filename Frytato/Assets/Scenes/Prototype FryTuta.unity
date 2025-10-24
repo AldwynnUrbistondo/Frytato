@@ -8630,10 +8630,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: JAR
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0b8c61e1a26872549a02591b50a7b853, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0b8c61e1a26872549a02591b50a7b853, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 903033844}
   m_SourcePrefab: {fileID: 100100000, guid: 0b8c61e1a26872549a02591b50a7b853, type: 3}
 --- !u!1 &410087039
 GameObject:
@@ -10800,6 +10807,11 @@ Transform:
   - {fileID: 1666575781}
   m_Father: {fileID: 1216169584}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &680166885 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0b8c61e1a26872549a02591b50a7b853, type: 3}
+  m_PrefabInstance: {fileID: 408533073}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &702007026
 GameObject:
   m_ObjectHideFlags: 0
@@ -12788,6 +12800,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0b8c61e1a26872549a02591b50a7b853, type: 3}
   m_PrefabInstance: {fileID: 408533073}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &903033844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680166885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fc632a60823d774da96fc9dcb4ea650, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveAmount: 0.3
+  moveSpeed: 8
+  returnSpeed: 5
+  rotationFix: {x: -90, y: 0, z: 0}
+  canShake: 0
 --- !u!1001 &928299037
 PrefabInstance:
   m_ObjectHideFlags: 0
