@@ -11,9 +11,6 @@ public class DragAndDrop : MonoBehaviour
     [SerializeField] bool setDraggingRotation = false;
     [SerializeField] Vector3 defaultRotation = Vector3.zero;
 
-    [Header("Interaction Settings")]
-    public LayerMask jarMask;
-
     private Camera mainCamera;
     public bool isDragging = false;
     private Vector3 offset;
