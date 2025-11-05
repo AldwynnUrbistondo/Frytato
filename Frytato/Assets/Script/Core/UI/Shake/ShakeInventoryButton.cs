@@ -1,13 +1,30 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ShakeInventoryButton : InventoryButton
 {
 
     public override void OnClick()
     {
+        // Only proceed if the shake manager allows fries to be added
         if (ShakeManager.Instance.CanAddFries())
         {
-            Instantiate(itemData.itemObject, UIManager.Instance.shakeUI.spawnPoint.position, Quaternion.identity);
+            // Spawn the fries object
+            GameObject spawnedFries = Instantiate(
+                itemData.itemObject,
+                UIManager.Instance.shakeUI.spawnPoint.position,
+                Quaternion.identity
+            );
+
+            if (itemData is CookFriesObject cookFries)
+            {
+                Renderer rend = spawnedFries.GetComponent<Renderer>();
+                if (rend != null && cookFries.cookTexture != null)
+                {
+                    rend.material.mainTexture = cookFries.cookTexture;
+                }
+            }
+
+            // Remove from inventory and add to ShakeManager
             InventoryManager.Instance.RemoveItem(itemData, 1);
             ShakeManager.Instance.AddFries();
         }

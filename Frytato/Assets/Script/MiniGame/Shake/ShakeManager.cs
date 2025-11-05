@@ -9,6 +9,9 @@ public class ShakeManager : MonoBehaviour
     private int currentFriesCount = 0;
     public int friesinJarCount = 0;
 
+    public bool hasFlavor = false;
+    public bool isDone = false;
+
     private void Awake()
     {
         Instance = this;
