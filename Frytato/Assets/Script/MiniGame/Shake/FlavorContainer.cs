@@ -30,7 +30,7 @@ public class FlavorContainer : MonoBehaviour
 
         if (dragScript == null) return;
 
-        // If currently dragging
+       
         if (dragScript.isDragging)
         {
             // Stop the return coroutine while dragging
@@ -63,12 +63,12 @@ public class FlavorContainer : MonoBehaviour
         Vector3 startPos = transform.position;
         Quaternion startRot = transform.rotation;
 
-        // Disable physics for a smooth return
+        
         rb.useGravity = false;
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
 
-        // Freeze movement so it doesn’t shake
+        
         rb.constraints = RigidbodyConstraints.FreezeAll;
 
         while (t < 1f)
@@ -82,7 +82,7 @@ public class FlavorContainer : MonoBehaviour
         transform.position = originalPosition;
         transform.rotation = originalRotation;
 
-        // Re-enable physics once done
+        
         rb.constraints = RigidbodyConstraints.None;
         rb.useGravity = true;
     }
@@ -105,7 +105,7 @@ public class FlavorContainer : MonoBehaviour
                 ShakeManager.Instance.hasFlavor = true;
                 dragScript.isDragging = false;
                 StartCoroutine(PlayPourAnimation());
-                Debug.Log("Ivan added");
+                Debug.Log("BBQ added");
             }
 
             else if (flavor.flavorID == 2 && !ShakeManager.Instance.hasFlavor && ShakeManager.Instance.friesinJarCount == 10)
@@ -113,7 +113,7 @@ public class FlavorContainer : MonoBehaviour
                 ShakeManager.Instance.hasFlavor = true;
                 dragScript.isDragging = false;
                 StartCoroutine(PlayPourAnimation());
-                Debug.Log("Toyo added");
+                Debug.Log("Cheese added");
             }
 
         }
