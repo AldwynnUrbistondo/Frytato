@@ -6,7 +6,7 @@ public class InventoryButton : MonoBehaviour
     Button button;
     public ItemData itemData;
 
-    public void Start()
+    public virtual void Start()
     {
         button = GetComponent<Button>();
         button.onClick.AddListener(OnClick);

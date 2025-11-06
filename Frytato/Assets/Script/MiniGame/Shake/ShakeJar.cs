@@ -52,7 +52,7 @@ public class ShakeJar : MonoBehaviour
 
         if (shakeCount >= shakesNeeded)
         {
-            Debug.Log("✅ Finished shaking!");
+            Debug.Log(" Finished shaking!");
             canShake = false;
             shakeCount = 0;
             ShakeManager.Instance.friesinJarCount = 0;

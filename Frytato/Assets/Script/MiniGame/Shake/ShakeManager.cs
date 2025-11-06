@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using static FryerManager;
 
 public class ShakeManager : MonoBehaviour
 {
@@ -8,6 +10,8 @@ public class ShakeManager : MonoBehaviour
     public int friesLimit = 10;
     private int currentFriesCount = 0;
     public int friesinJarCount = 0;
+
+    public List<FriesInJar> friesInJar = new List<FriesInJar>();
 
     public bool hasFlavor = false;
     public bool isDone = false;
@@ -31,5 +35,28 @@ public class ShakeManager : MonoBehaviour
     public void ResetFriesCount()
     {
         currentFriesCount = 0;
+    }
+
+    public void AddFriesToJar(CookFriesObject friesData, GameObject friesObject)
+    {
+        FriesInJar fries = new FriesInJar(friesData, friesObject);
+        friesInJar.Add(fries);
+
+        SaveManager.Instance.itemsExisitingInScene.Add(friesData);
+    }
+
+
+}
+
+[System.Serializable]
+public class FriesInJar
+{
+    public CookFriesObject friesData;
+    public GameObject friesObject;
+
+    public FriesInJar(CookFriesObject friesData, GameObject friesObject)
+    {
+        this.friesData = friesData;
+        this.friesObject = friesObject;
     }
 }

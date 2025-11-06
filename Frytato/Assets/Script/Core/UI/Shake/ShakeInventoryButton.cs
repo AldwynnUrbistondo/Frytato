@@ -2,7 +2,12 @@
 
 public class ShakeInventoryButton : InventoryButton
 {
-
+    public Transform Jar;
+    public override void Start()
+    {
+        base.Start();
+        Jar = GameObject.FindGameObjectWithTag("Jar").transform;
+    }
     public override void OnClick()
     {
         // Only proceed if the shake manager allows fries to be added
@@ -14,7 +19,8 @@ public class ShakeInventoryButton : InventoryButton
                 UIManager.Instance.shakeUI.spawnPoint.position,
                 Quaternion.identity
             );
-
+            spawnedFries.transform.SetParent(Jar, true);
+            ShakeManager.Instance.AddFriesToJar(itemData as CookFriesObject, spawnedFries);
             if (itemData is CookFriesObject cookFries)
             {
                 Renderer rend = spawnedFries.GetComponent<Renderer>();

@@ -40,7 +40,7 @@ public class FlavorContainer : MonoBehaviour
                 returnRoutine = null;
             }
 
-            // ✅ Disable animator during drag so it doesn’t override transform
+            //  Disable animator during drag so it doesn’t override transform
             if (anim.enabled)
                 anim.enabled = false;
         }
@@ -95,6 +95,7 @@ public class FlavorContainer : MonoBehaviour
             if (flavor.flavorID == 0 && !ShakeManager.Instance.hasFlavor && ShakeManager.Instance.friesinJarCount == 10)
             {
                 ShakeManager.Instance.hasFlavor = true;
+                dragScript.isDragging = false;
                 StartCoroutine(PlayPourAnimation());
                 Debug.Log("SourCream added");
 
@@ -102,6 +103,7 @@ public class FlavorContainer : MonoBehaviour
             else if (flavor.flavorID == 1 && !ShakeManager.Instance.hasFlavor && ShakeManager.Instance.friesinJarCount == 10)
             {
                 ShakeManager.Instance.hasFlavor = true;
+                dragScript.isDragging = false;
                 StartCoroutine(PlayPourAnimation());
                 Debug.Log("Ivan added");
             }
@@ -109,6 +111,7 @@ public class FlavorContainer : MonoBehaviour
             else if (flavor.flavorID == 2 && !ShakeManager.Instance.hasFlavor && ShakeManager.Instance.friesinJarCount == 10)
             {
                 ShakeManager.Instance.hasFlavor = true;
+                dragScript.isDragging = false;
                 StartCoroutine(PlayPourAnimation());
                 Debug.Log("Toyo added");
             }
@@ -122,6 +125,9 @@ public class FlavorContainer : MonoBehaviour
         anim.SetBool("isPour", true);
 
         yield return new WaitForSeconds(1.4f);
+
+
+        dragScript.enabled = true;
 
         anim.SetBool("isPour", false);
 
