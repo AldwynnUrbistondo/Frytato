@@ -53,6 +53,7 @@ public class Soil : MonoBehaviour, IInteractable
         if (plant.currentGrowth >= plant.potatoObj.growthTime)
         {
             Debug.Log("Plant is done growing!");
+            plant.soilChange.SetActive(true);
             plant.isGrowing = false;
             plantState = PlantState.Harvest;
         }
@@ -66,7 +67,7 @@ public class Soil : MonoBehaviour, IInteractable
         {
             Instantiate(plant.potatoObj.dropableItem, plant.harvestSpawnPoint.position, Quaternion.identity);
         }
-
+        plant.soilChange.SetActive(false);
         Debug.Log($"You harvested {plant.harvestAmount} potatoes.");
 
         // Reset soil
@@ -123,6 +124,8 @@ public class Plant
     public Transform harvestSpawnPoint;
     public int harvestAmount;
     public PotatoObject potatoObj;
+
+    public GameObject soilChange;
 }
 
 
