@@ -28,7 +28,6 @@ public class ShakeInventoryButton : InventoryButton
         for (int i = 0; i < 10; i++)
         {
             
-
             // Spawn the fries object
             GameObject spawnedFries = Instantiate(
                 itemData.itemObject,
@@ -56,6 +55,5 @@ public class ShakeInventoryButton : InventoryButton
 
         // Remove from inventory and add to ShakeManager
         InventoryManager.Instance.RemoveItem(itemData, 10);
-
     }
 }
