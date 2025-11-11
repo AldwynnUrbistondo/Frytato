@@ -21,4 +21,4 @@ MonoBehaviour:
   rawFriesObject: {fileID: 11400000, guid: 2bbf211e346f7c743825de6dfc05dc33, type: 2}
   rawFriesDraggableObject: {fileID: 7598000922720956711, guid: 1a9d430e751d5c74aa749f0e8725aec4, type: 3}
   fryAmount: 2
-  growthTime: 60
+  growthTime: 5
