@@ -8,6 +8,7 @@ public class ShakeUI : InventoryUI
     public Slider shakeProgress;
     ShakeJar shake;
     public TextMeshProUGUI friesCountText;
+    public GameObject updownIndicator;
     private void Start()
     {
         shake = FindAnyObjectByType<ShakeJar>();
@@ -21,14 +22,16 @@ public class ShakeUI : InventoryUI
 
     void FriesIndicator()
     {
-        friesCountText.text = $"Fries needed: {ShakeManager.Instance.friesinJarCount.ToString()}/10";
+        friesCountText.text = $"{ShakeManager.Instance.friesinJarCount.ToString()}/10";
 
         if (ShakeManager.Instance.friesinJarCount == 10)
         {
+            updownIndicator.SetActive(true);
             friesCountText.color = Color.green;
         }
         else
         {
+            updownIndicator.SetActive(false);
             friesCountText.color = Color.red;
         }
     }
