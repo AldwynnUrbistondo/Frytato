@@ -1,9 +1,9 @@
-﻿using Unity.VisualScripting;
+﻿
 using UnityEngine;
 using System.Collections;
 public class FlavorContainer : MonoBehaviour
 {
-    public Flavor flavor = new Flavor();
+    public Flavor flavor;
 
     [Header("Return Settings")]
     [SerializeField] private float returnSpeed = 5f;
@@ -88,11 +88,11 @@ public class FlavorContainer : MonoBehaviour
     }
 
 
-        private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("FlavorCollider"))
         {
-            if (flavor.flavorID == 0 && !ShakeManager.Instance.hasFlavor && ShakeManager.Instance.friesinJarCount == 10)
+            if (flavor == Flavor.SourCream && !ShakeManager.Instance.hasFlavor && ShakeManager.Instance.friesinJarCount == 10)
             {
                 ShakeManager.Instance.hasFlavor = true;
                 dragScript.isDragging = false;
@@ -100,7 +100,7 @@ public class FlavorContainer : MonoBehaviour
                 Debug.Log("SourCream added");
 
             }
-            else if (flavor.flavorID == 1 && !ShakeManager.Instance.hasFlavor && ShakeManager.Instance.friesinJarCount == 10)
+            else if (flavor == Flavor.BBQ && !ShakeManager.Instance.hasFlavor && ShakeManager.Instance.friesinJarCount == 10)
             {
                 ShakeManager.Instance.hasFlavor = true;
                 dragScript.isDragging = false;
@@ -108,7 +108,7 @@ public class FlavorContainer : MonoBehaviour
                 Debug.Log("BBQ added");
             }
 
-            else if (flavor.flavorID == 2 && !ShakeManager.Instance.hasFlavor && ShakeManager.Instance.friesinJarCount == 10)
+            else if (flavor == Flavor.Cheese && !ShakeManager.Instance.hasFlavor && ShakeManager.Instance.friesinJarCount == 10)
             {
                 ShakeManager.Instance.hasFlavor = true;
                 dragScript.isDragging = false;
@@ -132,10 +132,25 @@ public class FlavorContainer : MonoBehaviour
         anim.SetBool("isPour", false);
 
     }
+
+    void AddFriesToInventory()
+    {
+        foreach(var item in ShakeManager.Instance.friesInJar)
+        {
+
+            if (flavor == Flavor.SourCream)
+            {
+                InventoryManager.Instance.AddItem(item.friesData.SourCreamFries, 1);
+            }
+            else if (flavor == Flavor.BBQ)
+            {
+                InventoryManager.Instance.AddItem(item.friesData.BBQFries);
+            }
+            else if (flavor == Flavor.Cheese)
+            {
+                InventoryManager.Instance.AddItem(item.friesData.SourCreamFries);
+            }
+        }
+    }
 }
 
-[System.Serializable]
-public class Flavor
-{
-    public int flavorID;
-}

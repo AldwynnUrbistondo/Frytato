@@ -161,6 +161,11 @@ public class FryerManager : MonoBehaviour
         if (stateInfo.normalizedTime < 1f && (stateInfo.IsName("Cook") || stateInfo.IsName("Uncook") || stateInfo.IsName("Swipe")))
             return;
 
+        if (currentFries != capacity)
+        {
+            Debug.Log("Fryer not full yet!");
+            return;
+        }
         if (!isCooking)
         {
             anim.Play("Cook");

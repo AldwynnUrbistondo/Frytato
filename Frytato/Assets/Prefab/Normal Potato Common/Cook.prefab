@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1749503299398566318}
   - component: {fileID: 3439307465286692930}
   - component: {fileID: 5738578286306253883}
+  - component: {fileID: -1932174410059656073}
   m_Layer: 8
   m_Name: Cook
   m_TagString: Untagged
@@ -136,3 +137,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.8193329, y: 10.049705, z: 0.8193339}
   m_Center: {x: -0.00000049173826, y: -0.3311145, z: 0}
+--- !u!114 &-1932174410059656073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7598000922720956711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce0a257933ef7154e859f3ea831f4462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cookFriesObject: {fileID: 0}

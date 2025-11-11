@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RawFriesObject : ItemData
 {
+    [Header("Raw Fries Specific")]
     public FriesTexData cookingMaterial;
 
     public CookFriesObject Raw;

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d14d09f01c49bd54b972011bd7484d3d, type: 3}
+  m_Name: POWDER Raw Fries Common
+  m_EditorClassIdentifier: 
+  itemID: P_Ch_R_NormalFries_Common
+  itemIcon: {fileID: 0}
+  itemObject: {fileID: 0}
+  itemRarity: 0
+  itemType: 3
+  cookState: 0
+  friesFlavor: 0
+  powderMaterial: {fileID: 2100000, guid: 17c9a2507468e4b4493b53e7a09f6d9b, type: 2}

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using NUnit.Framework;
+using System.Collections;
+using UnityEngine;
 
 public class ShakeInventoryButton : InventoryButton
 {
@@ -13,6 +15,20 @@ public class ShakeInventoryButton : InventoryButton
         // Only proceed if the shake manager allows fries to be added
         if (ShakeManager.Instance.CanAddFries())
         {
+            Canvas canvas = UIManager.Instance.shakeUI.shakeUICanvas.GetComponent<Canvas>();
+            canvas.enabled = false;
+
+            StartCoroutine(AddFries());
+        }
+    }
+
+    IEnumerator AddFries()
+    {
+
+        for (int i = 0; i < 10; i++)
+        {
+            
+
             // Spawn the fries object
             GameObject spawnedFries = Instantiate(
                 itemData.itemObject,
@@ -20,6 +36,9 @@ public class ShakeInventoryButton : InventoryButton
                 Quaternion.identity
             );
             spawnedFries.transform.SetParent(Jar, true);
+            CookFries friesData = spawnedFries.GetComponent<CookFries>();
+            friesData.cookFriesObject = itemData as CookFriesObject;
+
             ShakeManager.Instance.AddFriesToJar(itemData as CookFriesObject, spawnedFries);
             if (itemData is CookFriesObject cookFries)
             {
@@ -30,9 +49,13 @@ public class ShakeInventoryButton : InventoryButton
                 }
             }
 
-            // Remove from inventory and add to ShakeManager
-            InventoryManager.Instance.RemoveItem(itemData, 1);
             ShakeManager.Instance.AddFries();
+
+            yield return new WaitForSeconds(0.1f);
         }
+
+        // Remove from inventory and add to ShakeManager
+        InventoryManager.Instance.RemoveItem(itemData, 10);
+
     }
 }

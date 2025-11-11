@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static FryerManager;
+ 
 
 public class ShakeManager : MonoBehaviour
 {
@@ -10,6 +10,7 @@ public class ShakeManager : MonoBehaviour
     public int friesLimit = 10;
     private int currentFriesCount = 0;
     public int friesinJarCount = 0;
+    public bool isAddingFries = false;
 
     public List<FriesInJar> friesInJar = new List<FriesInJar>();
 
