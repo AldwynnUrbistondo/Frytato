@@ -61,7 +61,9 @@ public class Soil : MonoBehaviour, IInteractable
 
     private void Harvest()
     {
-        plant.harvestAmount = Random.Range(2, 4);
+        // 10% chance to get 3 potatoes, otherwise get 2
+        float randomValue = Random.Range(0f, 1f);
+        plant.harvestAmount = randomValue <= 0.1f ? 3 : 2;
 
         for (int i = 0; i < plant.harvestAmount; i++)
         {
@@ -69,7 +71,6 @@ public class Soil : MonoBehaviour, IInteractable
         }
         plant.plantObject.SetActive(false);
         Debug.Log($"You harvested {plant.harvestAmount} potatoes.");
-
         // Reset soil
         plantState = PlantState.Empty;
         plant.potatoObj = null;
