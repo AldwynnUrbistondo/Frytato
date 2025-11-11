@@ -8733,7 +8733,7 @@ MonoBehaviour:
     harvestSpawnPoint: {fileID: 0}
     harvestAmount: 0
     potatoObj: {fileID: 0}
-    soilChange: {fileID: 0}
+    plantObject: {fileID: 0}
   plantState: 0
   soilID: 0
 --- !u!23 &383213327
@@ -15558,9 +15558,9 @@ MonoBehaviour:
     harvestSpawnPoint: {fileID: 1280493194}
     harvestAmount: 0
     potatoObj: {fileID: 0}
-    soilChange: {fileID: 1490914380}
+    plantObject: {fileID: 1490914380}
   plantState: 0
-  soilID: 0
+  soilID: 2
 --- !u!23 &1055400686
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17792,7 +17792,7 @@ MonoBehaviour:
     harvestSpawnPoint: {fileID: 0}
     harvestAmount: 0
     potatoObj: {fileID: 0}
-    soilChange: {fileID: 0}
+    plantObject: {fileID: 0}
   plantState: 0
   soilID: 0
 --- !u!23 &1269841536
@@ -18160,7 +18160,7 @@ MonoBehaviour:
     harvestSpawnPoint: {fileID: 0}
     harvestAmount: 0
     potatoObj: {fileID: 0}
-    soilChange: {fileID: 0}
+    plantObject: {fileID: 0}
   plantState: 0
   soilID: 0
 --- !u!23 &1280493196
@@ -20294,9 +20294,9 @@ MonoBehaviour:
     harvestSpawnPoint: {fileID: 1269841534}
     harvestAmount: 0
     potatoObj: {fileID: 0}
-    soilChange: {fileID: 1538212346}
+    plantObject: {fileID: 1538212346}
   plantState: 0
-  soilID: 0
+  soilID: 3
 --- !u!23 &1545947693
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20562,7 +20562,7 @@ MonoBehaviour:
     harvestSpawnPoint: {fileID: 0}
     harvestAmount: 0
     potatoObj: {fileID: 0}
-    soilChange: {fileID: 0}
+    plantObject: {fileID: 0}
   plantState: 0
   soilID: 0
 --- !u!23 &1561572032
@@ -21615,9 +21615,9 @@ MonoBehaviour:
     harvestSpawnPoint: {fileID: 383213325}
     harvestAmount: 0
     potatoObj: {fileID: 0}
-    soilChange: {fileID: 835545238}
+    plantObject: {fileID: 835545238}
   plantState: 0
-  soilID: 0
+  soilID: 4
 --- !u!23 &1669385807
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -32824,9 +32824,9 @@ MonoBehaviour:
     harvestSpawnPoint: {fileID: 1561572030}
     harvestAmount: 0
     potatoObj: {fileID: 0}
-    soilChange: {fileID: 1804277547}
+    plantObject: {fileID: 1804277547}
   plantState: 0
-  soilID: 0
+  soilID: 1
 --- !u!65 &8513120119205589732
 BoxCollider:
   m_ObjectHideFlags: 0
