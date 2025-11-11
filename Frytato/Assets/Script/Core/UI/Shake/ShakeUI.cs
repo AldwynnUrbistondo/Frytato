@@ -24,9 +24,17 @@ public class ShakeUI : InventoryUI
     {
         friesCountText.text = $"{ShakeManager.Instance.friesinJarCount.ToString()}/10";
 
-        if (ShakeManager.Instance.friesinJarCount == 10)
+        if (shake.canShake)
         {
             updownIndicator.SetActive(true);
+        }
+        else
+        {
+            updownIndicator.SetActive(false);
+        }
+
+        if (ShakeManager.Instance.friesinJarCount == 10)
+        {
             friesCountText.color = Color.green;
         }
         else
