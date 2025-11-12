@@ -15,8 +15,8 @@ public class ShakeJar : MonoBehaviour
     [Header("Drag Settings")]
     [SerializeField] private float dragReturnSpeed = 5f;
 
-    Rigidbody rb;
-    DragAndDrop dragScript;
+    public Rigidbody rb;
+    public DragAndDrop dragScript;
 
     [Header("Camera Settings")]
     public Camera shakeCamera;
@@ -30,13 +30,16 @@ public class ShakeJar : MonoBehaviour
     private bool hasReachedBottom = true;
     private Coroutine returnRoutine;
 
+    Animator anim;
     void Start()
     {
         startPos = transform.position;
         originalRotation = transform.rotation;
         rb = GetComponent<Rigidbody>();
         dragScript = GetComponent<DragAndDrop>();
+        anim = GetComponent<Animator>();
 
+        anim.enabled = false;
         if (rb != null)
         {
             rb.isKinematic = true;
