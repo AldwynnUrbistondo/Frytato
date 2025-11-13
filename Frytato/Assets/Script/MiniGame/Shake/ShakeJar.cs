@@ -293,7 +293,7 @@ public class ShakeJar : MonoBehaviour
         
         if (ShakeManager.Instance.flavor == Flavor.SourCream)
         {
-            InventoryManager.Instance.AddItem(ShakeManager.Instance.friesInJar[0].friesData.BBQFries, 1);
+            InventoryManager.Instance.AddItem(ShakeManager.Instance.friesInJar[0].friesData.SourCreamFries, 1);
         }
         else if (ShakeManager.Instance.flavor == Flavor.BBQ)
         {
@@ -301,9 +301,8 @@ public class ShakeJar : MonoBehaviour
         }
         else if (ShakeManager.Instance.flavor == Flavor.Cheese)
         {
-            InventoryManager.Instance.AddItem(ShakeManager.Instance.friesInJar[0].friesData.BBQFries, 1);
+            InventoryManager.Instance.AddItem(ShakeManager.Instance.friesInJar[0].friesData.CheeseFries, 1);
         }
 
-        Debug.Log("Nigga");
     }
 }
