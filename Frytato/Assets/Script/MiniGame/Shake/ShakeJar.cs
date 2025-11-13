@@ -184,8 +184,14 @@ public class ShakeJar : MonoBehaviour
         if (rb != null)
         {
             rb.useGravity = false;
-            rb.linearVelocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
+
+            // Only reset velocity if Rigidbody is NOT kinematic
+            if (!rb.isKinematic)
+            {
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+            }
+
             rb.constraints = RigidbodyConstraints.FreezeAll;
         }
 
@@ -239,10 +245,9 @@ public class ShakeJar : MonoBehaviour
         // Disable rigidbody
         if (rb != null)
         {
-            rb.isKinematic = true;
             rb.useGravity = false;
-            rb.linearVelocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
+            rb.isKinematic = true;
+            rb.constraints = RigidbodyConstraints.FreezeAll;
         }
 
         // Disable drag script
