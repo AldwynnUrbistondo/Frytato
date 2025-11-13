@@ -188,6 +188,8 @@ public class FryerManager : MonoBehaviour
 
     private void HandleSwipeRight()
     {
+        if (currentFries != capacity)
+            return;
         AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
 
         // prevent spamming if animation still running
