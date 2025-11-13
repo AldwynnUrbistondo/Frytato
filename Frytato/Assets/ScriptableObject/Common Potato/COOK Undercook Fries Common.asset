@@ -19,3 +19,6 @@ MonoBehaviour:
   itemType: 2
   cookState: 1
   cookTexture: {fileID: 2800000, guid: f35fc8d730f618c478919f9b2465563f, type: 3}
+  CheeseFries: {fileID: 11400000, guid: 24e7d23dcfa355546b152b64b0a83002, type: 2}
+  BBQFries: {fileID: 11400000, guid: 9719a93091e326c448f056d86557310f, type: 2}
+  SourCreamFries: {fileID: 11400000, guid: a0cf5aee115ffe647b6ce992e6041e2c, type: 2}

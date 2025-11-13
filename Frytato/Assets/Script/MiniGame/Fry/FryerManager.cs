@@ -11,6 +11,7 @@ public class FryerManager : MonoBehaviour
     public int capacity = 10;
     public int currentFries = 0;
     public bool canAddFries = true;
+    public GameObject col;
 
     [Header("Fries in Basket")]
     [SerializeField] GameObject particle;
@@ -247,6 +248,16 @@ public class FryerManager : MonoBehaviour
         canAddFries = true;
     }
     #endregion
+
+    public void EnableCollider()
+    {
+        col.SetActive(true);
+    }
+
+    public void DisableCollider()
+    {
+        col.SetActive(false);
+    }
 
     [System.Serializable]
     public class FriesInBasket

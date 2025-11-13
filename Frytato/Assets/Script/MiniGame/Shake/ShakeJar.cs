@@ -1,5 +1,7 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using Unity.Android.Gradle;
+using Unity.VisualScripting;
+using UnityEngine;
 
 public class ShakeJar : MonoBehaviour
 {
@@ -92,7 +94,7 @@ public class ShakeJar : MonoBehaviour
             finishedShaking = true;
             isDragging = false; // Stop any shake dragging
             shakeCount = 0;
-            ShakeManager.Instance.friesinJarCount = 0;
+            //ShakeManager.Instance.friesinJarCount = 0;
 
             // Enable rigidbody and drag script
             if (rb != null)
@@ -225,6 +227,7 @@ public class ShakeJar : MonoBehaviour
         }
     }
 
+    /*
     public void ResetJar()
     {
         // Call this after fries are delivered
@@ -261,5 +264,46 @@ public class ShakeJar : MonoBehaviour
         transform.rotation = originalRotation;
 
         Debug.Log("Jar reset to shake mode");
+    }
+    */
+
+    public void PlaceToContainer()
+    {
+        Canvas canvas = UIManager.Instance.shakeUI.shakeUICanvas.GetComponent<Canvas>();
+        canvas.enabled = true;
+
+
+        AddFriesToInventory();
+
+        ShakeManager.Instance.friesinJarCount = 0;
+        for (int i = ShakeManager.Instance.friesInJar.Count - 1; i >= 0; i--)
+        {
+            if (ShakeManager.Instance.friesInJar[i].friesObject != null)
+            {
+                GameObject.Destroy(ShakeManager.Instance.friesInJar[i].friesObject);
+            }
+            ShakeManager.Instance.friesInJar.RemoveAt(i);
+        }
+
+        Debug.Log("Jar placed back to container.");
+    }
+
+    void AddFriesToInventory()
+    {
+        
+        if (ShakeManager.Instance.flavor == Flavor.SourCream)
+        {
+            InventoryManager.Instance.AddItem(ShakeManager.Instance.friesInJar[0].friesData.BBQFries, 1);
+        }
+        else if (ShakeManager.Instance.flavor == Flavor.BBQ)
+        {
+            InventoryManager.Instance.AddItem(ShakeManager.Instance.friesInJar[0].friesData.BBQFries, 1);
+        }
+        else if (ShakeManager.Instance.flavor == Flavor.Cheese)
+        {
+            InventoryManager.Instance.AddItem(ShakeManager.Instance.friesInJar[0].friesData.BBQFries, 1);
+        }
+
+        Debug.Log("Nigga");
     }
 }

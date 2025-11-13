@@ -95,6 +95,7 @@ public class FlavorContainer : MonoBehaviour
             if (flavor == Flavor.SourCream && !ShakeManager.Instance.hasFlavor && ShakeManager.Instance.friesinJarCount == 10)
             {
                 ShakeManager.Instance.hasFlavor = true;
+                ShakeManager.Instance.flavor = Flavor.SourCream;
                 dragScript.isDragging = false;
                 StartCoroutine(PlayPourAnimation());
                 Debug.Log("SourCream added");
@@ -103,6 +104,7 @@ public class FlavorContainer : MonoBehaviour
             else if (flavor == Flavor.BBQ && !ShakeManager.Instance.hasFlavor && ShakeManager.Instance.friesinJarCount == 10)
             {
                 ShakeManager.Instance.hasFlavor = true;
+                ShakeManager.Instance.flavor = Flavor.BBQ;
                 dragScript.isDragging = false;
                 StartCoroutine(PlayPourAnimation());
                 Debug.Log("BBQ added");
@@ -111,6 +113,7 @@ public class FlavorContainer : MonoBehaviour
             else if (flavor == Flavor.Cheese && !ShakeManager.Instance.hasFlavor && ShakeManager.Instance.friesinJarCount == 10)
             {
                 ShakeManager.Instance.hasFlavor = true;
+                ShakeManager.Instance.flavor = Flavor.Cheese;
                 dragScript.isDragging = false;
                 StartCoroutine(PlayPourAnimation());
                 Debug.Log("Cheese added");
@@ -133,24 +136,6 @@ public class FlavorContainer : MonoBehaviour
 
     }
 
-    void AddFriesToInventory()
-    {
-        foreach(var item in ShakeManager.Instance.friesInJar)
-        {
-
-            if (flavor == Flavor.SourCream)
-            {
-                InventoryManager.Instance.AddItem(item.friesData.SourCreamFries, 1);
-            }
-            else if (flavor == Flavor.BBQ)
-            {
-                InventoryManager.Instance.AddItem(item.friesData.BBQFries);
-            }
-            else if (flavor == Flavor.Cheese)
-            {
-                InventoryManager.Instance.AddItem(item.friesData.SourCreamFries);
-            }
-        }
-    }
+    
 }
 

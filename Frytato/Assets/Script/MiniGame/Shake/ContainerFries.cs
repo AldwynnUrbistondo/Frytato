@@ -47,7 +47,10 @@ public class ContainerFries : MonoBehaviour
         {
             shakeJar.rb.isKinematic = true;
             shakeJar.rb.useGravity = false;
+            shakeJar.PlaceToContainer();
         }
+
+
     }
 }
 

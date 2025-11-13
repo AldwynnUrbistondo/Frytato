@@ -14,6 +14,7 @@ public class ShakeManager : MonoBehaviour
 
     public List<FriesInJar> friesInJar = new List<FriesInJar>();
 
+    public Flavor flavor;
     public bool hasFlavor = false;
     public bool isDone = false;
 
@@ -24,6 +25,7 @@ public class ShakeManager : MonoBehaviour
 
     public bool CanAddFries()
     {
+        currentFriesCount = friesinJarCount;
         return currentFriesCount < friesLimit;
     }
     
