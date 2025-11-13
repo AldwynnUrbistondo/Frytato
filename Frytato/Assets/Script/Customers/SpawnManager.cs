@@ -1,6 +1,6 @@
 using System.Threading;
 using UnityEngine;
-
+using System.Collections;
 public class SpawnManager : MonoBehaviour
 {
     public static SpawnManager Instance { get; private set; }
@@ -84,20 +84,24 @@ public class SpawnManager : MonoBehaviour
 
     public void SendCustomerToDoneSpot(Customer c)
     {
-
-        if (doneOrderingSpot != null && doneSpot < doneOrderingSpot.Length)
+        if (doneOrderingSpot != null && doneOrderingSpot.Length > 0)
         {
-            int leavingIndex = c.queueIndex;
+            // Move customer to the first done spot
+            c.MoveTo(doneOrderingSpot[0].position);
 
-            // Move this customer away
-            c.MoveTo(doneOrderingSpot[doneSpot].position);
-            customerLine[leavingIndex] = null;
-            doneSpot++;
-
-            // Shift the line forward
-            ShiftLine(leavingIndex);
+            
+            
         }
+
+        // Remove customer from the queue
+        if (c.queueIndex >= 0 && c.queueIndex < customerLine.Length)
+        {
+            customerLine[c.queueIndex] = null;
+        }
+
+        // No need to shift the line anymore
     }
+
 
     private void ShiftLine(int startIndex)
     {

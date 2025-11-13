@@ -21,7 +21,6 @@ public class CustomerInteract : MonoBehaviour
         {
             Debug.Log("Customer has ordered");
             currentCustomer.FinishedOrdering();
-            timerInteract = 0;
         }
     }
 
@@ -30,6 +29,7 @@ public class CustomerInteract : MonoBehaviour
         if (other.CompareTag("Customer"))
         {
             currentCustomer = other.GetComponent<Customer>();
+            currentCustomer.SetRandomOrder();
         }
     }
 
@@ -37,6 +37,7 @@ public class CustomerInteract : MonoBehaviour
     {
         if (other.CompareTag("Customer"))
         {
+            currentCustomer.OrderTaken();
             if (other.GetComponent<Customer>() == currentCustomer)
             {
                 currentCustomer = null;
