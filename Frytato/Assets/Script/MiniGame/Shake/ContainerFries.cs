@@ -1,21 +1,10 @@
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-
 public class ContainerFries : MonoBehaviour
 {
 
     public float disableDelay = 1.5f;
-    private Animator anim;
-
-    public List<GameObject> friesInContainer = new List<GameObject>();
-
-    bool isAnimating = false;
-
-    private void Start()
-    {
-       anim = GetComponent<Animator>();
-    }
+    private Animator currentAnimator; // store the animator that entered
 
     private void OnTriggerEnter(Collider other)
     {
@@ -32,76 +21,36 @@ public class ContainerFries : MonoBehaviour
                 // Enable the Animator
                 jarAnimator.enabled = true;
 
-                if (!isAnimating)
-                    StartCoroutine(DisableAnimatorAndModifyJar(jarAnimator, shakeJar, disableDelay));
+                
+                StartCoroutine(DisableAnimatorAndModifyJar(jarAnimator, shakeJar, disableDelay));
             }
         }
     }
 
     private IEnumerator DisableAnimatorAndModifyJar(Animator animator, ShakeJar shakeJar, float delay)
     {
-        isAnimating = true;
         yield return new WaitForSeconds(delay);
 
+        // Disable Animator
         if (animator != null)
         {
             animator.enabled = false;
         }
 
+
         if (shakeJar.dragScript != null)
         {
             shakeJar.dragScript.enabled = false;
         }
-
+       
         if (shakeJar != null)
         {
             shakeJar.rb.isKinematic = true;
             shakeJar.rb.useGravity = false;
-
-            // Show fries BEFORE clearing the jar data
-            ShowFries(shakeJar);
-
+            shakeJar.PlaceToContainer();
         }
 
-        yield return new WaitForSeconds(0.5f);
-        anim.Play("Change");
-    }
 
-    public void ShowFries(ShakeJar shakeJar)
-    {
-        foreach (GameObject fries in friesInContainer)
-        {
-            fries.SetActive(true);
-            MeshRenderer friesMesh = fries.GetComponent<MeshRenderer>();
-
-            if (ShakeManager.Instance.flavor == Flavor.SourCream)
-            {
-                friesMesh.materials[0].mainTexture = ShakeManager.Instance.friesInJar[0].friesData.SourCreamFries.cookTexture;
-                friesMesh.materials[1] = ShakeManager.Instance.friesInJar[0].friesData.SourCreamFries.powderMaterial;
-            }
-            else if (ShakeManager.Instance.flavor == Flavor.BBQ)
-            {
-                friesMesh.materials[0].mainTexture = ShakeManager.Instance.friesInJar[0].friesData.BBQFries.cookTexture;
-                friesMesh.materials[1] = ShakeManager.Instance.friesInJar[0].friesData.BBQFries.powderMaterial;
-            }
-            else if (ShakeManager.Instance.flavor == Flavor.Cheese)
-            {
-                friesMesh.materials[0].mainTexture = ShakeManager.Instance.friesInJar[0].friesData.CheeseFries.cookTexture;
-                friesMesh.materials[1] = ShakeManager.Instance.friesInJar[0].friesData.CheeseFries.powderMaterial;
-            }
-
-        }
-
-        shakeJar.PlaceToContainer();
-        isAnimating = false;
-    }
-
-    public void HideFries()
-    {
-        foreach (GameObject fries in friesInContainer)
-        {
-            fries.SetActive(false);
-        }
     }
 }
 
