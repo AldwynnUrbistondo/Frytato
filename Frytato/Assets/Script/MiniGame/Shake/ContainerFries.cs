@@ -21,6 +21,7 @@ public class ContainerFries : MonoBehaviour
     {
         if (other.CompareTag("Jar"))
         {
+            ShakeJar jar = other.GetComponent<ShakeJar>();
             Animator jarAnimator = other.GetComponent<Animator>();
             ShakeJar shakeJar = other.GetComponent<ShakeJar>();
 
@@ -31,6 +32,8 @@ public class ContainerFries : MonoBehaviour
 
                 // Enable the Animator
                 jarAnimator.enabled = true;
+
+                jar.finishedShaking = false;
 
                 if (!isAnimating)
                     StartCoroutine(DisableAnimatorAndModifyJar(jarAnimator, shakeJar, disableDelay));
