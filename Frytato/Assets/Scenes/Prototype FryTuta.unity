@@ -14404,6 +14404,8 @@ MonoBehaviour:
   canShake: 0
   finishedShaking: 0
   dragReturnSpeed: 5
+  rb: {fileID: 0}
+  dragScript: {fileID: 0}
   shakeCamera: {fileID: 1563173924}
   shakeCount: 0
 --- !u!65 &903033847
@@ -14425,8 +14427,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.01893027, y: 0.018575085, z: 0.0060593453}
-  m_Center: {x: 0.00019453501, y: -0.0004379543, z: -0.00718302}
+  m_Size: {x: 0.01893027, y: 0.018575085, z: 0.021635499}
+  m_Center: {x: 0.00019453501, y: -0.0004379543, z: 0.00060507306}
 --- !u!1 &915424355
 GameObject:
   m_ObjectHideFlags: 0
@@ -19671,8 +19673,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0272676, y: 0.8521652, z: 1.140068}
-  m_Center: {x: 0.20029452, y: -0.883091, z: 0.83729935}
+  m_Size: {x: 1.0272676, y: 0.6296158, z: 0.8342285}
+  m_Center: {x: 0.20029452, y: -0.56383896, z: 0.857811}
 --- !u!114 &1418106074
 MonoBehaviour:
   m_ObjectHideFlags: 0
