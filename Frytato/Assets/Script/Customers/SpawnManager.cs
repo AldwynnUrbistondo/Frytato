@@ -1,6 +1,8 @@
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 using System.Collections;
+
 public class SpawnManager : MonoBehaviour
 {
     public static SpawnManager Instance { get; private set; }
@@ -86,22 +88,26 @@ public class SpawnManager : MonoBehaviour
     {
         if (doneOrderingSpot != null && doneOrderingSpot.Length > 0)
         {
-            // Move customer to the first done spot
+            // Move the finished customer to the done spot
             c.MoveTo(doneOrderingSpot[0].position);
-
-            
-            
         }
 
-        // Remove customer from the queue
+        // Remove from queue
         if (c.queueIndex >= 0 && c.queueIndex < customerLine.Length)
         {
-            customerLine[c.queueIndex] = null;
-        }
+            int leavingIndex = c.queueIndex;
+            customerLine[leavingIndex] = null;
 
-        // No need to shift the line anymore
+            // Start coroutine for delayed line shift
+            StartCoroutine(ShiftLineAfterDelay(leavingIndex, 2f)); // 2-second delay
+        }
     }
 
+    private IEnumerator ShiftLineAfterDelay(int startIndex, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ShiftLine(startIndex);
+    }
 
     private void ShiftLine(int startIndex)
     {
