@@ -56,14 +56,18 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnCustomer()
     {
+        // Find the shortest line with an empty spot
+        int lineIndex = GetShortestLineIndexWithSpace();
+
+        // If all lines are full, skip spawning
+        if (lineIndex == -1)
+            return;
+
         int spawnIndex = Random.Range(0, spawnPoints.Length);
         int prefabIndex = Random.Range(0, customerPrefabs.Length);
 
         GameObject obj = Instantiate(customerPrefabs[prefabIndex], spawnPoints[spawnIndex].position, Quaternion.identity);
         Customer newCustomer = obj.GetComponent<Customer>();
-
-        // Pick the shortest line
-        int lineIndex = GetShortestLineIndex();
 
         // Place customer in first empty spot in that line
         for (int i = 0; i < customerLines[lineIndex].Length; i++)
@@ -83,6 +87,37 @@ public class SpawnManager : MonoBehaviour
         }
 
         spawnedCount++;
+    }
+
+    // Returns the index of the shortest line that has at least one empty spot
+    // Returns -1 if all lines are full
+    private int GetShortestLineIndexWithSpace()
+    {
+        int bestLine = -1;
+        int minCount = int.MaxValue;
+
+        for (int i = 0; i < customerLines.Length; i++)
+        {
+            int count = 0;
+            bool hasEmpty = false;
+
+            for (int j = 0; j < customerLines[i].Length; j++)
+            {
+                if (customerLines[i][j] != null) count++;
+                else hasEmpty = true;
+            }
+
+            // Skip this line if it has no empty spot
+            if (!hasEmpty) continue;
+
+            if (count < minCount)
+            {
+                minCount = count;
+                bestLine = i;
+            }
+        }
+
+        return bestLine;
     }
 
     private int GetShortestLineIndex()
