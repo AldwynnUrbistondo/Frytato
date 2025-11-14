@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: POWDER Cheese Undercook Fries Common
   m_EditorClassIdentifier: 
   itemID: P_Ch_U_NormalFries_Common
-  itemIcon: {fileID: 21300000, guid: 2860dedb5829f9c4d8a12ae20f2abb78, type: 3}
+  itemIcon: {fileID: 21300000, guid: 25c95082c7b21a54d875deadb69934ec, type: 3}
   itemObject: {fileID: 7598000922720956711, guid: 850371b2f2e2fd54696f2d843524f9e5, type: 3}
   itemRarity: 0
   itemType: 3
