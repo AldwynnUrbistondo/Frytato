@@ -43,6 +43,7 @@ public class ContainerFries : MonoBehaviour
 
     private IEnumerator DisableAnimatorAndModifyJar(Animator animator, ShakeJar shakeJar, float delay)
     {
+        AudioManager.Instance.PlaySound(SoundType.Transfer);
         isAnimating = true;
         yield return new WaitForSeconds(delay);
 

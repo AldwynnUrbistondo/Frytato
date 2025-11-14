@@ -12,6 +12,7 @@ public class FryerManager : MonoBehaviour
     public int currentFries = 0;
     public bool canAddFries = true;
     public GameObject col;
+    public int soundChannel;
 
     [Header("Fries in Basket")]
     [SerializeField] GameObject particle;
@@ -170,7 +171,7 @@ public class FryerManager : MonoBehaviour
         }
         if (!isCooking)
         {
-            AudioManager.Instance.PlaySound(SoundType.Fry);
+            AudioManager.Instance.PlaySound(SoundType.Fry, soundChannel);
             anim.Play("Cook");
 
             if (currentFries != 0)
@@ -181,7 +182,7 @@ public class FryerManager : MonoBehaviour
         }
         else
         {
-            AudioManager.Instance.StopSound(SoundType.Fry);
+            AudioManager.Instance.StopSound(SoundType.Fry, soundChannel);
             anim.Play("Uncook");
             particle.SetActive(false);
         }
