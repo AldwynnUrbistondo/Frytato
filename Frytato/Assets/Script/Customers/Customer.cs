@@ -1,65 +1,64 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Customer : MonoBehaviour
+public class Customer : MonoBehaviour, IInteractable
 {
-    NavMeshAgent customer;
-    public int queueIndex;
+    private NavMeshAgent agent;
+    public int queueIndex = -1; // Track position in line
 
-    [Header("UI References")]
-    public GameObject[] orderFries;
-
-    // Keep track of which fries was chosen
+    [Header("Order UI")]
+    public GameObject[] orderFries; // UI objects above the head
     private GameObject currentOrder;
 
     private void Awake()
     {
-        customer = GetComponent<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();
     }
 
     private void Update()
     {
-        Vector3 desiredVelocity = customer.desiredVelocity;
-
-        if (desiredVelocity.magnitude > 0.1f)
+        // Rotate toward movement direction
+        if (agent.desiredVelocity.magnitude > 0.1f)
         {
-            transform.rotation = Quaternion.LookRotation(new Vector3(desiredVelocity.x, 0, desiredVelocity.z));
+            Vector3 lookDir = new Vector3(agent.desiredVelocity.x, 0, agent.desiredVelocity.z);
+            transform.rotation = Quaternion.LookRotation(lookDir);
         }
     }
 
     public void MoveTo(Vector3 target)
     {
-        customer.SetDestination(target);
+        if (agent != null)
+            agent.SetDestination(target);
     }
 
-    public void FinishedOrdering()
-    {
-        SpawnManager.Instance.SendCustomerToDoneSpot(this);
-    }
-
+    // Assign a random order (called when customer reaches front of line)
     public void SetRandomOrder()
     {
         if (orderFries.Length == 0) return;
 
         // Disable all fries first
         foreach (GameObject fries in orderFries)
-        {
             fries.SetActive(false);
-        }
 
-        // Pick a random fries
         int randomIndex = Random.Range(0, orderFries.Length);
         currentOrder = orderFries[randomIndex];
         currentOrder.SetActive(true);
     }
 
+    // Called when player takes the order
     public void OrderTaken()
     {
-        // Disable the current fries order
         if (currentOrder != null)
         {
             currentOrder.SetActive(false);
             currentOrder = null;
         }
+
+        SpawnManager.Instance.SendCustomerToDoneSpot(this);
+    }
+
+    public void Interact()
+    {
+        OrderTaken();
     }
 }

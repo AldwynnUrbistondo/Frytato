@@ -8,22 +8,23 @@ public class SpawnManager : MonoBehaviour
     public static SpawnManager Instance { get; private set; }
 
     [Header("Customer Settings")]
-    public GameObject[] customerPrefabs; // The type of customers
-    public Transform[] spawnPoint; // Where customers will spawn
-    private Customer[] customerLine; // The customer will be assigned to this line
-    public Transform[] lineQueuePoint; // The location where the customer will go to when lining up
+    public GameObject[] customerPrefabs;
+    public Transform[] spawnPoints;
 
-    [Header("Customer Waiting Area")]
-    public Transform[] doneOrderingSpot;
-    private int doneSpot = 0;
+    [Header("Queue Lines")]
+    public LinePoints[] lines;              // Each line has multiple positions
+    private Customer[][] customerLines;     // 2D array: line index -> queue index
 
-    [Header("Customer Settings")]
-    public int spawnCount;
-    public int maxSpawnCount;
-    public float spawnInterval;
+    [Header("Done Spot")]
+    public Transform doneOrderingSpot;
 
+    [Header("Spawn Settings")]
+    public int maxSpawnCount = 20;
+    public float spawnInterval = 2f;
 
-    float timer = 0f;
+    private int spawnedCount = 0;
+    private float timer = 0f;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -31,107 +32,172 @@ public class SpawnManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        customerLine = new Customer[lineQueuePoint.Length];
-
         Instance = this;
-    }
 
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        CustomerAmount();
-    }
-
-    void CustomerAmount()
-    {
-        if (spawnCount >= maxSpawnCount)
+        // Initialize customer arrays for each line
+        customerLines = new Customer[lines.Length][];
+        for (int i = 0; i < lines.Length; i++)
         {
-            return;
+            customerLines[i] = new Customer[lines[i].points.Length];
         }
+    }
+
+    private void Update()
+    {
+        if (spawnedCount >= maxSpawnCount) return;
 
         timer += Time.deltaTime;
-
         if (timer >= spawnInterval)
         {
             SpawnCustomer();
             timer = 0f;
         }
-
     }
 
-    void SpawnCustomer()
+    private void SpawnCustomer()
     {
-        int spawnRandomLoc = Random.Range(0, spawnPoint.Length);
-        int spawnRandomCustomer = Random.Range(0, customerPrefabs.Length);
-        //Instantiate(customerPrefabs[0], spawnPoint[spawnRandomLoc].position, Quaternion.identity);
+        // Find the shortest line with an empty spot
+        int lineIndex = GetShortestLineIndexWithSpace();
 
-        GameObject newCustomerInitialize = Instantiate(customerPrefabs[spawnRandomCustomer], spawnPoint[spawnRandomLoc].position, Quaternion.identity);
-        Customer newCustomer = newCustomerInitialize.GetComponent<Customer>();
-        for (int i = 0; i < lineQueuePoint.Length; i++)
+        // If all lines are full, skip spawning
+        if (lineIndex == -1)
+            return;
+
+        int spawnIndex = Random.Range(0, spawnPoints.Length);
+        int prefabIndex = Random.Range(0, customerPrefabs.Length);
+
+        GameObject obj = Instantiate(customerPrefabs[prefabIndex], spawnPoints[spawnIndex].position, Quaternion.identity);
+        Customer newCustomer = obj.GetComponent<Customer>();
+
+        // Place customer in first empty spot in that line
+        for (int i = 0; i < customerLines[lineIndex].Length; i++)
         {
-            if (customerLine[i] == null)
+            if (customerLines[lineIndex][i] == null)
             {
-                customerLine[i] = newCustomer;
-                newCustomer.MoveTo(lineQueuePoint[i].position);
+                customerLines[lineIndex][i] = newCustomer;
+                newCustomer.queueIndex = i;
+                newCustomer.MoveTo(lines[lineIndex].points[i].position);
+
+                // First in line gets an order
+                if (i == 0)
+                    newCustomer.SetRandomOrder();
+
                 break;
             }
         }
-        spawnCount++;
+
+        spawnedCount++;
+    }
+
+    // Returns the index of the shortest line that has at least one empty spot
+    // Returns -1 if all lines are full
+    private int GetShortestLineIndexWithSpace()
+    {
+        int bestLine = -1;
+        int minCount = int.MaxValue;
+
+        for (int i = 0; i < customerLines.Length; i++)
+        {
+            int count = 0;
+            bool hasEmpty = false;
+
+            for (int j = 0; j < customerLines[i].Length; j++)
+            {
+                if (customerLines[i][j] != null) count++;
+                else hasEmpty = true;
+            }
+
+            // Skip this line if it has no empty spot
+            if (!hasEmpty) continue;
+
+            if (count < minCount)
+            {
+                minCount = count;
+                bestLine = i;
+            }
+        }
+
+        return bestLine;
+    }
+
+    private int GetShortestLineIndex()
+    {
+        int bestLine = 0;
+        int minCount = int.MaxValue;
+
+        for (int i = 0; i < customerLines.Length; i++)
+        {
+            int count = 0;
+            foreach (var customer in customerLines[i])
+                if (customer != null) count++;
+
+            if (count < minCount)
+            {
+                minCount = count;
+                bestLine = i;
+            }
+        }
+
+        return bestLine;
     }
 
     public void SendCustomerToDoneSpot(Customer c)
     {
-        if (doneOrderingSpot != null && doneOrderingSpot.Length > 0)
+        if (doneOrderingSpot != null)
+            c.MoveTo(doneOrderingSpot.position);
+
+        int lineIndex = -1;
+        int queueIndex = c.queueIndex;
+
+        // Find the line the customer is in
+        for (int i = 0; i < customerLines.Length; i++)
         {
-            // Move the finished customer to the done spot
-            c.MoveTo(doneOrderingSpot[0].position);
-        }
-
-        // Remove from queue
-        if (c.queueIndex >= 0 && c.queueIndex < customerLine.Length)
-        {
-            int leavingIndex = c.queueIndex;
-            customerLine[leavingIndex] = null;
-
-            // Start coroutine for delayed line shift
-            StartCoroutine(ShiftLineAfterDelay(leavingIndex, 2f)); // 2-second delay
-        }
-    }
-
-    private IEnumerator ShiftLineAfterDelay(int startIndex, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        ShiftLine(startIndex);
-    }
-
-    private void ShiftLine(int startIndex)
-    {
-        // Move everyone behind the leaving customer forward
-        for (int i = startIndex + 1; i < customerLine.Length; i++)
-        {
-            if (customerLine[i] != null)
+            if (queueIndex >= 0 && queueIndex < customerLines[i].Length && customerLines[i][queueIndex] == c)
             {
-                // Move them to the next spot forward
-                customerLine[i].MoveTo(lineQueuePoint[i - 1].position);
-
-                // Update their queue index
-                customerLine[i].queueIndex = i - 1;
-
-                // Update the array
-                customerLine[i - 1] = customerLine[i];
-                customerLine[i] = null;
-            }
-            else
-            {
-                // If we hit an empty spot, we can stop shifting
+                lineIndex = i;
                 break;
             }
         }
 
+        if (lineIndex >= 0)
+        {
+            customerLines[lineIndex][queueIndex] = null;
+            StartCoroutine(ShiftLineAfterDelay(lineIndex, queueIndex, 1f));
+        }
     }
+
+    private IEnumerator ShiftLineAfterDelay(int lineIndex, int startIndex, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ShiftLine(lineIndex, startIndex);
+    }
+
+    private void ShiftLine(int lineIndex, int startIndex)
+    {
+        for (int i = startIndex + 1; i < customerLines[lineIndex].Length; i++)
+        {
+            if (customerLines[lineIndex][i] != null)
+            {
+                Customer c = customerLines[lineIndex][i];
+                customerLines[lineIndex][i - 1] = c;
+                customerLines[lineIndex][i] = null;
+                c.queueIndex = i - 1;
+                c.MoveTo(lines[lineIndex].points[i - 1].position);
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        // Assign new order to the new front customer
+        if (customerLines[lineIndex][0] != null)
+            customerLines[lineIndex][0].SetRandomOrder();
+    }
+}
+
+[System.Serializable]
+public class LinePoints
+{
+    public Transform[] points; // Positions in this line
 }

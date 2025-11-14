@@ -20,7 +20,7 @@ public class CustomerInteract : MonoBehaviour
         if (currentCustomer != null && timerInteract > 5f)
         {
             Debug.Log("Customer has ordered");
-            currentCustomer.FinishedOrdering();
+            //currentCustomer.FinishedOrdering();
         }
     }
 
