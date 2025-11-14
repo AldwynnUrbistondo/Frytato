@@ -12,11 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Loading.unity
     guid: a5acc8d2f827ee74db9cffbc3f0aae57
   - enabled: 1
-    path: Assets/Scenes/PrototypeAldwynn.unity
-    guid: ac44ddcaf7101494ba3046ce2850ee53
-  - enabled: 1
-    path: Assets/Scenes/PrototypeFries.unity
-    guid: 90a31e9d402b32849895777ac3133c51
+    path: Assets/Scenes/Prototype FryTuta.unity
+    guid: ee9d7acf2a9abdc47ad315a181d4e09e
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
