@@ -1419,7 +1419,7 @@ MonoBehaviour:
     - {fileID: 1200884093}
     - {fileID: 365282206}
   doneOrderingSpot: {fileID: 1538523297}
-  maxSpawnCount: 8
+  maxSpawnCount: 4
   spawnInterval: 1
 --- !u!4 &102576146
 Transform:
