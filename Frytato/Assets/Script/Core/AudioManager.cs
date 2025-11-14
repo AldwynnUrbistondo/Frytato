@@ -220,7 +220,14 @@ public class AudioManager : MonoBehaviour
             case SoundType.Collect:
                 AudioPlay(collectSources);
                 break;
-            case SoundType.Fry:
+        }
+    }
+
+    public void PlaySound(SoundType soundType, int channel)
+    {
+        switch (soundType)
+        {
+           case SoundType.Fry:
                 AudioPlay(frySources);
                 break;
         }
@@ -233,15 +240,19 @@ public class AudioManager : MonoBehaviour
             case SoundType.Music:
                 musicSource.Stop();
                 break;
-            case SoundType.Fry:
-                foreach (var source in frySources)
-                {
-                    source.Stop();
-                }
-                break;
         }
     }
 
+
+    public void StopSound(SoundType soundType, int channel)
+    {
+        switch (soundType)
+        {
+            case SoundType.Fry:
+                frySources[channel].Stop();
+                break;
+        }
+    }
     void AudioPlay(AudioSource[] audioSources)
     {
         for (int i = 0; i < audioSources.Length; i++)

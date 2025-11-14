@@ -1574,6 +1574,7 @@ MonoBehaviour:
   currentFries: 0
   canAddFries: 1
   col: {fileID: 662188343}
+  soundChannel: 0
   particle: {fileID: 290045587}
   friesInBasket: []
   cookTimer: 0
@@ -19260,7 +19261,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 52307e289b9f1744e980e0f02e6bf9b5, type: 3}
     volume: 1
   transfer:
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 42f11b9d58d76434d845b4752a6cf885, type: 3}
     volume: 1
   plant:
     clip: {fileID: 8300000, guid: 7d8d8e4b5ad4898469559ba49baccf73, type: 3}
@@ -25356,6 +25357,7 @@ MonoBehaviour:
   currentFries: 0
   canAddFries: 1
   col: {fileID: 383971227}
+  soundChannel: 1
   particle: {fileID: 1742253969}
   friesInBasket: []
   cookTimer: 0
