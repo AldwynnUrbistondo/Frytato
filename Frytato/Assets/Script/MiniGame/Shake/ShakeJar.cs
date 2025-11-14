@@ -146,6 +146,7 @@ public class ShakeJar : MonoBehaviour
                 hasReachedTop = false;
                 shakeCount++;
                 Debug.Log($"Shake Count: {shakeCount}/{shakesNeeded}");
+                AudioManager.Instance.PlaySound(SoundType.ShakeFries);
             }
         }
         else

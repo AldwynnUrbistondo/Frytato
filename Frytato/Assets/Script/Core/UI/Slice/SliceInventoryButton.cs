@@ -9,6 +9,6 @@ public class SliceInventoryButton : InventoryButton
         SliceablePotato sliceable = potato.GetComponent<SliceablePotato>();
         sliceable.potatoObject = (PotatoObject)itemData;
         InventoryManager.Instance.RemoveItem(itemData, 1);
-
+        AudioManager.Instance.PlaySound(SoundType.Collect);
     }
 }

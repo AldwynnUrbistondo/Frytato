@@ -53,6 +53,7 @@ public class FryerManager : MonoBehaviour
     {
         if (isCooking && currentFries > 0)
         {
+
             cookTimer += Time.deltaTime;
             cookTimer = Mathf.Clamp(cookTimer, 0, maxTime);
             timerSlider.value = cookTimer;
@@ -169,6 +170,7 @@ public class FryerManager : MonoBehaviour
         }
         if (!isCooking)
         {
+            AudioManager.Instance.PlaySound(SoundType.Fry);
             anim.Play("Cook");
 
             if (currentFries != 0)
@@ -179,6 +181,7 @@ public class FryerManager : MonoBehaviour
         }
         else
         {
+            AudioManager.Instance.StopSound(SoundType.Fry);
             anim.Play("Uncook");
             particle.SetActive(false);
         }
@@ -200,6 +203,7 @@ public class FryerManager : MonoBehaviour
             return;
 
         anim.Play("Swipe");
+        AudioManager.Instance.PlaySound(SoundType.Swipe);
 
         foreach (var item in friesInBasket)
         {

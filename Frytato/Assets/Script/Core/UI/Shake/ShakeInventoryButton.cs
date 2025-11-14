@@ -27,7 +27,7 @@ public class ShakeInventoryButton : InventoryButton
 
         for (int i = 0; i < 10; i++)
         {
-            
+            AudioManager.Instance.PlaySound(SoundType.Collect);
             // Spawn the fries object
             GameObject spawnedFries = Instantiate(
                 itemData.itemObject,

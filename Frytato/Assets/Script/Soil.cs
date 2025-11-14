@@ -13,6 +13,7 @@ public class Soil : MonoBehaviour, IInteractable
         if (plantState == PlantState.Empty && UIManager.Instance.roamUI.equippedItem != null && UIManager.Instance.roamUI.equippedItem is PotatoObject potatoObj)
         {
             Debug.Log("Planted Soil");
+            AudioManager.Instance.PlaySound(SoundType.Plant);
 
             plant.isGrowing = true;
             plantState = PlantState.Growing;
@@ -61,6 +62,7 @@ public class Soil : MonoBehaviour, IInteractable
 
     private void Harvest()
     {
+        AudioManager.Instance.PlaySound(SoundType.Harvest);
         // 10% chance to get 3 potatoes, otherwise get 2
         float randomValue = Random.Range(0f, 1f);
         plant.harvestAmount = randomValue <= 0.1f ? 3 : 2;

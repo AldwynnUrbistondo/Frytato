@@ -28,16 +28,10 @@ public class SliceablePotato : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SlicePotato();
-        }
-    }
-
     public void SlicePotato()
     {
+
+
         if (currentIndex < variants.Length - 1)
         {
             Vector3 pos = variants[currentIndex].transform.position;
@@ -62,6 +56,7 @@ public class SliceablePotato : MonoBehaviour
 
     void SpawnFries()
     {
+        AudioManager.Instance.PlaySound(SoundType.Slice);
         GameObject[] newFries = new GameObject[potatoObject.fryAmount];
 
         for (int i = 0; i < potatoObject.fryAmount; i++)

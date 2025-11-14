@@ -8,6 +8,7 @@ public class FriesSpawner : MonoBehaviour
     {
         if (UIManager.Instance.fryUI.selectedRawFries != null && !fryer.isCooking && fryer.currentFries < fryer.capacity && fryer.canAddFries)
         {
+            AudioManager.Instance.PlaySound(SoundType.Collect);
             GameObject rawFries = UIManager.Instance.fryUI.selectedRawFries.itemObject;
             GameObject friesObject = Instantiate(rawFries, transform.position, Quaternion.identity);
             friesObject.transform.SetParent(fryer.transform, true);

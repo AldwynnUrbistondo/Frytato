@@ -19203,6 +19203,111 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1145112351}
   m_Mesh: {fileID: -5795158982173061755, guid: ecb225d1b0a0e524e8833dccec179255, type: 3}
+--- !u!1 &1149952418
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1149952420}
+  - component: {fileID: 1149952419}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1149952419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149952418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7be980722dc03e64d838f167316fa3ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  music:
+    clip: {fileID: 0}
+    volume: 1
+  interact:
+    clip: {fileID: 0}
+    volume: 1
+  equip:
+    clip: {fileID: 0}
+    volume: 1
+  button:
+    clip: {fileID: 0}
+    volume: 1
+  inventory:
+    clip: {fileID: 0}
+    volume: 1
+  spawn:
+    clip: {fileID: 0}
+    volume: 1
+  slice:
+    clip: {fileID: 8300000, guid: 46135f4255524d14fb9af84c2e66ef0e, type: 3}
+    volume: 1
+  shakePowder:
+    clip: {fileID: 0}
+    volume: 1
+  shakeFries:
+    clip: {fileID: 8300000, guid: 52307e289b9f1744e980e0f02e6bf9b5, type: 3}
+    volume: 1
+  transfer:
+    clip: {fileID: 0}
+    volume: 1
+  plant:
+    clip: {fileID: 8300000, guid: 7d8d8e4b5ad4898469559ba49baccf73, type: 3}
+    volume: 1
+  plantReady:
+    clip: {fileID: 0}
+    volume: 1
+  harvest:
+    clip: {fileID: 8300000, guid: 28225c99d317ec346a988b8550532e40, type: 3}
+    volume: 1
+  transact:
+    clip: {fileID: 0}
+    volume: 1
+  happyCustomer:
+    clip: {fileID: 0}
+    volume: 1
+  neutralCustomer:
+    clip: {fileID: 0}
+    volume: 1
+  madCustomer:
+    clip: {fileID: 0}
+    volume: 1
+  swipe:
+    clip: {fileID: 8300000, guid: 9281a6e446272104bb7d081d35752039, type: 3}
+    volume: 1
+  collect:
+    clip: {fileID: 8300000, guid: cc29c92cc6baa0b4f8f20ab8e3837336, type: 3}
+    volume: 0.767
+  fry:
+    clip: {fileID: 8300000, guid: 432bbd8e7b9355e4c8bb5abec83c6ce0, type: 3}
+    volume: 1
+  multiChannelCount: 2
+--- !u!4 &1149952420
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149952418}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.653256, y: 21.854988, z: -47.77175}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1164527331
 GameObject:
   m_ObjectHideFlags: 0
@@ -39907,3 +40012,4 @@ SceneRoots:
   - {fileID: 102576146}
   - {fileID: 773534274}
   - {fileID: 1692405752757459055}
+  - {fileID: 1149952420}
