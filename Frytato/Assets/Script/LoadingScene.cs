@@ -10,6 +10,8 @@ public class LoadingScene : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1f;
+
         string sceneName = PlayerPrefs.GetString("NextScene");
         LoadScene(sceneName);
     }
