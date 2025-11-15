@@ -99,6 +99,8 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        PlaySound(SoundType.Music);
     }
 
     private void CreateAudioSources()
