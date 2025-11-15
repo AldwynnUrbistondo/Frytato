@@ -11,7 +11,7 @@ public class LoadingScene : MonoBehaviour
     private void Start()
     {
         string sceneName = PlayerPrefs.GetString("NextScene");
-        //LoadScene(GoToLoading.Instance.sceneName);
+        LoadScene(sceneName);
     }
 
     public void LoadScene(string sceneName)
