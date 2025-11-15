@@ -140,6 +140,101 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2816663930050227450}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1439322842095474579
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 352643753796784217}
+  - component: {fileID: 8247454263087337062}
+  m_Layer: 0
+  m_Name: Outline
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &352643753796784217
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439322842095474579}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6638662893621193534}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!137 &8247454263087337062
+SkinnedMeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439322842095474579}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 3
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 76877f783a14a594aad9ad0204b036c4, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  serializedVersion: 2
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 0
+  m_SkinnedMotionVectors: 1
+  m_Mesh: {fileID: -2124705421725058983, guid: ab0edcc5e10f28f4794568294d33be83, type: 3}
+  m_Bones:
+  - {fileID: 1349144181250274405}
+  - {fileID: 7905002586796827191}
+  - {fileID: 3401265621904664260}
+  - {fileID: 3653327372718231073}
+  - {fileID: 5495219991788598043}
+  - {fileID: 6339585178800939608}
+  - {fileID: 2816663930050227450}
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 1349144181250274405}
+  m_AABB:
+    m_Center: {x: 0.000013106503, y: 0.030579332, z: -0.000000040978193}
+    m_Extent: {x: 0.014432294, y: 0.030368734, z: 0.020658892}
+  m_DirtyAABB: 0
 --- !u!1 &1781775595438309612
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,6 +365,7 @@ Transform:
   m_Children:
   - {fileID: 2071517056195419770}
   - {fileID: 4810173549460840981}
+  - {fileID: 352643753796784217}
   - {fileID: 5581682492209608163}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -352,11 +448,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   queueIndex: -1
+  outline: {fileID: 1439322842095474579}
   orderFries: {fileID: 5707637816925141960}
   flavorUI:
   - {fileID: 21300000, guid: 3a6acf4a28fef0c4c9646d61472d16d7, type: 3}
   - {fileID: 21300000, guid: 2831fd36216db8846809547d879dc924, type: 3}
   - {fileID: 21300000, guid: 5cad049f7751abe489cbe6805217610f, type: 3}
+  satisfactionUI:
+  - {fileID: 21300000, guid: 69166524d94265e4f8cfecbccfff2080, type: 3}
+  - {fileID: 21300000, guid: 51e94a4e9623a844093aa696620bcd63, type: 3}
+  - {fileID: 21300000, guid: e8ac62d2a1ee1c346828aa8d252b1f86, type: 3}
   isAtCashier: 0
   col: {fileID: 0}
 --- !u!1 &2998886822613422787

@@ -32,7 +32,7 @@ public class SaveManager : MonoBehaviour
         }
     }
 
-    void SaveGame()
+    public void SaveGame()
     {
         saveData.savedInventory.Clear(); // Clear previous data
 
@@ -66,7 +66,7 @@ public class SaveManager : MonoBehaviour
         Debug.Log("Game Saved Succesfully!");
     }
 
-    void LoadGame()
+    public void LoadGame()
     {
         string path = Application.dataPath + "/SaveData.text"; // Add slash
         if (File.Exists(path))

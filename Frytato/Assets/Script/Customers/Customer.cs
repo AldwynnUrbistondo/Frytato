@@ -6,9 +6,12 @@ public class Customer : MonoBehaviour, IInteractable
 {
     private NavMeshAgent agent;
     public int queueIndex = -1; // Track position in line
+    public GameObject outline;
+
     [Header("Order UI")]
     public Image orderFries; // UI objects above the head
     public Sprite[] flavorUI;
+    public Sprite[] satisfactionUI;
     public bool isAtCashier = false;
     bool hasTakenOrder = false;
     public Collider col;
@@ -122,17 +125,54 @@ public class Customer : MonoBehaviour, IInteractable
     // Called when player takes the order
     public void OrderTaken()
     {
+        SatisfactionComputation();
         InventoryManager.Instance.RemoveItem(UIManager.Instance.roamUI.equippedItem, 1);
         hasTakenOrder = true;
         isAtCashier = false;
 
-        if (orderFries != null)
-            orderFries.enabled = false;
+        // Image stays enabled after taking order (removed the disable line)
 
         // Collider stays enabled after taking order
         SpawnManager.Instance.SendCustomerToDoneSpot(this);
         SpawnManager.Instance?.OnCustomerLeft(this);
         Destroy(gameObject, 10f);
+    }
+
+    void SatisfactionComputation()
+    {
+        if (UIManager.Instance.roamUI.equippedItem is PowderFries)
+        {
+            PowderFries powderFries = UIManager.Instance.roamUI.equippedItem as PowderFries;
+            if (powderFries.friesFlavor == orderFlavor)
+            {
+                satisfactionRate += 2; // Correct flavor
+            }
+
+            if (powderFries.cookState == CookState.Cook)
+            {
+                satisfactionRate += 2; // Perfectly cooked
+            }
+            else if (powderFries.cookState == CookState.Undercook || powderFries.cookState == CookState.Overcook)
+            {
+                satisfactionRate += 1; // Acceptable cook
+            }
+
+            if (satisfactionRate == 4)
+            {
+                orderFries.sprite = satisfactionUI[0]; // Happy
+                AudioManager.Instance.PlaySound(SoundType.HappyCustomer);
+            }
+            else if (satisfactionRate < 4)
+            {
+                AudioManager.Instance.PlaySound(SoundType.NeutralCustomer);
+                orderFries.sprite = satisfactionUI[1]; // Neutral
+            }
+            else
+            {
+                AudioManager.Instance.PlaySound(SoundType.MadCustomer);
+                orderFries.sprite = satisfactionUI[2]; // Angry
+            }
+        }
     }
 
     public void Interact()
@@ -141,5 +181,20 @@ public class Customer : MonoBehaviour, IInteractable
             OrderTaken();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            outline.SetActive(true);
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            outline.SetActive(false);
+        }
+    }
 
 }

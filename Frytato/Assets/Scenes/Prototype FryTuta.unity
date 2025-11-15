@@ -12191,7 +12191,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &392341600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58683,6 +58683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   queueIndex: 0
+  outline: {fileID: 0}
   orderFries: {fileID: 0}
   flavorUI: []
   isAtCashier: 0

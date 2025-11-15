@@ -66,6 +66,7 @@ Transform:
   m_Children:
   - {fileID: 8609647035289492795}
   - {fileID: 8934690352454405564}
+  - {fileID: 7950137680090151630}
   - {fileID: 4950078361749961798}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -148,11 +149,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   queueIndex: -1
+  outline: {fileID: 6683531528968232630}
   orderFries: {fileID: 2109572296168498154}
   flavorUI:
   - {fileID: 21300000, guid: 3a6acf4a28fef0c4c9646d61472d16d7, type: 3}
   - {fileID: 21300000, guid: 2831fd36216db8846809547d879dc924, type: 3}
   - {fileID: 21300000, guid: 5cad049f7751abe489cbe6805217610f, type: 3}
+  satisfactionUI:
+  - {fileID: 21300000, guid: 69166524d94265e4f8cfecbccfff2080, type: 3}
+  - {fileID: 21300000, guid: 51e94a4e9623a844093aa696620bcd63, type: 3}
+  - {fileID: 21300000, guid: e8ac62d2a1ee1c346828aa8d252b1f86, type: 3}
   isAtCashier: 0
   col: {fileID: 0}
 --- !u!1 &230875383422191098
@@ -901,6 +907,101 @@ Transform:
   - {fileID: 1740583135254418548}
   m_Father: {fileID: 4477792023671856529}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6683531528968232630
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7950137680090151630}
+  - component: {fileID: 7513601623340477582}
+  m_Layer: 0
+  m_Name: Outline
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &7950137680090151630
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6683531528968232630}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8577189098721016719}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!137 &7513601623340477582
+SkinnedMeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6683531528968232630}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 3
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 76877f783a14a594aad9ad0204b036c4, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  serializedVersion: 2
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 0
+  m_SkinnedMotionVectors: 1
+  m_Mesh: {fileID: 2363565981455421637, guid: 63ca9199d8bd99e4286ee6e8dccc3c1a, type: 3}
+  m_Bones:
+  - {fileID: 4477792023671856529}
+  - {fileID: 8598375427825544907}
+  - {fileID: 7690800622926681729}
+  - {fileID: 5238421693170002373}
+  - {fileID: 2927408299833061108}
+  - {fileID: 4144345984583696370}
+  - {fileID: 7263304533559117286}
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 4477792023671856529}
+  m_AABB:
+    m_Center: {x: 0.00039149355, y: 0.02788186, z: -0.0000000018626451}
+    m_Extent: {x: 0.009648139, y: 0.027671266, z: 0.02065889}
+  m_DirtyAABB: 0
 --- !u!1 &8292352054063711667
 GameObject:
   m_ObjectHideFlags: 0
