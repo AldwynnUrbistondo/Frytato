@@ -25753,7 +25753,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   music:
-    clip: {fileID: 8300000, guid: 9faa22c606dce33438c74969588f8972, type: 3}
+    clip: {fileID: 8300000, guid: 2b64be84498255a42aac89df3df5dc1f, type: 3}
     volume: 1
   interact:
     clip: {fileID: 0}
@@ -52126,7 +52126,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 0b8c61e1a26872549a02591b50a7b853, type: 3}
+  - {fileID: 2100000, guid: f9e6163de051231448b85fd4072c5739, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
