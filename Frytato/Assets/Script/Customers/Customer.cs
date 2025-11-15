@@ -157,20 +157,20 @@ public class Customer : MonoBehaviour, IInteractable
                 satisfactionRate += 1; // Acceptable cook
             }
 
-            if (satisfactionRate == 4)
+            if (satisfactionRate >= 4)
             {
                 orderFries.sprite = satisfactionUI[0]; // Happy
                 AudioManager.Instance.PlaySound(SoundType.HappyCustomer);
             }
-            else if (satisfactionRate < 4)
+            else if (satisfactionRate >= 2)
             {
-                AudioManager.Instance.PlaySound(SoundType.NeutralCustomer);
                 orderFries.sprite = satisfactionUI[1]; // Neutral
+                AudioManager.Instance.PlaySound(SoundType.NeutralCustomer);
             }
             else
             {
-                AudioManager.Instance.PlaySound(SoundType.MadCustomer);
                 orderFries.sprite = satisfactionUI[2]; // Angry
+                AudioManager.Instance.PlaySound(SoundType.MadCustomer);
             }
         }
     }

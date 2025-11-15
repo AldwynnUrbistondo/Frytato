@@ -8,7 +8,7 @@ public class LoadingScene : MonoBehaviour
     public GameObject loadingScreen;
     public Image loadingBarFill;
 
-    private void Awake()
+    private void Start()
     {
         LoadScene(GoToLoading.Instance.sceneName);
     }
