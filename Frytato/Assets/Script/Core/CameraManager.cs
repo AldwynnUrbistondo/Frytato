@@ -6,12 +6,12 @@ public class CameraManager : MonoBehaviour
     public static CameraManager Instance { get; private set; }
 
     public Camera activeCamera;
-    [SerializeField] Camera mainCamera;
-    [SerializeField] Camera sliceCamera;
-    [SerializeField] Camera fryCamera;
-    [SerializeField] Camera shakeCamera;
+    [SerializeField] public Camera mainCamera;
+    [SerializeField] public Camera sliceCamera;
+    [SerializeField] public Camera fryCamera;
+    [SerializeField] public Camera shakeCamera;
     //[SerializeField] Camera packCamera;
-    [SerializeField] Camera orderCamera;
+    [SerializeField] public Camera orderCamera;
     //[SerializeField] Camera serveCamera;
 
     void Awake()

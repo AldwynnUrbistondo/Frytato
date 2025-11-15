@@ -881,18 +881,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customerPrefabs:
   - {fileID: 4602079738378686953, guid: 3f6c0a8b25ca7d045bad96052fa44992, type: 3}
-  spawnPoint:
-  - {fileID: 135685094}
-  - {fileID: 224788906}
-  lineQueuePoint:
-  - {fileID: 1982639821}
-  - {fileID: 1267795461}
-  - {fileID: 885401207}
-  doneOrderingSpot:
-  - {fileID: 1538523297}
-  - {fileID: 2127067420}
-  - {fileID: 643513973}
-  spawnCount: 0
+  spawnPoints: []
+  lines: []
+  doneOrderingSpot: {fileID: 0}
   maxSpawnCount: 3
   spawnInterval: 4
 --- !u!4 &102576146
@@ -1058,6 +1049,8 @@ MonoBehaviour:
   capacity: 10
   currentFries: 0
   canAddFries: 1
+  col: {fileID: 0}
+  soundChannel: 0
   particle: {fileID: 290045587}
   friesInBasket: []
   cookTimer: 0
@@ -14987,6 +14980,7 @@ MonoBehaviour:
   roamUI: {fileID: 1054369765}
   sliceUI: {fileID: 1164527332}
   fryUI: {fileID: 948743681}
+  shakeUI: {fileID: 0}
   orderUI: {fileID: 0}
 --- !u!4 &1280216957
 Transform:
@@ -16810,9 +16804,7 @@ MonoBehaviour:
   sliceCamera: {fileID: 2027528108}
   fryCamera: {fileID: 328828443}
   shakeCamera: {fileID: 0}
-  packCamera: {fileID: 0}
   orderCamera: {fileID: 0}
-  serveCamera: {fileID: 0}
 --- !u!4 &1550942139
 Transform:
   m_ObjectHideFlags: 0
@@ -17486,6 +17478,8 @@ MonoBehaviour:
   capacity: 10
   currentFries: 0
   canAddFries: 1
+  col: {fileID: 0}
+  soundChannel: 0
   particle: {fileID: 1742253969}
   friesInBasket: []
   cookTimer: 0

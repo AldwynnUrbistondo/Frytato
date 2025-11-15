@@ -1537,6 +1537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a6dd218fad2f8459a92291d56c11c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactButton: {fileID: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -4906,6 +4907,7 @@ MonoBehaviour:
   roamUICanvas: {fileID: 392341599}
   equipButton: {fileID: 1408476757}
   equippedItem: {fileID: 0}
+  defaultIcon: {fileID: 0}
 --- !u!1 &1059292566
 GameObject:
   m_ObjectHideFlags: 0
@@ -6208,6 +6210,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4b82f927047bf24586e8895112edf33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roamUI: {fileID: 0}
+  sliceUI: {fileID: 0}
+  fryUI: {fileID: 0}
+  shakeUI: {fileID: 0}
+  orderUI: {fileID: 0}
 --- !u!4 &1280216957
 Transform:
   m_ObjectHideFlags: 0
@@ -6683,18 +6690,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customerPrefabs:
   - {fileID: 4602079738378686953, guid: 3f6c0a8b25ca7d045bad96052fa44992, type: 3}
-  spawnPoint:
-  - {fileID: 79518369}
-  - {fileID: 805522528}
-  lineQueuePoint:
-  - {fileID: 733994449}
-  - {fileID: 176042801}
-  - {fileID: 1273135926}
-  doneOrderingSpot:
-  - {fileID: 2058715590}
-  - {fileID: 1861313193}
-  - {fileID: 696535237}
-  spawnCount: 0
+  spawnPoints: []
+  lines: []
+  doneOrderingSpot: {fileID: 0}
   maxSpawnCount: 3
   spawnInterval: 4
 --- !u!1 &1405076529
@@ -7579,6 +7577,8 @@ MonoBehaviour:
   mainCamera: {fileID: 330585545}
   sliceCamera: {fileID: 2027528108}
   fryCamera: {fileID: 0}
+  shakeCamera: {fileID: 0}
+  orderCamera: {fileID: 0}
 --- !u!4 &1550942139
 Transform:
   m_ObjectHideFlags: 0

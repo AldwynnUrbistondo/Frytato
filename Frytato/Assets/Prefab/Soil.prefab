@@ -683,7 +683,9 @@ MonoBehaviour:
     harvestSpawnPoint: {fileID: 0}
     harvestAmount: 0
     potatoObj: {fileID: 0}
+    plantObject: {fileID: 0}
   plantState: 0
+  soilID: 0
 --- !u!1 &6080512880966579552
 GameObject:
   m_ObjectHideFlags: 0
@@ -869,7 +871,9 @@ MonoBehaviour:
     harvestSpawnPoint: {fileID: 9169741574958995111}
     harvestAmount: 0
     potatoObj: {fileID: 11400000, guid: 0f719ea6301d6684e80e752e45f92419, type: 2}
+    plantObject: {fileID: 0}
   plantState: 0
+  soilID: 0
 --- !u!114 &2269639431538969874
 MonoBehaviour:
   m_ObjectHideFlags: 0
