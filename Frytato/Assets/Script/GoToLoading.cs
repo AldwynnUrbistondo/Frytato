@@ -14,12 +14,13 @@ public class GoToLoading : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     public void ChangeScene(string sceneName)
     {
-        this.sceneName = sceneName;
+        //this.sceneName = sceneName;
+        PlayerPrefs.SetString("NextScene", sceneName);
         SceneManager.LoadScene("Loading");
     }
 
