@@ -6,28 +6,44 @@ public class Customer : MonoBehaviour, IInteractable
 {
     private NavMeshAgent agent;
     public int queueIndex = -1; // Track position in line
-
     [Header("Order UI")]
     public Image orderFries; // UI objects above the head
+    public Sprite[] flavorUI;
     public bool isAtCashier = false;
+    bool hasTakenOrder = false;
+    public Collider col;
+
+    [Header("Order Details")]
+    Flavor orderFlavor;
+    int satisfactionRate = 0;
+
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        col = GetComponent<BoxCollider>();
+        col.enabled = false;
+
+        GenerateRandomOrder();
     }
 
     private void Update()
     {
-        // Rotate toward movement direction
-        if (agent.desiredVelocity.magnitude > 0.1f)
+        // Only rotate toward movement direction if not at cashier
+        if (!isAtCashier && agent.desiredVelocity.magnitude > 0.1f)
         {
             Vector3 lookDir = new Vector3(-agent.desiredVelocity.x, 0, agent.desiredVelocity.z);
             transform.rotation = Quaternion.LookRotation(lookDir);
         }
 
-        UpdateCashierStatus();
+        // Only update cashier status if order hasn't been taken yet
+        if (!hasTakenOrder)
+        {
+            UpdateCashierStatus();
+        }
     }
 
+    #region Movement and Queueing
     public void MoveTo(Vector3 target)
     {
         if (agent != null)
@@ -39,24 +55,8 @@ public class Customer : MonoBehaviour, IInteractable
     {
         if (orderFries == null) return;
         int randomIndex = Random.Range(0, 3);
-
         // Set isAtCashier to true when order is assigned (only happens at front)
         isAtCashier = true;
-    }
-
-    // Called when player takes the order
-    public void OrderTaken()
-    {
-        SpawnManager.Instance.SendCustomerToDoneSpot(this);
-        Destroy(gameObject, 10f);
-        SpawnManager.Instance?.OnCustomerLeft(this);
-        orderFries.enabled = false;
-        isAtCashier = false;
-    }
-
-    public void Interact()
-    {
-        OrderTaken();
     }
 
     // Update cashier status based on queue position
@@ -71,6 +71,11 @@ public class Customer : MonoBehaviour, IInteractable
                 if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
                 {
                     isAtCashier = true;
+                    col.enabled = true;
+
+                    // Set rotation to Y 90 when at cashier
+                    transform.rotation = Quaternion.Euler(0, 90, 0);
+
                     if (orderFries != null)
                         orderFries.enabled = true;
                 }
@@ -78,6 +83,7 @@ public class Customer : MonoBehaviour, IInteractable
             else
             {
                 isAtCashier = false;
+                col.enabled = false;
                 if (orderFries != null)
                     orderFries.enabled = false;
             }
@@ -85,8 +91,55 @@ public class Customer : MonoBehaviour, IInteractable
         else
         {
             isAtCashier = false;
+            col.enabled = false;
             if (orderFries != null)
                 orderFries.enabled = false;
         }
     }
+    #endregion
+
+    void GenerateRandomOrder()
+    {
+        // Randomly select a flavor for the order
+        int randomFlavor = Random.Range(0, 3);
+        switch (randomFlavor)
+        {
+            case 0:
+                orderFlavor = Flavor.Cheese;
+                orderFries.sprite = flavorUI[0];
+                break;
+            case 1:
+                orderFlavor = Flavor.BBQ;
+                orderFries.sprite = flavorUI[1];
+                break;
+            case 2:
+                orderFlavor = Flavor.SourCream;
+                orderFries.sprite = flavorUI[2];
+                break;
+        }
+    }
+
+    // Called when player takes the order
+    public void OrderTaken()
+    {
+        InventoryManager.Instance.RemoveItem(UIManager.Instance.roamUI.equippedItem, 1);
+        hasTakenOrder = true;
+        isAtCashier = false;
+
+        if (orderFries != null)
+            orderFries.enabled = false;
+
+        // Collider stays enabled after taking order
+        SpawnManager.Instance.SendCustomerToDoneSpot(this);
+        SpawnManager.Instance?.OnCustomerLeft(this);
+        Destroy(gameObject, 10f);
+    }
+
+    public void Interact()
+    {
+        if (isAtCashier && UIManager.Instance.roamUI.equippedItem as PowderFries)
+            OrderTaken();
+    }
+
+
 }

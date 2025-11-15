@@ -688,7 +688,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -753,7 +753,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   queueIndex: -1
   orderFries: {fileID: 288168704173384716}
+  flavorUI:
+  - {fileID: 21300000, guid: 3a6acf4a28fef0c4c9646d61472d16d7, type: 3}
+  - {fileID: 21300000, guid: 2831fd36216db8846809547d879dc924, type: 3}
+  - {fileID: 21300000, guid: 5cad049f7751abe489cbe6805217610f, type: 3}
   isAtCashier: 0
+  col: {fileID: 0}
 --- !u!1 &8014879145994071401
 GameObject:
   m_ObjectHideFlags: 0
