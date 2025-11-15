@@ -133,8 +133,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 7.53}
-  m_Center: {x: 0, y: 3.67, z: -3}
+  m_Size: {x: 1, y: 1, z: 9}
+  m_Center: {x: 0, y: 3.67, z: -5}
 --- !u!114 &5635862852350919059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   queueIndex: -1
-  orderFries: {fileID: 0}
+  orderFries: {fileID: 2109572296168498154}
   isAtCashier: 0
 --- !u!1 &230875383422191098
 GameObject:

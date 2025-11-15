@@ -208,9 +208,9 @@ Transform:
   m_LocalScale: {x: 0.36, y: 0.36, z: 0.36}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5383693994267010448}
   - {fileID: 6930680738055494778}
   - {fileID: 8800698042799725543}
+  - {fileID: 5383693994267010448}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &9152578274731802505
@@ -277,8 +277,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 7.53}
-  m_Center: {x: 0, y: 3.67, z: -3}
+  m_Size: {x: 1, y: 1, z: 9}
+  m_Center: {x: 0, y: 3.67, z: -5}
 --- !u!114 &7582806487612568626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,7 +292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   queueIndex: -1
-  orderFries: {fileID: 0}
+  orderFries: {fileID: 2008702599025103250}
   isAtCashier: 0
 --- !u!1 &2931356029849562612
 GameObject:
@@ -693,7 +693,7 @@ GameObject:
   - component: {fileID: 4560800154909110416}
   - component: {fileID: 4909397815920902654}
   m_Layer: 0
-  m_Name: Canvas (1)
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

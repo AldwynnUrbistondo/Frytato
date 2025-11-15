@@ -58684,6 +58684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   queueIndex: 0
   orderFries: {fileID: 0}
+  isAtCashier: 0
 --- !u!1 &5601331379588771910
 GameObject:
   m_ObjectHideFlags: 0

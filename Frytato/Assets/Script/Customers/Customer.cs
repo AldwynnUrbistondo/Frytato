@@ -14,7 +14,6 @@ public class Customer : MonoBehaviour, IInteractable
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-
     }
 
     private void Update()
@@ -66,8 +65,22 @@ public class Customer : MonoBehaviour, IInteractable
         // Only customers at position 0 should be at cashier
         if (queueIndex == 0)
         {
-            if (orderFries != null)
-                orderFries.enabled = true;
+            // Check if customer has reached their destination
+            if (agent != null && !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+            {
+                if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
+                {
+                    isAtCashier = true;
+                    if (orderFries != null)
+                        orderFries.enabled = true;
+                }
+            }
+            else
+            {
+                isAtCashier = false;
+                if (orderFries != null)
+                    orderFries.enabled = false;
+            }
         }
         else
         {
