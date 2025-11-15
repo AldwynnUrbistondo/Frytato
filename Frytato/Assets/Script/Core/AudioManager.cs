@@ -228,7 +228,7 @@ public class AudioManager : MonoBehaviour
         switch (soundType)
         {
            case SoundType.Fry:
-                AudioPlay(frySources);
+                frySources[channel].Play();
                 break;
         }
     }
