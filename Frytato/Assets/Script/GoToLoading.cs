@@ -22,4 +22,9 @@ public class GoToLoading : MonoBehaviour
         this.sceneName = sceneName;
         SceneManager.LoadScene("Loading");
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }
