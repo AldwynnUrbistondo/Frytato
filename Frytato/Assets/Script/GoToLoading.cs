@@ -21,6 +21,7 @@ public class GoToLoading : MonoBehaviour
     {
         //this.sceneName = sceneName;
         PlayerPrefs.SetString("NextScene", sceneName);
+        PlayerPrefs.Save();
         SceneManager.LoadScene("Loading");
     }
 
