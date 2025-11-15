@@ -6,6 +6,7 @@ public class DestroyCustomer : MonoBehaviour
     {
         if (other.CompareTag("Customer"))
         {
+            
             Destroy(other.gameObject);
         }
     }

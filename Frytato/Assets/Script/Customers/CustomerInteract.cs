@@ -29,10 +29,10 @@ public class CustomerInteract : MonoBehaviour
         if (other.CompareTag("Customer"))
         {
             currentCustomer = other.GetComponent<Customer>();
-            currentCustomer.SetRandomOrder();
+            
         }
     }
-
+    /*
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Customer"))
@@ -45,5 +45,5 @@ public class CustomerInteract : MonoBehaviour
         }
     }
 
-
+    */
 }

@@ -22,7 +22,7 @@ public class SpawnManager : MonoBehaviour
     public int maxSpawnCount = 20;
     public float spawnInterval = 2f;
 
-    private int spawnedCount = 0;
+    public int activeCustomerCount = 0;  // Track active customers instead
     private float timer = 0f;
 
     private void Awake()
@@ -44,7 +44,8 @@ public class SpawnManager : MonoBehaviour
 
     private void Update()
     {
-        if (spawnedCount >= maxSpawnCount) return;
+        // Check against active customers, not total spawned
+        if (activeCustomerCount >= maxSpawnCount) return;
 
         timer += Time.deltaTime;
         if (timer >= spawnInterval)
@@ -78,15 +79,22 @@ public class SpawnManager : MonoBehaviour
                 newCustomer.queueIndex = i;
                 newCustomer.MoveTo(lines[lineIndex].points[i].position);
 
-                // First in line gets an order
+                // First in line gets an order and is at cashier
                 if (i == 0)
+                {
                     newCustomer.SetRandomOrder();
+                    newCustomer.isAtCashier = true;
+                }
+                else
+                {
+                    newCustomer.isAtCashier = false;
+                }
 
                 break;
             }
         }
 
-        spawnedCount++;
+        activeCustomerCount++;  // Increment active count
     }
 
     // Returns the index of the shortest line that has at least one empty spot
@@ -161,9 +169,18 @@ public class SpawnManager : MonoBehaviour
 
         if (lineIndex >= 0)
         {
+            // Mark customer as no longer at cashier
+            c.isAtCashier = false;
             customerLines[lineIndex][queueIndex] = null;
             StartCoroutine(ShiftLineAfterDelay(lineIndex, queueIndex, 1f));
         }
+    }
+
+    // Call this when a customer leaves completely (after they're done)
+    public void OnCustomerLeft(Customer c)
+    {
+        activeCustomerCount--;
+        if (activeCustomerCount < 0) activeCustomerCount = 0;
     }
 
     private IEnumerator ShiftLineAfterDelay(int lineIndex, int startIndex, float delay)
@@ -183,6 +200,16 @@ public class SpawnManager : MonoBehaviour
                 customerLines[lineIndex][i] = null;
                 c.queueIndex = i - 1;
                 c.MoveTo(lines[lineIndex].points[i - 1].position);
+
+                // Update cashier status based on new position
+                if (c.queueIndex == 0)
+                {
+                    c.isAtCashier = true;
+                }
+                else
+                {
+                    c.isAtCashier = false;
+                }
             }
             else
             {
@@ -192,7 +219,10 @@ public class SpawnManager : MonoBehaviour
 
         // Assign new order to the new front customer
         if (customerLines[lineIndex][0] != null)
+        {
             customerLines[lineIndex][0].SetRandomOrder();
+            customerLines[lineIndex][0].isAtCashier = true;
+        }
     }
 }
 
