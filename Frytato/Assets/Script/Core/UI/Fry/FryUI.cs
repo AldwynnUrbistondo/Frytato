@@ -6,6 +6,7 @@ public class FryUI : InventoryUI
     public GameObject fryUICanvas;
     public RawFriesObject selectedRawFries;
     public Image selectedFriesImage;
+    public Sprite defaultSpriteImage;
 
     public void EquipSelect(RawFriesObject selectedFries)
     {
@@ -18,7 +19,7 @@ public class FryUI : InventoryUI
 
         if (selectedFriesImage != null)
         {
-            selectedFriesImage.sprite = null;
+            selectedFriesImage.sprite = defaultSpriteImage;
         }
         if (selectedRawFries != null)
         {

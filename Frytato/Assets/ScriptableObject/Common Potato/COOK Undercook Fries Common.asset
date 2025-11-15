@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: COOK Undercook Fries Common
   m_EditorClassIdentifier: 
   itemID: C_U_NormalFries_Common
-  itemIcon: {fileID: 21300000, guid: 6bb0a2fc8ed27764c9fcb7fe4c5d48af, type: 3}
+  itemIcon: {fileID: 21300000, guid: 57ac63aa5a5eba948bceb445eb1b391e, type: 3}
   itemObject: {fileID: 7598000922720956711, guid: d31ee56f26979aa4cb0c78084d6526dc, type: 3}
   itemRarity: 0
   itemType: 2

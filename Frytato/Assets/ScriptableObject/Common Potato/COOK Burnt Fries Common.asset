@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: COOK Burnt Fries Common
   m_EditorClassIdentifier: 
   itemID: C_B_NormalFries_Common
-  itemIcon: {fileID: 21300000, guid: 06bfc3d8757d0e0479c16c78b0d5794a, type: 3}
+  itemIcon: {fileID: 21300000, guid: c130b243d9f87b14492a3221c2e13eb7, type: 3}
   itemObject: {fileID: 7598000922720956711, guid: d31ee56f26979aa4cb0c78084d6526dc, type: 3}
   itemRarity: 0
   itemType: 2

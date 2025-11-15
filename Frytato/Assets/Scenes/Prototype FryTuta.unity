@@ -4360,7 +4360,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 78, y: 174}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &224322970
 MonoBehaviour:
@@ -4382,7 +4382,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -231643521, guid: 26ac103515e60d64aa936f2890b8bca5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6b20ead274147eb4e8404d01ece3fcbc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4875,7 +4875,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1981455251, guid: db210c85899db4d4f965830b9e6a1891, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -21657,6 +21657,7 @@ MonoBehaviour:
   fryUICanvas: {fileID: 901697352}
   selectedRawFries: {fileID: 0}
   selectedFriesImage: {fileID: 269567998}
+  defaultSpriteImage: {fileID: -1981455251, guid: db210c85899db4d4f965830b9e6a1891, type: 3}
 --- !u!1 &949158169
 GameObject:
   m_ObjectHideFlags: 0
@@ -32406,7 +32407,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 78, y: 174}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1492374977
 MonoBehaviour:
@@ -32428,7 +32429,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 14528787, guid: 61cab243d4796eb40a7dd5bf24f9ca6f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 194f1a91951e35d4189f64f0ce576f37, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
