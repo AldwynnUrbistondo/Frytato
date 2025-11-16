@@ -2808,7 +2808,7 @@ MonoBehaviour:
     potatoObj: {fileID: 0}
     plantObject: {fileID: 855889226}
   plantState: 0
-  soilID: 4
+  soilID: 8
 --- !u!23 &127666541
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4321,7 +4321,7 @@ MonoBehaviour:
     potatoObj: {fileID: 0}
     plantObject: {fileID: 217718730}
   plantState: 0
-  soilID: 4
+  soilID: 9
 --- !u!23 &210836068
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16205,7 +16205,7 @@ MonoBehaviour:
     potatoObj: {fileID: 0}
     plantObject: {fileID: 1925295964}
   plantState: 0
-  soilID: 4
+  soilID: 11
 --- !u!23 &604525729
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -24923,7 +24923,7 @@ MonoBehaviour:
   spawnLocation: {fileID: 1405076530}
   buttonPrefab: {fileID: 7685970132337946200, guid: 9f0b20ba7ef81874c9cccf693e5303b5, type: 3}
   items: []
-  showOnlyTheseTypes: 00000000010000000200000003000000
+  showOnlyTheseTypes: 0000000003000000
   roamUICanvas: {fileID: 392341599}
   equipButton: {fileID: 1408476757}
   equippedItem: {fileID: 0}
@@ -28960,7 +28960,7 @@ MonoBehaviour:
     potatoObj: {fileID: 0}
     plantObject: {fileID: 1053409579}
   plantState: 0
-  soilID: 4
+  soilID: 7
 --- !u!23 &1249289450
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -30045,7 +30045,7 @@ MonoBehaviour:
     potatoObj: {fileID: 0}
     plantObject: {fileID: 28192860}
   plantState: 0
-  soilID: 4
+  soilID: 10
 --- !u!23 &1296155632
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -34585,7 +34585,7 @@ MonoBehaviour:
     potatoObj: {fileID: 0}
     plantObject: {fileID: 1708651662}
   plantState: 0
-  soilID: 4
+  soilID: 12
 --- !u!23 &1535607907
 MeshRenderer:
   m_ObjectHideFlags: 0

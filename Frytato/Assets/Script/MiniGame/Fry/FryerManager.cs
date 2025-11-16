@@ -252,6 +252,7 @@ public class FryerManager : MonoBehaviour
         currentFries = 0;
         timerSlider.value = 0;
         cookTimer = 0;
+        cookState = CookState.Raw; // Reset cook state for next batch
         canAddFries = true;
     }
     #endregion
