@@ -42,6 +42,11 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        SpawnCustomer();
+    }
+
     private void Update()
     {
         // Check against active customers, not total spawned
