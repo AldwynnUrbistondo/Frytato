@@ -57,7 +57,7 @@ public class ShakeUI : InventoryUI
         {
             indicatorState.text = "Shake the jar";
         }
-        else if (ShakeManager.Instance.currentFriesCount == 10)
+        else if (ShakeManager.Instance.currentFriesCount == 10 )
         {
             indicatorState.text = "Drag a flavor on top of the jar!";
         }
