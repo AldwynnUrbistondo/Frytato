@@ -24,7 +24,7 @@ public class ContainerFries : MonoBehaviour
             ShakeJar jar = other.GetComponent<ShakeJar>();
             Animator jarAnimator = other.GetComponent<Animator>();
             ShakeJar shakeJar = other.GetComponent<ShakeJar>();
-
+            ShakeManager.Instance.ResetFriesCount();
             if (jarAnimator != null && shakeJar != null)
             {
                 // Disable flavor in ShakeManager

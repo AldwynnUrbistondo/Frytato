@@ -8,7 +8,7 @@ public class ShakeManager : MonoBehaviour
 
     [Header("Shake Settings")]
     public int friesLimit = 10;
-    private int currentFriesCount = 0;
+    public int currentFriesCount = 0;
     public int friesinJarCount = 0;
     public bool isAddingFries = false;
 

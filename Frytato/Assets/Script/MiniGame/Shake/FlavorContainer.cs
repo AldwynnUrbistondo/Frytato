@@ -31,7 +31,7 @@ public class FlavorContainer : MonoBehaviour
         if (dragScript == null) return;
 
        
-        if (dragScript.isDragging && !jar.canShake)
+        if (dragScript.isDragging && !ShakeManager.Instance.hasFlavor && ShakeManager.Instance.currentFriesCount == 10)
         {
             // Stop the return coroutine while dragging
             if (returnRoutine != null)

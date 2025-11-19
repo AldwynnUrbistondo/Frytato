@@ -270,7 +270,7 @@ public class ShakeJar : MonoBehaviour
     {
         Canvas canvas = UIManager.Instance.shakeUI.shakeUICanvas.GetComponent<Canvas>();
         canvas.enabled = true;
-
+        ShakeManager.Instance.ResetFriesCount();
 
         AddFriesToInventory();
 

@@ -8,7 +8,9 @@ public class ShakeUI : InventoryUI
     public Slider shakeProgress;
     ShakeJar shake;
     public TextMeshProUGUI friesCountText;
+    public TextMeshProUGUI indicatorState;
     public GameObject updownIndicator;
+    public ShakeJar jar;
     private void Start()
     {
         shake = FindAnyObjectByType<ShakeJar>();
@@ -18,6 +20,7 @@ public class ShakeUI : InventoryUI
     private void Update()
     {
         FriesIndicator();
+        Indication();
     }
 
     void FriesIndicator()
@@ -44,5 +47,25 @@ public class ShakeUI : InventoryUI
         }
     }
 
-    
+    void Indication()
+    {
+        if (ShakeManager.Instance.currentFriesCount == 10 && ShakeManager.Instance.hasFlavor && jar.finishedShaking)
+        {
+            indicatorState.text = "Put the jar into the fries container on the right";
+        }
+        else if (ShakeManager.Instance.currentFriesCount == 10 && ShakeManager.Instance.hasFlavor)
+        {
+            indicatorState.text = "Shake the jar";
+        }
+        else if (ShakeManager.Instance.currentFriesCount == 10)
+        {
+            indicatorState.text = "Drag a flavor on top of the jar!";
+        }
+        else
+        {
+            indicatorState.text = "";
+        }
+
+
+    }
 }
