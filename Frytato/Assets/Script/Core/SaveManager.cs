@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -5,10 +6,10 @@ using UnityEngine;
 public class SaveManager : MonoBehaviour
 {
     public static SaveManager Instance { get; private set; }
-
     public SaveData saveData;
-
     public List<ItemData> itemsExisitingInScene = new List<ItemData>();
+
+    private bool isSaving = false;
 
     private void Awake()
     {
@@ -32,20 +33,31 @@ public class SaveManager : MonoBehaviour
         }
     }
 
-    public void SaveGame()
+    // Use this method when you need to save before scene change
+    public void SaveGameAsync(System.Action onComplete = null)
     {
-        saveData.savedInventory.Clear(); // Clear previous data
+        if (!isSaving)
+        {
+            StartCoroutine(SaveGameCoroutine(onComplete));
+        }
+    }
+
+    private IEnumerator SaveGameCoroutine(System.Action onComplete)
+    {
+        isSaving = true;
+
+        saveData.savedInventory.Clear();
 
         // Items in Inventory
         foreach (var item in InventoryManager.Instance.items)
         {
             ItemID newSavedItem = new ItemID(item.itemData.itemID);
-            newSavedItem.quantity = item.quantity; // Save the quantity
+            newSavedItem.quantity = item.quantity;
             saveData.savedInventory.Add(newSavedItem);
         }
 
         // Items in Scene
-        foreach(var item in itemsExisitingInScene)
+        foreach (var item in itemsExisitingInScene)
         {
             ItemID newSavedItem = new ItemID(item.itemID);
             newSavedItem.quantity = 1;
@@ -53,6 +65,7 @@ public class SaveManager : MonoBehaviour
         }
 
         // Soil
+        saveData.savedSoils.Clear();
         Soil[] allSoils = FindObjectsByType<Soil>(FindObjectsSortMode.None);
         foreach (var soil in allSoils)
         {
@@ -60,22 +73,97 @@ public class SaveManager : MonoBehaviour
         }
 
         string jsonData = JsonUtility.ToJson(saveData);
+        string path = GetSavePath();
 
-        File.WriteAllText(Application.dataPath + "/SaveData.text", jsonData);
+        // Write to file asynchronously
+        yield return StartCoroutine(WriteFileAsync(path, jsonData));
 
-        Debug.Log("Game Saved Succesfully!");
+        Debug.Log("Game Saved Successfully!");
+
+        isSaving = false;
+
+        // Call the completion callback (e.g., scene change)
+        onComplete?.Invoke();
+    }
+
+    // Synchronous save (for quick saves that don't block scene changes)
+    public void SaveGame()
+    {
+        saveData.savedInventory.Clear();
+
+        // Items in Inventory
+        foreach (var item in InventoryManager.Instance.items)
+        {
+            ItemID newSavedItem = new ItemID(item.itemData.itemID);
+            newSavedItem.quantity = item.quantity;
+            saveData.savedInventory.Add(newSavedItem);
+        }
+
+        // Items in Scene
+        foreach (var item in itemsExisitingInScene)
+        {
+            ItemID newSavedItem = new ItemID(item.itemID);
+            newSavedItem.quantity = 1;
+            saveData.savedInventory.Add(newSavedItem);
+        }
+
+        // Soil
+        saveData.savedSoils.Clear();
+        Soil[] allSoils = FindObjectsByType<Soil>(FindObjectsSortMode.None);
+        foreach (var soil in allSoils)
+        {
+            saveData.savedSoils.Add(soil.GetSoilData());
+        }
+
+        string jsonData = JsonUtility.ToJson(saveData);
+        File.WriteAllText(GetSavePath(), jsonData);
+        Debug.Log("Game Saved Successfully!");
+    }
+
+    private IEnumerator WriteFileAsync(string path, string data)
+    {
+        // Offload file writing to prevent blocking
+        bool writeComplete = false;
+        System.Exception writeException = null;
+
+        System.Threading.Tasks.Task.Run(() =>
+        {
+            try
+            {
+                File.WriteAllText(path, data);
+            }
+            catch (System.Exception e)
+            {
+                writeException = e;
+            }
+            finally
+            {
+                writeComplete = true;
+            }
+        });
+
+        // Wait for write to complete
+        while (!writeComplete)
+        {
+            yield return null;
+        }
+
+        if (writeException != null)
+        {
+            Debug.LogError("Failed to save: " + writeException.Message);
+        }
     }
 
     public void LoadGame()
     {
-        string path = Application.dataPath + "/SaveData.text"; // Add slash
+        string path = GetSavePath();
+
         if (File.Exists(path))
         {
             try
             {
                 string loadedData = File.ReadAllText(path);
                 saveData = JsonUtility.FromJson<SaveData>(loadedData);
-
                 LoadInventory();
 
                 // Load soils
@@ -91,7 +179,6 @@ public class SaveManager : MonoBehaviour
                         }
                     }
                 }
-
 
                 Debug.Log("Game Loaded Successfully!");
             }
@@ -109,17 +196,29 @@ public class SaveManager : MonoBehaviour
     void LoadInventory()
     {
         InventoryManager.Instance.items.Clear();
-        UIManager.Instance.UpdateUI(); // UI dont update when inventory is empty so add this to prevent it
+        UIManager.Instance.UpdateUI();
+
         foreach (var saveData in saveData.savedInventory)
         {
-            foreach(var dbItem in ItemDatabase.Instance.itemData)
+            foreach (var dbItem in ItemDatabase.Instance.itemData)
             {
-                if(saveData.itemID == dbItem.itemID)
+                if (saveData.itemID == dbItem.itemID)
                 {
                     InventoryManager.Instance.AddItem(dbItem, saveData.quantity);
                 }
             }
         }
+    }
+
+    // Mobile-compatible save path
+    private string GetSavePath()
+    {
+        return Path.Combine(Application.persistentDataPath, "SaveData.json");
+    }
+
+    public bool IsSaving()
+    {
+        return isSaving;
     }
 }
 
