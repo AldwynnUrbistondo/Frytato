@@ -4,7 +4,7 @@ using System.Collections;
 public class FlavorContainer : MonoBehaviour
 {
     public Flavor flavor;
-
+    public ShakeJar jar;
     [Header("Return Settings")]
     [SerializeField] private float returnSpeed = 5f;
     Animator anim;
@@ -31,7 +31,7 @@ public class FlavorContainer : MonoBehaviour
         if (dragScript == null) return;
 
        
-        if (dragScript.isDragging)
+        if (dragScript.isDragging && !jar.canShake)
         {
             // Stop the return coroutine while dragging
             if (returnRoutine != null)

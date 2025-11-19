@@ -11153,6 +11153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flavor: 0
+  jar: {fileID: 0}
   returnSpeed: 5
 --- !u!95 &324730058
 Animator:
@@ -17898,6 +17899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flavor: 0
+  jar: {fileID: 0}
   returnSpeed: 5
 --- !u!65 &703444172
 BoxCollider:
@@ -28741,6 +28743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flavor: 0
+  jar: {fileID: 0}
   returnSpeed: 5
 --- !u!54 &1248839203
 Rigidbody:
@@ -38084,6 +38087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flavor: 0
+  jar: {fileID: 0}
   returnSpeed: 5
 --- !u!95 &1672886507
 Animator:
@@ -58430,6 +58434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flavor: 0
+  jar: {fileID: 903033844}
   returnSpeed: 5
 --- !u!65 &4051671839656464901
 BoxCollider:
@@ -59208,6 +59213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flavor: 1
+  jar: {fileID: 903033844}
   returnSpeed: 5
 --- !u!65 &4359178633775351232
 BoxCollider:
@@ -62781,6 +62787,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flavor: 2
+  jar: {fileID: 903033844}
   returnSpeed: 5
 --- !u!1 &6458859407249532404
 GameObject:
