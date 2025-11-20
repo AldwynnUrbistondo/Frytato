@@ -20,18 +20,31 @@ public class Customer : MonoBehaviour, IInteractable
     Flavor orderFlavor;
     int satisfactionRate = 0;
 
+    Animator anim;
+
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         col = GetComponent<BoxCollider>();
         col.enabled = false;
+        anim = GetComponent<Animator>();
 
         GenerateRandomOrder();
     }
 
     private void Update()
     {
+        // Animation based on movement
+        if (agent.desiredVelocity.magnitude > 0.1f)
+        {
+            anim.Play("Walk");
+        }
+        else
+        {
+            anim.Play("Idle");
+        }
+
         // Only rotate toward movement direction if not at cashier
         if (!isAtCashier && agent.desiredVelocity.magnitude > 0.1f)
         {
@@ -172,6 +185,8 @@ public class Customer : MonoBehaviour, IInteractable
                 orderFries.sprite = satisfactionUI[2]; // Angry
                 AudioManager.Instance.PlaySound(SoundType.MadCustomer);
             }
+
+            orderFries.SetNativeSize();
         }
     }
 

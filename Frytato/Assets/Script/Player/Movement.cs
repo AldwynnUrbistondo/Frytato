@@ -7,6 +7,7 @@ public class Movement : MonoBehaviour
     float movementx;
     float movementz;
     [SerializeField] FixedJoystick joystick;
+    public Animator anim;
 
     void Start()
     {
@@ -22,6 +23,7 @@ public class Movement : MonoBehaviour
         if (GameManager.Instance.gameState != GameState.Roam)
         {
             rb.linearVelocity = Vector3.zero;
+            anim.Play("Idle");
             return;
         }
 
@@ -32,22 +34,27 @@ public class Movement : MonoBehaviour
             case Platform.PC:
                 movementx = Input.GetAxis("Horizontal");
                 movementz = Input.GetAxis("Vertical");
-
                 movement = new Vector3(movementx, 0.0f, movementz) * speed;
                 rb.linearVelocity = movement;
                 break;
-
             case Platform.Mobile:
                 movement = new Vector3(joystick.Horizontal, 0.0f, joystick.Vertical) * speed;
                 rb.linearVelocity = movement;
                 break;
         }
 
-        // Rotate toward movement direction if moving
+        // Animation based on movement
         if (movement.sqrMagnitude > 0.01f)
         {
+            anim.Play("Walk");
+
+            // Rotate toward movement direction
             Quaternion targetRotation = Quaternion.LookRotation(new Vector3(movement.x, 0, movement.z));
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+        }
+        else
+        {
+            anim.Play("Idle");
         }
     }
 }

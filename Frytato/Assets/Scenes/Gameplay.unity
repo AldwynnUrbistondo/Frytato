@@ -1411,6 +1411,7 @@ MonoBehaviour:
   doneOrderingSpot: {fileID: 0}
   maxSpawnCount: 3
   spawnInterval: 4
+  activeCustomerCount: 0
 --- !u!4 &102576146
 Transform:
   m_ObjectHideFlags: 0
@@ -8217,6 +8218,7 @@ GameObject:
   - component: {fileID: 301708842}
   - component: {fileID: 301708841}
   - component: {fileID: 301708843}
+  - component: {fileID: 301708844}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -8391,6 +8393,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactButton: {fileID: 774648422}
+--- !u!95 &301708844
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301708835}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &301951155
 GameObject:
   m_ObjectHideFlags: 0
@@ -8680,6 +8704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flavor: 0
+  jar: {fileID: 0}
   returnSpeed: 5
 --- !u!95 &324730058
 Animator:
@@ -13300,6 +13325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flavor: 0
+  jar: {fileID: 0}
   returnSpeed: 5
 --- !u!65 &703444172
 BoxCollider:
@@ -17067,6 +17093,7 @@ MonoBehaviour:
   fryUICanvas: {fileID: 901697352}
   selectedRawFries: {fileID: 0}
   selectedFriesImage: {fileID: 269567998}
+  defaultSpriteImage: {fileID: 0}
 --- !u!1 &951283293
 GameObject:
   m_ObjectHideFlags: 0
@@ -20536,6 +20563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flavor: 0
+  jar: {fileID: 0}
   returnSpeed: 5
 --- !u!54 &1248839203
 Rigidbody:
@@ -26460,6 +26488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flavor: 0
+  jar: {fileID: 0}
   returnSpeed: 5
 --- !u!95 &1672886507
 Animator:
@@ -26611,7 +26640,9 @@ MonoBehaviour:
   spawnPoint: {fileID: 1012893922}
   shakeProgress: {fileID: 0}
   friesCountText: {fileID: 1324036510}
+  indicatorState: {fileID: 0}
   updownIndicator: {fileID: 1920377605}
+  jar: {fileID: 0}
 --- !u!1 &1696892899
 GameObject:
   m_ObjectHideFlags: 0
@@ -32871,6 +32902,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   friesLimit: 10
+  currentFriesCount: 0
   friesinJarCount: 0
   isAddingFries: 0
   friesInJar: []
@@ -36182,6 +36214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetCamera: {fileID: 1563173924}
+  cameraType: 0
   onUpdate: 0
 --- !u!1 &2027528105
 GameObject:
@@ -38911,6 +38944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flavor: 0
+  jar: {fileID: 0}
   returnSpeed: 5
 --- !u!65 &4051671839656464901
 BoxCollider:
@@ -39230,6 +39264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flavor: 1
+  jar: {fileID: 0}
   returnSpeed: 5
 --- !u!65 &4359178633775351232
 BoxCollider:
@@ -40143,6 +40178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flavor: 2
+  jar: {fileID: 0}
   returnSpeed: 5
 --- !u!4 &6570354416272781593
 Transform:

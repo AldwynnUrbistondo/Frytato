@@ -51,7 +51,7 @@ public class ShakeUI : InventoryUI
     {
         if (ShakeManager.Instance.currentFriesCount == 10 && ShakeManager.Instance.hasFlavor && jar.finishedShaking)
         {
-            indicatorState.text = "Put the jar into the fries container on the right";
+            indicatorState.text = "Drag the Jar into the Fries Container";
         }
         else if (ShakeManager.Instance.currentFriesCount == 10 && ShakeManager.Instance.hasFlavor)
         {
