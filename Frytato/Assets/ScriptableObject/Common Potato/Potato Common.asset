@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: POTATO Common
   m_EditorClassIdentifier: 
   itemID: P_NormalPotato_Common
-  itemIcon: {fileID: -169195444, guid: 8afeda2221e2d374086b55c56f398076, type: 3}
+  itemIcon: {fileID: 21300000, guid: 7f6e71543529d744b856743264d714e1, type: 3}
   itemObject: {fileID: 5043299582935652280, guid: 8d75840fe830e864299a40acfe0f6b81, type: 3}
   itemRarity: 0
   itemType: 0
